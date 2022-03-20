@@ -1,0 +1,78 @@
+::-webkit-scrollbar {
+  width: 2px;
+}
+.hospital {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bio-hos {
+  padding: 15px 50px;
+  width: 50%;
+  text-align: center;
+  color: #cad5e2;
+  background: #ffffff14 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  opacity: 1;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+.list > div {
+  margin: 20px;
+  height: 400px;
+}
+.list-items {
+  height: 350px;
+  overflow-y: scroll;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+  justify-content:flex-start;
+  color: #cad5e2;
+  background: #ffffff14 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  opacity: 1;
+  height: 80px;
+  padding: 15px 10px 10px 15px;
+  width: 60vh;
+  margin-top: 10px;
+}
+.item > div {
+  margin: 10px;
+}
+.avatar {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.patient {
+  width: 38vh;
+  text-align: left;
+  font-size: 15px;
+}
+.div-align {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+.font-field {
+  margin-right: 15px;
+  margin-top: 10px;
+  font-size: 12px;
+}
+@media only screen and (max-width: 600px) {
+  .bio-hos {
+    padding: 15px 50px;
+    width: 60%;
+  }
+}

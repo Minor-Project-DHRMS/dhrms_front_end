@@ -1,0 +1,24 @@
+.government {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.bio-gov {
+  padding: 15px 50px;
+  width: 50%;
+  text-align: left;
+  color: #cad5e2;
+  background: #ffffff14 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  opacity: 1;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 20px;
+}
+@media only screen and (max-width: 600px) {
+  .bio {
+    padding: 15px 50px;
+    width: 60%;
+  }
+}

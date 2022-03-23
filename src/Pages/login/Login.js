@@ -62,7 +62,7 @@ const Login = () => {
                 <p>Health Record Management System</p>
             </div>
             <div className="btn-grp">
-                <Btn text={"Connect Wallet to login"} func={connectWallet} />
+                <Btn text={"Connect Wallet to login"} func={connectWallet}/>
                 <Btn text={"Register"} func={connectWallet} />
             </div>
 

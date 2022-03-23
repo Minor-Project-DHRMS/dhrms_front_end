@@ -1,0 +1,30 @@
+input{
+    background-color: #FFFFFF14;
+    border-radius: 5px;
+    border: none;
+    border-bottom: 5px solid #711685;
+    height: 38px;
+    width: 350px;
+    padding-left: 20px;
+    color: #CAD5E2;
+    caret-color: #CAD5E2;
+}
+
+::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-size: small;
+    color: #CAD5E2;
+}
+
+/* input:focus{
+    border-top:    1.5px solid  #711685;
+    border-right:  1.5px solid #711685;
+    border-bottom: 1.5px solid #711685;
+    border-left:   1.5px solid  #711685;
+    border: 5px  solid #711685;
+    outline: none;
+    transition: border ease-in-out 100ms;
+} */
+input:focus{
+    outline: none;
+}

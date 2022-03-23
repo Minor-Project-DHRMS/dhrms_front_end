@@ -1,4 +1,4 @@
-import Btn from "../button/Btn"
+import Btn from "../../components/button/Btn"
 import React, { useEffect, useState } from "react";
 import { ethers } from "ethers";
 

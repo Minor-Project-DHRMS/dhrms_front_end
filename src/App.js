@@ -6,15 +6,15 @@ import {
 } from "react-router-dom";
 
 import './App.css';
-
-
-import Login from "./components/login/Login";
+import Login from './Pages/login/Login'
+import PatientReg from "./Pages/PatientRegistration/PatientReg";
 
 const App = () => {
   return (
     <Router>
         <div className="container">
-            <Login/>
+          <Login />
+          {/* <PatientReg/> */}
         </div>
     </Router>
   )

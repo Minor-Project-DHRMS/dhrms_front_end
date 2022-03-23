@@ -1,0 +1,18 @@
+.btn-gov {
+  text-align: center;
+  padding: 10px 20px;
+  width: 50%;
+  height: 20px;
+  display: inline-block;
+  color: white;
+  background-color: #7116854f;
+  border-radius: 10px;
+  border: none;
+  margin-top: 0;
+  font-size: 12px;
+}
+
+.btn-gov:hover {
+  background-color: #71168580;
+  transition: background-color ease-in-out 100ms;
+}

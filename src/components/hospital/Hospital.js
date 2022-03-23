@@ -27,7 +27,7 @@ const Hospital = () => {
               return (
                 <div key={index} className="item">
                   <img src={mainLogo} alt="Avatar" className="avatar" />
-                  <div className="patient">
+                  <div className="item_details">
                     <div>Sahil Ljhjhjhjhj Naikwadi</div>
                     <div className="div-align">
                       <div className="font-field">Male</div>
@@ -47,7 +47,7 @@ const Hospital = () => {
               return (
                 <div key={index} className="item">
                   <img src={mainLogo} alt="Avatar" className="avatar" />
-                  <div className="patient">
+                  <div className="item_details">
                     <div>Dr. Sahil Ljhjhjhjhj Naikwadi</div>
                     <div className="div-align">
                       <div className="font-field">Cardiologist, MBBS, MD</div>

@@ -3,8 +3,8 @@ import TxtInput from '../../components/TxtInput/TxtInput'
 
 const PatientReg = () => {
     return (
-        <div>PatientReg
-            <TxtInput/>
+        <div>
+            <TxtInput placeholder="Enter the name"/>
         </div>
     )
 }

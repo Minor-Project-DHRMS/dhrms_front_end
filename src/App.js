@@ -13,8 +13,8 @@ const App = () => {
   return (
     <Router>
         <div className="container">
-          <Login />
-          {/* <PatientReg/> */}
+          {/* <Login /> */}
+          <PatientReg/>
         </div>
     </Router>
   )

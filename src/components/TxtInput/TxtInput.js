@@ -1,5 +1,5 @@
 import React from 'react'
-import './TxtInput.js'
+import './TxtInput.css'
 
 const TxtInput = ({ type, placeholder, name, value, style, ...inputProps }) => {
     return (

@@ -17,7 +17,7 @@
   text-align: center;
   color: #cad5e2;
   background: #ffffff14 0% 0% no-repeat padding-box;
-  border-radius: 20px;
+  border-radius: 10px;
   opacity: 1;
   margin-top: 30px;
   margin-right: 30px;
@@ -34,7 +34,7 @@
   margin-bottom: 5px;
 }
 a.font_field {
-  color: #cad5e2;
+  color: #c2bfce;
   margin-right: 0px;
   font-size: 10px;
   padding-top: 15px;
@@ -57,6 +57,7 @@ a.font_field {
   justify-content: center;
 }
 .font_field {
+  color: #c2bfce;
   margin-right: 15px;
   margin-top: 10px;
   font-size: 12px;
@@ -74,7 +75,7 @@ a.font_field {
   justify-content: flex-start;
   color: #cad5e2;
   background: #ffffff14 0% 0% no-repeat padding-box;
-  border-radius: 20px;
+  border-radius: 10px;
   opacity: 1;
   height: 30px;
   padding: 5px 5px 5px 5px;
@@ -103,6 +104,7 @@ a.font_field {
   margin-left: 5px;
 }
 .ptd_font_field {
+  color: #c2bfce;
   margin-right: 15px;
   margin-top: 5px;
   font-size: 10px;
@@ -118,7 +120,7 @@ a.font_field {
   flex-direction: column;
   justify-content: flex-end;
   background: #ffffff14 0% 0% no-repeat padding-box;
-  border-radius: 20px;
+  border-radius: 10px;
   opacity: 1;
   height: 30px;
   padding: 5px 5px 5px 5px;
@@ -127,6 +129,7 @@ a.font_field {
 }
 
 .pth_font_field {
+  color: #c2bfce;
   margin-top: 5px;
   font-size: 9px;
   text-align: center;
@@ -139,11 +142,12 @@ a.font_field {
   padding: 10px;
 }
 .pt_medical_items {
-  height: 130px;
+  height: 90px;
   overflow-y: scroll;
 }
 .pt_medical_font {
-  margin-top: 10px;
+  color: #c2bfce;
+  margin-bottom: 10px;
   font-size: 12px;
   text-align: left;
   margin-left: 10px;
@@ -153,7 +157,7 @@ a.font_field {
   margin-right: 20px;
 }
 .dot_one {
-  margin-top: 40px;
+  margin-top: 35px;
 }
 .dot {
   width: 30px;
@@ -162,7 +166,7 @@ a.font_field {
   border-radius: 50%;
 }
 .line {
-  height: 40px;
+  height: 35px;
   width: 2px;
   background: #ffffff3d 0% 0% no-repeat padding-box;
   margin-left: 15px;
@@ -177,7 +181,7 @@ a.font_field {
   text-align: left;
 }
 .pt_journal_list {
-  height: 48vh;
+  height: 41vh;
   overflow-y: scroll;
 }
 .pt_journal_item {
@@ -186,18 +190,19 @@ a.font_field {
   justify-content: flex-start;
   color: #cad5e2;
   background: #ffffff14 0% 0% no-repeat padding-box;
-  border-radius: 20px;
+  border-radius: 10px;
   opacity: 1;
   height: 60px;
   padding: 15px 10px 10px 15px;
-  width: 65vh;
-  margin-top: 10px;
+  width: 70vh;
+  margin-top: 5px;
 }
 .journal_details {
-  width: 40vh;
+  width: 50vh;
   padding-left: 5px;
 }
 .pt_journal_font {
+  color: #c2bfce;
   margin-top: 5px;
   font-size: 12px;
 }

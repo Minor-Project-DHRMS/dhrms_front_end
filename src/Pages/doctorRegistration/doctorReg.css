@@ -1,0 +1,57 @@
+.doc_reg {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.doc_head {
+  background-color: #ffffff14;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 100px;
+  text-align: center;
+  font-size: 35px;
+  border-radius: 10px;
+}
+.doc_align_ht {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.doc_align_vt {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.lbl_hos {
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+.doc_avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #ffffff14;
+  position: absolute;
+}
+.input--file {
+  position: relative;
+  color: #7f7f7f;
+  padding-top: 70px;
+  padding-left: 70px;
+}
+
+.input--file input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  padding-top: 70px;
+  padding-left: 70px;
+}
+.doc_align_sp {
+  margin-right: 52vh;
+}

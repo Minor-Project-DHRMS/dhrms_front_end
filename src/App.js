@@ -18,6 +18,11 @@ const App = () => {
     <Router>
       <div className="container">
         <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route exact path="/govDash" element={<Government />} />
+          <Route exact path="/PatientReg" element={<PatientReg />} />
+          <Route exact path="/PatientDash" element={<Patient />} />
+          <Route exact path="/HospitalDash" element={<Hospital />} />
           <Route path="/docreg" element={<DoctorReg />} />
           <Route path="/hosreg" element={<HospitalReg />} />
           <Route path="/govReg" element={<GovernmentReg />} />

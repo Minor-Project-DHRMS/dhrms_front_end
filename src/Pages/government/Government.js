@@ -4,63 +4,110 @@ import { ReactSession } from "react-client-session";
 import Btn from "../../components/button/Btn";
 import Login from "../login/Login";
 import "./government.css";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Government = () => {
-  const [officeName, setOfficeName] = useState("Dharwad");
-  const [phoneNo, setPhoneNo] = useState("213123");
-  const [GID, setGID] = useState("0x123434234234234324234231231231231223424");
+  let navigate = useNavigate();
+
+  const [govDetails, setGovDetails] = useState({
+    officeName: "Dharwad",
+    phoneNo: "213123",
+    GID: "0x123434234234234324234231231231231223424",
+  });
+
   var log = () => {
     console.log("hello");
     console.log(ReactSession.get("account"));
   };
-
+  // , { replace: true }
   // if (ReactSession.get("account") == undefined) {
   //   return <Navigate to="/" replace />;
   // } else {
   return (
     <div className="government">
       <div className="bio-gov">
-        <p>Office Name: {officeName}</p>
-        <p>Phone No: {phoneNo}</p>
-        <p>GID: {GID}</p>
+        <p>Office Name: {govDetails.officeName}</p>
+        <p>Phone No: {govDetails.phoneNo}</p>
+        <p>GID: {govDetails.GID}</p>
       </div>
-      <Btn
-        text={"Register new Patient"}
-        func={log}
-        style={{
-          width: "250px",
-          marginTop: "20px",
-          fontSize: "18px",
-        }}
-      />
-      <Btn
-        text={"Register new Doctor"}
-        func={log}
-        style={{
-          width: "250px",
-          marginTop: "20px",
-          fontSize: "18px",
-        }}
-      />
-      <Btn
-        text={"Register new Hospital"}
-        func={log}
-        style={{
-          width: "250px",
-          marginTop: "20px",
-          fontSize: "18px",
-        }}
-      />
-      <Btn
-        text={"Register new Government"}
-        func={log}
-        style={{
-          width: "250px",
-          marginTop: "20px",
-          fontSize: "18px",
-        }}
-      />
+      <div className="govdash_align_ht">
+        <div className="government">
+          <Btn
+            text={"Register new Patient"}
+            func={log}
+            style={{
+              width: "250px",
+              marginTop: "20px",
+              fontSize: "18px",
+            }}
+          />
+          <Btn
+            text={"Register new Doctor"}
+            func={() => navigate("/docreg")}
+            style={{
+              width: "250px",
+              marginTop: "20px",
+              fontSize: "18px",
+            }}
+          />
+          <Btn
+            text={"Register new Hospital"}
+            func={() => navigate("/hosreg")}
+            style={{
+              width: "250px",
+              marginTop: "20px",
+              fontSize: "18px",
+            }}
+          />
+          <Btn
+            text={"Register new Government"}
+            func={() => navigate("/govreg")}
+            style={{
+              width: "250px",
+              marginTop: "20px",
+              fontSize: "18px",
+            }}
+          />
+        </div>
+        <div className="government">
+          <Btn
+            text={"Approve new Patients"}
+            func={log}
+            style={{
+              width: "250px",
+              marginTop: "20px",
+              fontSize: "18px",
+            }}
+          />
+          <Btn
+            text={"Approve new Doctor"}
+            func={() => navigate("/docreg")}
+            style={{
+              width: "250px",
+              marginTop: "20px",
+              fontSize: "18px",
+            }}
+          />
+          <Btn
+            text={"Approve new Hospital"}
+            func={() => navigate("/hosreg")}
+            style={{
+              width: "250px",
+              marginTop: "20px",
+              fontSize: "18px",
+            }}
+          />
+          <Btn
+            text={"Approve new Government"}
+            func={() => navigate("/govreg")}
+            style={{
+              width: "250px",
+              marginTop: "20px",
+              fontSize: "18px",
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
   // }

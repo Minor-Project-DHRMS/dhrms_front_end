@@ -3,6 +3,7 @@ import './TxtInput.css'
 
 const TxtInput = ({ type, placeholder, name, value, style, ...inputProps }) => {
     return (
+        
         <input
             type = {type}
             placeholder= {placeholder}

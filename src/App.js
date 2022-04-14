@@ -6,16 +6,30 @@ import Hospital from "./Pages/hospital/Hospital";
 import Login from "./Pages/login/Login";
 import Patient from "./Pages/patient/Patient";
 import PatientReg from "./Pages/PatientRegistration/PatientReg";
+import DocDash from "./Pages/DoctorDash/DocDash"
+import UploadRepo from "./Pages/MedicRepoView/body";
+import Paitentsapprov from "./Pages/Approval/paitent-approve";
+import Docapprov from "./Pages/Approval/doctor-approval";
+import Govapprov from "./Pages/Approval/govApproval";
+import Hospitalapprov from "./Pages/Approval/hospitalApprov";
+import Body from "./Pages/MedicRepoView/body";
+import Patientregs from "./Pages/Approval/RegDetails/paitentreg";
 
 const App = () => {
   return (
     <Router>
       <div className="container">
         <Routes>
-          <Route path="/" element={<Patient />} />
+        <Route path="/" element={<Patientregs/>} />
+        <Route path="/docdash" element={<DocDash/>} />
+          <Route path="/medicalrepupload" element={<Body/>} />
+          <Route path="/hospApprov" element={<Hospitalapprov/>}/>
+          <Route path="/govapprov" element={<Govapprov/>}/>
+          <Route path="/docapprov" element={<Docapprov/>}/>
+          <Route path="/paitentsapprov" element={<Paitentsapprov/>}/>
           <Route path="/gov" element={<Government />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
-        {/* <PatientReg/> */}
       </div>
     </Router>
   );

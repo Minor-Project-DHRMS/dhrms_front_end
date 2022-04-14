@@ -1,0 +1,14 @@
+.pbody1{
+    background: #FFFFFF14 0% 0% no-repeat padding-box;
+border-radius: 20px;
+opacity: 1;
+align-items: center;
+vertical-align: middle;
+}
+
+.pcont1{
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

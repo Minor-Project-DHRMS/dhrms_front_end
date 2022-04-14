@@ -3,11 +3,13 @@ input{
     border-radius: 5px;
     border: none;
     border-bottom: 5px solid #711685;
-    height: 38px;
+    height: 50px;
     width: 350px;
     padding-left: 20px;
     color: #CAD5E2;
     caret-color: #CAD5E2;
+    content: url("../../assests/upload-icon.png");
+    
 }
 
 ::placeholder {

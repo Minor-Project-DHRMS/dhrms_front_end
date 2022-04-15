@@ -1,15 +1,24 @@
+.TINmainCont{
+    width: fit-content;
+}
+
+
 input{
     background-color: #FFFFFF14;
     border-radius: 5px;
     border: none;
     border-bottom: 5px solid #711685;
-    height: 50px;
+    height: 38px;
     width: 350px;
     padding-left: 20px;
     color: #CAD5E2;
     caret-color: #CAD5E2;
-    content: url("../../assests/upload-icon.png");
-    
+    /* box-sizing: border-box; */
+}
+
+.Tlabel{
+    margin-bottom: 6.5px;
+    display: inline-block;
 }
 
 ::placeholder {

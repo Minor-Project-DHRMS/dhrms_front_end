@@ -14,13 +14,19 @@ import Govapprov from "./Pages/Approval/govApproval";
 import Hospitalapprov from "./Pages/Approval/hospitalApprov";
 import Body from "./Pages/MedicRepoView/body";
 import Patientregs from "./Pages/Approval/RegDetails/paitentreg";
+import Hospreg from "./Pages/Approval/RegDetails/hospreg";
+import Govtregdet from "./Pages/Approval/RegDetails/govreg";
+import Docregs from "./Pages/Approval/RegDetails/docreg";
 
 const App = () => {
   return (
     <Router>
       <div className="container">
         <Routes>
-        <Route path="/" element={<Patientregs/>} />
+        <Route path="/" element={<Docregs/>} />
+        <Route path="/govtregdet" element={<Govtregdet/>} />
+        <Route path="/hospreg" element={<Hospreg/>} />
+        <Route path="/patientregs" element={<Patientregs/>} />
         <Route path="/docdash" element={<DocDash/>} />
           <Route path="/medicalrepupload" element={<Body/>} />
           <Route path="/hospApprov" element={<Hospitalapprov/>}/>

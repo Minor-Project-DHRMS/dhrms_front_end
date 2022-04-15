@@ -4,60 +4,63 @@ import "../../Approval/RegDetails/regdetails.css";
 
 export default function patientregs(){
     return(
-<div className="pcont1">
-    <h1 className="hdr1">Patient Registration Details</h1>
-    <div className="pbody1">
-<div className="pimg1">
-    images
-</div>
-<div className="contacts">
-    phone number
-    emergency contacts
-    etc....
-</div>
-<div className="details1">
-<div className="genrl1">
-    name:-
-DOB:-
-Gender:-
-address:-
-blood:-
-height:-
-weight:-
-</div>
-<div className="disease">
-    <h1 className="hdr2">Diseases/allergies</h1>
-    <p className="disease1">
-        drug allergies
-        Diseases....
-        ....
-    </p>
-    <p className="medhistry">
-        medical conditions
-        operations
-        medical history
-        medication
-        ETC...
-    </p>
-    <p className="habistats">
-        smoking
-        caffine
-        diet
-        habits
-    </p>
-</div>
-        </div>
-        <Btn   text={"Approv"}
+<table className="pcont1">
+    <tr><h1 className="hdr11">Patient Registration Details</h1></tr>
+    <div  className="pbody1">
+<tr className="imgcontact">
+    <td className="pimg1">
+</td>
+<td className="genrl1">
+<p>name:-</p>
+<p>DOB:-</p>
+<p>Gender:-</p>
+<p>address:-</p>
+<p>blood:-</p>
+<p>height:-</p>
+<p>weight:-</p>
+</td>
+<td className="contacts">
+<p>phone number:-</p>
+<p>emergency contacts:-</p>
+<p>etc....:-</p>
+</td>
+</tr>
+<tr className="disease">
+<td className="disease1">
+<h3 className="hdr2">Diseases/allergies</h3>
+    <p>drug allergies</p>
+    <p> Diseases....</p>
+    <p> ....</p>
+    </td>
+    <td className="medhistry">
+        <h3>MedicHistory</h3>
+        <p>medical conditions</p>
+        <p>operations</p>
+        <p>medical history</p>
+        <p>medication</p>
+        <p>ETC...</p>
+    </td>
+    <td className="habistats">
+        <h3>Habits</h3>
+       <p>smoking</p>
+       <p>caffine</p>
+       <p>diet</p>
+       <p>habits</p>
+    </td>
+</tr>
+<Btn   text={"Approve"}
                         onclick=""
                         style={{
                           height:"5vh",                 
                       width: "150px",
-                      marginRight: "90px",
-                      fontSize: "14px",
-                      padding: "10px 20px"
+                      marginRight: "100px",
+                      marginLeft:"42%",
+                      fontSize: "16px",
+                      textAlign:"center",
+                      padding: "10px 0px"
                         }}
                       />
     </div>
-</div>
+</table>
     );
 }

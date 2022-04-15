@@ -1,6 +1,6 @@
 import React from "react";
 import Btn from "../../components/button/Btn";
-import "../../components/button/btn.css";
+
 import "../../Pages/Approval/approv.css";
 import Txt from "../../components/TxtInput/TxtInput"
 import "../../Pages/DoctorDash/DocDash.css";

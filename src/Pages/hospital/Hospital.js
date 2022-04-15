@@ -4,10 +4,13 @@ import "./hospital.css";
 import Btn from "../../components/button/Btn";
 
 const Hospital = () => {
-  const [hospitalName, setHospitalName] = useState("KIMMS, HUBLI, KA");
-  const [phoneNo, setPhoneNo] = useState("213123");
-  const [HID, setHID] = useState("0x123434234234234324234231231231231223424");
   const [patientList, setPatientList] = useState([]);
+  const [doctorList, setDoctorList] = useState([]);
+  const [hospitalDetails, setHospitalDetails] = useState({
+    hospitalName: "KIMMS, HUBLI, KA",
+    phoneNo: "213123",
+    HID: "0x123434234234234324234231231231231223424",
+  });
 
   const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 1, 1, 1];
   var log = () => {
@@ -16,12 +19,14 @@ const Hospital = () => {
   return (
     <div className="hospital">
       <div className="bio-hos">
-        <p>Office Name: {hospitalName}</p>
-        <p>Phone No: {phoneNo}</p>
+        <div className="hos-head-font">
+          Office Name: {hospitalDetails.hospitalName}
+        </div>
+        <div className="hos-head-font">Phone No: {hospitalDetails.phoneNo}</div>
       </div>
       <div className="list">
         <div className="bio-hos">
-          <p>Patients</p>
+          <div className="hos-head-font">Patients</div>
           <div className="list-items">
             {nums.map((patient, index) => {
               return (
@@ -38,9 +43,8 @@ const Hospital = () => {
                     text={"View Report"}
                     func={log}
                     style={{
-                      padding: "15px 20px",
+                      padding: "10px 15px",
                       width: "100px",
-                      marginTop: "20px",
                       fontSize: "12px",
                     }}
                   />
@@ -50,7 +54,7 @@ const Hospital = () => {
           </div>
         </div>
         <div className="bio-hos">
-          <p>Doctors</p>
+          <div className="hos-head-font">Doctors</div>
           <div className="list-items">
             {nums.map((patient, index) => {
               return (

@@ -1,0 +1,107 @@
+.MINmainCont {
+    width: fit-content;
+    font-size: 15px;
+    margin: none;
+}
+
+.info {
+    background-color: #FFFFFF14;
+    border-radius: 5px;
+    border: none;
+    /* padding: 6.5px 0; */
+    border-bottom: 5px solid #711685;
+    min-height: 38px;
+    width: 352px;
+    padding-left: 20px;
+    color: #CAD5E2;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    /* box-sizing: border-box; */
+}
+
+.label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6.5px;
+}
+
+.txtInput {
+    margin-top: 7px;
+}
+
+li {
+    background-color: #FFFFFF14;
+    border-bottom: 1px solid #711685;
+    /* border-radius: 5px; */
+    /* border: none; */
+    height: 38px;
+    width: 352px;
+    color: #CAD5E2;
+    list-style-type: none;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+
+li:first-child {
+    border-radius: 5px 5px 0 0;
+}
+
+li:last-child {
+    border-radius: 0 0 5px 5px;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.sugList {
+    margin-top: 2.5px;
+}
+
+.allgs {
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 0 5px;
+    background-color: #7116854f;
+    color: #CAD5E2;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.cross {
+    font-size: 12px;
+    border-radius: 5px;
+    font-weight: bolder;
+    cursor: pointer;
+    color: #711685;
+}
+
+.plus {
+    cursor: pointer;
+}
+
+
+.plus-cross {
+    cursor: pointer;
+    animation: plus-cross-anim 100ms forwards alternate;
+}
+
+.cross-pluss{
+    cursor: pointer;
+    animation: plus-cross-anim 100ms forwards;
+}
+
+@keyframes plus-cross-anim {
+    100% {
+        transform: rotate(45deg);
+    }
+}
+@keyframes cross-pluss-anim {
+    100% {
+        transform: rotate(180deg);
+    }
+}

@@ -8,6 +8,43 @@ import { Navigate } from "react-router-dom";
 
 const Patient = () => {
   const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 1, 1, 1];
+  const [state, setState] = useState({
+    name: "Nandeesh B K",
+    DOB: "12/23/23",
+    gender: "Male",
+    height: "12.12",
+    weight: "45",
+    bloodGroup: "A+",
+    phoneNo: "1234567891",
+    email: "hello@sdmcet",
+    drugAllergies: ["asdsd", "asd", "asdAS", "asAS"],
+    otherIllness: ["ASDSD", "ASDSD", "ASDASD"],
+    operations: [],
+    currentMedications: [],
+    otherMedicalIllness: ["asd", "asd", "asd", "asd"],
+    address: "0X2342342342",
+    emergencyPerson: "",
+    emergencyPhoneNo: "",
+    unhealthyHabits: [],
+    dietType: [],
+    caffeineConsumption: "",
+    smokingPerDay: "",
+  });
+
+  const [journalList, setJournalList] = useState([]);
+  const [journal, setJournal] = useState({
+    treatment: "Annual medical Check Up",
+    doctorName: "Dr. Raja",
+    date: "Jan 28,2303",
+  });
+  const [doctor, setDoctor] = useState({
+    doctorName: "Sahil",
+    qualification: "Cardiologist, MBBS, MD",
+  });
+  const [hospital, setHospital] = useState({
+    hospitalName: "KIMMS, HUBLI, KA",
+    phoneNo: "2121212121",
+  });
   var log = () => {
     console.log("hello");
   };
@@ -17,39 +54,37 @@ const Patient = () => {
         <div className="pt_profile">
           <div className="pt_align_vt">
             <img src={mainLogo} alt="Avatar" className="pt_avatar" />
-            <a href="#" className="font_field">
+            <a href="/" className="font_field">
               More Details
             </a>
           </div>
           <div className="pt_details">
             <div className="pt_name">
-              <strong>Nandeesh B K</strong>
+              <strong>{state.name}</strong>
             </div>
             <div className="pt_align_ht">
-              <div className="font_field">Male</div>
+              <div className="font_field">{state.gender}</div>
               <div className="font_field">Age : 20</div>
-              <div className="font_field">Height : 5</div>
+              <div className="font_field">Height : {state.height}</div>
             </div>
             <div className="pt_align_ht">
-              <div className="font_field">Weight : 60kg</div>
-              <div className="font_field">Blood Group : B+ve</div>
+              <div className="font_field">Weight : {state.weight}kg</div>
+              <div className="font_field">Blood Group : {state.bloodGroup}</div>
             </div>
-            <div className="font_field">Phone Number: +91 8124368890</div>
+            <div className="font_field">Phone Number: +91 {state.phoneNo}</div>
           </div>
         </div>
 
         <div className="pt_profile pt_align_vt">
-          <div>Shrinivas's Doctors</div>
+          <div>{state.name}'s Doctors</div>
           <div className="pt_list_items">
             {nums.map((patient, index) => {
               return (
                 <div key={index} className="pt_item">
                   <img src={mainLogo} alt="Avatar" className="ptd_avatar" />
                   <div className="ptd_details">
-                    <div className="ptd_name">
-                      Dr. Sahil Ljhjhjhjhj Naikwadi
-                    </div>
-                    <div className="ptd_font_field">Cardiologist, MBBS, MD</div>
+                    <div className="ptd_name">{doctor.doctorName}</div>
+                    <div className="ptd_font_field">{doctor.qualification}</div>
                   </div>
                 </div>
               );
@@ -57,14 +92,14 @@ const Patient = () => {
           </div>
         </div>
         <div className="pt_profile pt_align_vt">
-          <div>Afzal's Hospitals</div>
+          <div>{state.name}'s Hospitals</div>
           <div className="pt_list_items">
             {nums.map((patient, index) => {
               return (
                 <div key={index} className="pth_details">
-                  <div className="pth_name">KIMMS, HUBLI, KA</div>
+                  <div className="pth_name">{hospital.hospitalName}</div>
                   <div className="pth_font_field">
-                    Phone Number : 9433387654
+                    Phone Number : {hospital.phoneNo}
                   </div>
                 </div>
               );
@@ -79,10 +114,10 @@ const Patient = () => {
               <strong>Allergies</strong>
             </div>
             <div className="pt_medical_items">
-              {nums.map((patient, index) => {
+              {state.drugAllergies.map((allergies, index) => {
                 return (
                   <div key={index} className="pt_medical_font">
-                    Penicilin
+                    {allergies}
                   </div>
                 );
               })}
@@ -91,10 +126,10 @@ const Patient = () => {
               <strong>Medical Conditions</strong>
             </div>
             <div className="pt_medical_items">
-              {nums.map((patient, index) => {
+              {state.otherMedicalIllness.map((illness, index) => {
                 return (
                   <div key={index} className="pt_medical_font">
-                    Penicilin
+                    {illness}
                   </div>
                 );
               })}
@@ -112,7 +147,7 @@ const Patient = () => {
           />
         </div>
         <div className="pt_profile pt_journal pt_align_vt">
-          <div className="journal_name">Nandeesh's medical journal</div>
+          <div className="journal_name">{state.name}'s medical journal</div>
           <div className="pt_journal_list">
             <div className="pt_align_vt">
               {nums.map((patient, index) => {
@@ -172,9 +207,10 @@ const PatientD = ({ treatment, name, doctorname }) => {
           func={log}
           style={{
             padding: "10px 20px",
-            width: "100px",
+            width: "70px",
             marginTop: "5px",
             fontSize: "12px",
+            height: "20px",
           }}
         />
       </div>

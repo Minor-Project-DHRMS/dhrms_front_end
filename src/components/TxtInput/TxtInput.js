@@ -1,9 +1,9 @@
 import React from 'react'
 import './TxtInput.css'
 
-const TxtInput = ({ type, placeholder, name, value, style, ...inputProps }) => {
-    return (
-        
+const TxtInput = ({ Tlabel, divsStyle, ...inputProps }) => {
+    return (   
+      
         <input
             type = {type}
             placeholder= {placeholder}
@@ -13,14 +13,17 @@ const TxtInput = ({ type, placeholder, name, value, style, ...inputProps }) => {
             {...inputProps}
         />
 
+        <div className='TINmainCont' style={divsStyle}>
+            {Tlabel &&
+                <div>
+                    <span className='Tlabel'>{Tlabel}</span>
+                </div>
+            }
+            <input
+                {...inputProps}
+            />
+        </div>
     )
-}
-
-TxtInput.defaultProps = {
-    type: "text",
-    placeholder: "",
-    name: "",
-
 }
 
 export default TxtInput

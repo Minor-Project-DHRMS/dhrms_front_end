@@ -3,15 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
+.govdash_align_ht {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 81%;
+}
+
 .bio-gov {
   padding: 15px 50px;
   width: 50%;
   text-align: left;
   color: #cad5e2;
   background: #ffffff14 0% 0% no-repeat padding-box;
-  border-radius: 20px;
+  border-radius: 10px;
   opacity: 1;
   margin-top: 50px;
   margin-bottom: 50px;

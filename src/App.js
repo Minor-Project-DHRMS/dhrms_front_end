@@ -1,8 +1,12 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 import "./App.css";
+import { DoctorReg } from "./Pages/doctorRegistration/DoctorReg";
 import Government from "./Pages/government/Government";
+import { GovernmentReg } from "./Pages/governmentRegistration/GovernmentReg";
 import Hospital from "./Pages/hospital/Hospital";
+import { HospitalReg } from "./Pages/hospitalRegistration/HospitalReg";
+import { IPFS } from "./Pages/IPFS/IPFS";
 import Login from "./Pages/login/Login";
 import Patient from "./Pages/patient/Patient";
 import PatientReg from "./Pages/PatientRegistration/PatientReg";
@@ -17,24 +21,61 @@ import Patientregs from "./Pages/Approval/RegDetails/paitentreg";
 import Hospreg from "./Pages/Approval/RegDetails/hospreg";
 import Govtregdet from "./Pages/Approval/RegDetails/govreg";
 import Docregs from "./Pages/Approval/RegDetails/docreg";
+import PatientDetails from "./Pages/medicalReport/PatientDetails"
+import ViewScan from "./Pages/viewScans/ViewScan"
+import ListScan from "./Pages/listScans/ListScan"
+import ViewReport from "./Pages/viewReport/viewReport"
+import ListReport from "./Pages/listReport/ListReport"
+import { QRCodeGen } from "./components/QRPage/QRCodeGen";
+import { QRScanner } from "./components/QRScanner/QRScanner";
 
 const App = () => {
   return (
     <Router>
       <div className="container">
         <Routes>
-        <Route path="/" element={<Docregs/>} />
-        <Route path="/govtregdet" element={<Govtregdet/>} />
-        <Route path="/hospreg" element={<Hospreg/>} />
-        <Route path="/patientregs" element={<Patientregs/>} />
-        <Route path="/docdash" element={<DocDash/>} />
-          <Route path="/medicalrepupload" element={<Body/>} />
-          <Route path="/hospApprov" element={<Hospitalapprov/>}/>
-          <Route path="/govapprov" element={<Govapprov/>}/>
-          <Route path="/docapprov" element={<Docapprov/>}/>
-          <Route path="/paitentsapprov" element={<Paitentsapprov/>}/>
-          <Route path="/gov" element={<Government />} />
-          <Route path="/login" element={<Login />} />
+          //approval pages
+          <Route exact path="/approveDoc" element={<Docregs/>} />
+          <Route exact path="/approveGov" element={<Govtregdet/>} />
+          <Route exact path="/approveHos" element={<Hospreg/>} />
+          <Route exact path="/approvePat" element={<Patientregs/>} />
+
+          //Aprroval Lists
+          <Route exact path="/hospApprovlist" element={<Hospitalapprov/>}/>
+          <Route exact path="/govapprovlist" element={<Govapprov/>}/>
+          <Route exact path="/docapprovlist" element={<Docapprov/>}/>
+          <Route exact path="/paitentsapprovlist" element={<Paitentsapprov/>}/>
+
+          //Medical Report pages        
+          <Route exact path="/medicalrepupload" element={<Body/>} />
+          <Route exact path="/medicalReport" element={<PatientDetails />} />
+          <Route exact path="/viewScan" element={<ViewScan />} />
+          <Route exact path="/viewReport" element={<ViewReport />} />
+          <Route exact path="/listScan" element={<ListScan />} />
+          <Route exact path="/listReport" element={<ListReport />} />
+
+          //login
+          <Route exact path="/" element={<Login />} />
+
+          //Dash Boards
+          <Route exact path="/govDash" element={<Government />} />
+          <Route exact path="/PatientDash" element={<Patient />} />
+          <Route path="/docdash" element={<DocDash/>} />
+          <Route exact path="/HospitalDash" element={<Hospital />} />
+
+          //Regsitration Pages
+          <Route exact path="/docreg" element={<DoctorReg />} />
+          <Route exact path="/hosreg" element={<HospitalReg />} />
+          <Route exact path="/govReg" element={<GovernmentReg />} />
+          <Route exact path="/PatientReg" element={<PatientReg />} />
+        
+            
+            <Route
+              path="/qr"
+              element={
+                <QRCodeGen text={"0x71C7656EC7ab88b098defB751B7401B5f6d8976F"} />
+              }
+            />
         </Routes>
       </div>
     </Router>

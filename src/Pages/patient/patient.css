@@ -192,7 +192,7 @@ a.font_field {
   background: #ffffff14 0% 0% no-repeat padding-box;
   border-radius: 10px;
   opacity: 1;
-  height: 60px;
+  height: 50px;
   padding: 15px 10px 10px 15px;
   width: 70vh;
   margin-top: 5px;
@@ -208,4 +208,74 @@ a.font_field {
 }
 .pth_journal_font {
   font-size: 16px;
+}
+@media only screen and (max-width: 900px) {
+  .patient {
+    width: 100%;
+  }
+  .pt_profile {
+    width: 100%;
+    margin-right: 0px;
+  }
+
+  .pt_vt_media {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 85%;
+  }
+  .pt_list_items {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .pt_item {
+    width: 70%;
+  }
+  .pt_medical_list {
+    width: 118%;
+  }
+  .pt_details {
+    width: 100%;
+  }
+  .ptd_details {
+    width: 90%;
+  }
+  .pth_details {
+    width: 70%;
+  }
+  .pt_journal_item {
+    width: 100%;
+  }
+  .journal_name {
+    font-size: 15px;
+  }
+  .lines {
+    margin-left: 2px;
+    margin-right: 10px;
+  }
+  .dot {
+    width: 20px;
+    height: 20px;
+  }
+  .line {
+    height: 35px;
+    width: 1px;
+    margin-left: 10px;
+  }
+
+  .journal_details {
+    width: 100%;
+    padding-left: 5px;
+  }
+  .pt_journal_font {
+    font-size: 10px;
+  }
+  .pth_journal_font {
+    font-size: 12px;
+  }
+  .pt_journal {
+    margin-bottom: 30px;
+  }
 }

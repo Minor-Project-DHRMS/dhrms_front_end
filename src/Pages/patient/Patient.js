@@ -50,7 +50,7 @@ const Patient = () => {
   };
   return (
     <div className="patient">
-      <div className="pt_align_ht">
+      <div className="pt_align_ht pt_vt_media">
         <div className="pt_profile">
           <div className="pt_align_vt">
             <img src={mainLogo} alt="Avatar" className="pt_avatar" />
@@ -107,8 +107,8 @@ const Patient = () => {
           </div>
         </div>
       </div>
-      <div className="pt_align_ht">
-        <div className="pt_align_vt">
+      <div className="pt_align_ht pt_vt_media">
+        <div className="pt_align_vt pt_vt_media">
           <div className="pt_profile pt_medical_list pt_align_vt">
             <div className="pt_medical">
               <strong>Allergies</strong>
@@ -195,25 +195,23 @@ const PatientD = ({ treatment, name, doctorname }) => {
     console.log("hello");
   };
   return (
-    <div className="pt_journal_item">
-      <div className="pt_align_ht">
-        <div className="journal_details pt_align_vt">
-          <div className="pth_journal_font">{treatment}</div>
-          <div className="pt_journal_font">{name}</div>
-          <div className="pt_journal_font">{doctorname}</div>
-        </div>
-        <Btn
-          text={"View"}
-          func={log}
-          style={{
-            padding: "10px 20px",
-            width: "70px",
-            marginTop: "5px",
-            fontSize: "12px",
-            height: "20px",
-          }}
-        />
+    <div className="pt_journal_item pt_align_ht">
+      <div className="journal_details pt_align_vt">
+        <div className="pth_journal_font">{treatment}</div>
+        <div className="pt_journal_font">{name}</div>
+        <div className="pt_journal_font">{doctorname}</div>
       </div>
+      <Btn
+        text={"View"}
+        func={log}
+        style={{
+          padding: "10px 20px",
+          width: "70px",
+          marginTop: "5px",
+          fontSize: "12px",
+          height: "20px",
+        }}
+      />
     </div>
   );
 };

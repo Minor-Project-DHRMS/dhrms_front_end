@@ -1,12 +1,16 @@
 import Btn from "../../components/button/Btn"
 import React, { useEffect, useState } from "react";
-import { ethers } from "ethers";
-
+import ContractInstance from "../../services/ContractInstance";
+import { useNavigate } from "react-router-dom";
+import { ReactSession } from 'react-client-session';
+import LoadingInd from "../../components/Loading/LoadingInd";
 import './login.css'
 
-const Login = () => {
 
+const Login = () => {
+    let navigate = useNavigate();
     const [currentAccount, setCurrentAccount] = useState("");
+    const [loading, setLoading] = useState(false)
 
 
     const checkIfWalletIsConnected = async () => {
@@ -36,6 +40,7 @@ const Login = () => {
 
     const connectWallet = async () => {
         try {
+
             const { ethereum } = window;
 
             if (!ethereum) {
@@ -47,6 +52,35 @@ const Login = () => {
 
             console.log("Connected", accounts[0]);
             setCurrentAccount(accounts[0]);
+
+            const mainContract = ContractInstance(window);
+            ReactSession.setStoreType("sessionStorage");
+            ReactSession.set("currentAccount", accounts[0]);
+
+            setLoading(true);
+            const gov = await mainContract.isGovernment(accounts[0]);
+            if (gov) {
+                setLoading(false);
+                navigate("/govDash")
+            }
+            const pat = await mainContract.isPatient(accounts[0]);
+            if (pat) {
+                setLoading(false);
+                navigate("/PatientDash")
+            }
+            const hos = await mainContract.isHospital(accounts[0]);
+            if (hos) {
+                setLoading(false);
+                navigate("/HospitalDash")
+            }
+            const doc = await mainContract.isDoctor(accounts[0]);
+            if (doc) {
+                setLoading(false);
+                navigate("/docdash")
+            }
+
+
+
         } catch (error) {
             console.log(error)
         }
@@ -61,10 +95,14 @@ const Login = () => {
             <div className="whitebg">
                 <p>Health Record Management System</p>
             </div>
-            <div className="btn-grp">
-                <Btn text={"Connect Wallet to login"} func={connectWallet}/>
-                <Btn text={"Register"} func={connectWallet} />
-            </div>
+            {loading ?
+                <LoadingInd loading={loading}/>
+                :
+                <div className="btn-grp">
+                    <Btn text={"Connect Wallet to login"} func={connectWallet} />
+                    <Btn text={"Register"} func={connectWallet} />
+                </div>
+            }
 
         </div>
     )

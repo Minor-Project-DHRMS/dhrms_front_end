@@ -1,9 +1,11 @@
-.pbody1{
+.pbody11{
     background: #FFFFFF14 0% 0% no-repeat padding-box;
 opacity: 1;
 padding: 15px;
 vertical-align: middle;
 border-radius: 20px;
+width: 1000px;
+height: 430px;
 resize: none;
 }
 .pbody2{
@@ -11,17 +13,24 @@ resize: none;
 opacity: 1;
 padding: 15px;
 vertical-align: middle;
-border-radius: 20px;
-width: 700px;
-height: 480px;
+width: 1000px;
 resize: none;
-margin-left:200px;
+border-radius: 20px;
 }
 .imgcontact{
     display: flex;
     justify-items: center;
     margin-bottom: 10px;
-    height: 280px;
+    height: auto;
+}
+.imgcontact2{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    flex-direction: column;
+    vertical-align: middle;
+    margin-bottom: 10px;
+    height: auto;
 }
 .disease1{
     background: #FFFFFF14 0% 0% no-repeat padding-box;
@@ -66,6 +75,7 @@ border-radius: 12px;
 margin-left: 20px;
 width:70%;
 padding: 15px;
+height: 80%;
 resize: none;
 overflow-y: scroll;
 }
@@ -74,9 +84,8 @@ overflow-y: scroll;
 opacity: 1;
 border-radius: 12px;
 width:70%;
-margin-left: 0px;
 padding: 15px;
-resize: none;
+height: 200px;
 overflow-y: scroll;
 }
 .pimg1{
@@ -93,10 +102,8 @@ content: url("../../../../public/logo192.png");
     background: #FFFFFF14 0% 0% no-repeat padding-box;
 opacity: 1;
 border-radius: 50%;
-height: 150px;
-width: 150px;
-margin-left: 250px;
-text-align: center;
+height: 130px;
+width: 130px;
 content: url("../../../../public/logo192.png");
 }
 .docdetails{
@@ -131,11 +138,11 @@ padding: 15px;
 }
 
 ::-webkit-scrollbar{
-    width: 2px;
+    width: 8px;
 }
 
 .pcont1{
-width: 90%;
+    width: auto;
 resize: none;
 }
 
@@ -160,12 +167,6 @@ margin-left: 29%;
 tr,td{
     padding: 10px;
 }
-td{
-    padding: 20px;
-}
-table{
-margin-left: 65px;
-}
 tr{
     column-span: all;
 }
@@ -186,21 +187,22 @@ overflow-y: scroll;
 }
 .hcontacts,.hname,.walletaddr1{
     background: #FFFFFF0F 0% 0% no-repeat padding-box;
-    width: 450px;
+    width: auto;
     border-radius: 12px;
-    padding: 15px;
+    padding: 18px;
+    margin-bottom: 30px;
 }
 .details3{ background: #FFFFFF14 0% 0% no-repeat padding-box;
 opacity: 1;
 border-radius: 12px;
 padding: 20px;
 margin-left: 34.5%;
-height: 450px;
+height: 340px;
 overflow-y: scroll;}
 .hcontacts2,.hname2,.walletaddr2{
     background: #FFFFFF0F 0% 0% no-repeat padding-box;
     width: 450px;
     border-radius: 12px;
     padding: 15px;
-    margin-left: 40px;
+    margin-bottom: 30px;
 }

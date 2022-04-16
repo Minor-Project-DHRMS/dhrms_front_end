@@ -27,13 +27,12 @@ export default function docregs(){
 <Btn   text={"Approve"}
                         onclick=""
                         style={{
-                          height:"5vh",                 
+                 
                       width: "150px",
-                      marginRight: "100px",
-                      marginLeft:"42%",
+                      marginLeft:"38%",
                       fontSize: "16px",
                       textAlign:"center",
-                      padding: "10px 0px"
+                      padding: "10px 20px"
                         }}
                       />
     </div>

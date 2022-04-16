@@ -16,8 +16,8 @@ export default function govapprov(){
         Government Approval
     </div>
     </div>
-    <div className="body12">
-    <div className="b1"> {nums.map((patient, index) => {
+    <div className="body102">
+     {nums.map((patient, index) => {
         return (
           <div key={index}>       
         <div className="lis11">
@@ -42,7 +42,7 @@ export default function govapprov(){
                 </div>
               );
             })}
-     </div>
+     
      </div>
      </div>
     

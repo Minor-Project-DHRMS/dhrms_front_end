@@ -6,7 +6,7 @@ export default function patientregs(){
     return(
 <table className="pcont1">
     <tr><h1 className="hdr11">Patient Registration Details</h1></tr>
-    <div  className="pbody1">
+    <div  className="pbody11">
 <tr className="imgcontact">
     <td className="pimg1">
 </td>
@@ -51,7 +51,7 @@ export default function patientregs(){
 <Btn   text={"Approve"}
                         onclick=""
                         style={{
-                          height:"5vh",                 
+                 
                       width: "150px",
                       marginRight: "100px",
                       marginLeft:"42%",

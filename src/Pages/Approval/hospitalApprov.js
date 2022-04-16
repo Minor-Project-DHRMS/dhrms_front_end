@@ -15,8 +15,8 @@ export default function hospitalapprov(){
         Hospital Approval
     </div>
     </div>
-    <div className="body12">
-    <div className="b1"> {nums.map((patient, index) => {
+    <div className="body102">
+     {nums.map((patient, index) => {
         return (
           <div key={index}>       
         <div className="lis11">
@@ -28,8 +28,7 @@ export default function hospitalapprov(){
             </h3>
           <Btn    text={"View"}
                     onclick=""
-                    style={{                      
-                      height:"5vh",                 
+                    style={{                                       
                       width: "150px",
                       marginRight: "90px",
                       fontSize: "14px",
@@ -41,7 +40,7 @@ export default function hospitalapprov(){
                 </div>
               );
             })}
-     </div>
+     
      </div>
      </div>
     

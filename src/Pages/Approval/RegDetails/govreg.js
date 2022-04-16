@@ -7,21 +7,21 @@ export default function govtregdet(){
 <tr colspan="10"><h1 className="hosphead">Government Registration Details</h1></tr>
 <div className="details3">
 <p className="hname2">Government Office:-</p>
-<tr><p className="hcontacts2">
+<div>
+    <p className="hcontacts2">
     <p>phone:-</p>
     <p>email:-</p>
     <p>.....</p>
     </p>
-    </tr>
-<tr>
+</div>
+<div>
 <p className="walletaddr2">
 Wallet address:-
 </p>
-</tr>
+</div>
 <Btn   text={"Approve"}
                         onclick=""
-                        style={{
-                          height:"5vh",                 
+                        style={{                 
                       width: "150px",
                       marginLeft:"36%",
                       fontSize: "16px",

@@ -11,8 +11,8 @@ export default function docapprov() {
       <div className="MainHead1">
         <div className="head1">Doctor Approval</div>
       </div>
-      <div className="body12">
-        <div className="b1">
+      <div className="body102">
+        {/* <div className="b1"> */}
           {" "}
           {nums.map((patient, index) => {
             return (
@@ -25,11 +25,9 @@ export default function docapprov() {
                       <p className="age">Male Age:21</p>
                     </h3>
                       <Btn
-                        className="bt1"
                         text={"View"}
                         onclick=""
-                        style={{
-                          height:"5vh",                 
+                        style={{                
                       width: "150px",
                       marginRight: "90px",
                       fontSize: "14px",
@@ -41,7 +39,7 @@ export default function docapprov() {
               </div>
             );
           })}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

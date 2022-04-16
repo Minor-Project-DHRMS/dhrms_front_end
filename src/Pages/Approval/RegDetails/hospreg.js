@@ -7,21 +7,20 @@ export default function hospregdet(){
 <tr colspan="10"><h1 className="hosphead">Hospital Registration Details</h1></tr>
 <div className="details2">
 <p className="hname">Hospital Name:-</p>
-<tr><p className="hcontacts">
+<div><p className="hcontacts">
     <p>phone:-</p>
     <p>email:-</p>
     <p>.....</p>
     </p>
-    </tr>
-<tr>
+    </div>
+<div>
 <p className="walletaddr1">
 Wallet address:-
 </p>
-</tr>
+</div>
 <Btn   text={"Approve"}
                         onclick=""
-                        style={{
-                          height:"5vh",                 
+                        style={{                 
                       width: "150px",
                       marginLeft:"36%",
                       fontSize: "16px",

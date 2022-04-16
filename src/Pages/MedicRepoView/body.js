@@ -74,7 +74,6 @@ export default function body() {
               style={{
                 padding: "15px 20px",
                 fontSize:"20px",
-                height:"7.5vh",
                 width:"auto",
                 alignItems:"center",
                 display:"flex",

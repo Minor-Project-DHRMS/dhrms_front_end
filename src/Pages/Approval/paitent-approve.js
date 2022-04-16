@@ -15,33 +15,32 @@ export default function paitentsapprov(){
         Paitent Approval
     </div>
     </div>
-    <div className="body12">
-    <div className="b1"> {nums.map((patient, index) => {
+    <div className="body103">
+   {nums.map((patient, index) => {
         return (
           <div key={index}>       
         <div className="lis11">
           
           <p className="obj1"></p>
-          <>
+          
            <h3 className="nmage"><p className="nm">Shrinivas Dixit</p>
             <p className="age">Male Age:21</p>
             </h3>
           <Btn     text={"View"}
                     onclick=""
                     style={{                      
-                      height:"5vh",                 
-                      width: "150px",
+                      width: "100px",
                       marginRight: "90px",
                       fontSize: "14px",
                       padding: "10px 20px"
                     }}
                   />
-          </>
+          
         </div>
                 </div>
               );
             })}
-     </div>
+     
      </div>
      </div>
     

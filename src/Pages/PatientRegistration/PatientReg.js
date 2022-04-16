@@ -135,7 +135,7 @@ const PatientReg = () => {
                         </tr>
                         <tr>
                             <td>
-                                <TxtInput Tlabel="Date Of Birth" placeholder="DOB" name="DOB" onChange={handleInputChange} />
+                                <TxtInput Tlabel="Date Of Birth"type="date" placeholder="DOB" name="DOB" onChange={handleInputChange} />
                             </td>
                         </tr>
                         <tr>

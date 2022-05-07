@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { ReactSession } from "react-client-session";
-import abi from "../../utils/dhrms_backend.json";
 import Btn from "../../components/button/Btn";
-import Login from "../login/Login";
+import ContractInstance from "../../services/ContractInstance";
 import "./government.css";
-import { ethers } from "ethers";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const Government = () => {
   let navigate = useNavigate();
-
-  const contractAddress = "0x24D17E87719516B55Ce5C6d5be0485E00644C8D0";
-  const contractABI = abi.abi;
 
   const [govDetails, setGovDetails] = useState({
     officeName: "",
@@ -29,30 +24,18 @@ const Government = () => {
   // } else {
   const getDetails = async () => {
     try {
-      const { ethereum } = window;
-      if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const dhrmsContract = new ethers.Contract(
-          contractAddress,
-          contractABI,
-          signer
-        );
-
-        const details = await dhrmsContract.getGovernmentDetails(
-          "0x8B8979B6580F1c0797c6B9AFE6cAA22DF8417460"
-        );
-        console.log(details);
-        setGovDetails({
-          officeName: details[0],
-          phoneNo: details[1],
-          GID: await signer.getAddress(),
-        });
-
-        await window.ethereum.currentProvider.disconnect();
-      } else {
-        console.log("Ethereum object doesn't exist!");
-      }
+      const dhrmsContract = ContractInstance(window);
+      const currentAccount = ReactSession.get("currentAccount");
+      console.log(currentAccount);
+      const details = await dhrmsContract.getGovernmentDetails(
+        currentAccount
+      );
+      console.log(details);
+      setGovDetails({
+        officeName: details[0],
+        phoneNo: details[1],
+        GID: currentAccount,
+      });
     } catch (error) {
       console.log(error);
     }

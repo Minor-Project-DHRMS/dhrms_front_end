@@ -1,16 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import mainLogo from "../hospital/logo192.png";
+import { ReactSession } from "react-client-session";
 import "./hospital.css";
 import Btn from "../../components/button/Btn";
+import LoadingInd from "../../components/Loading/LoadingInd";
+import ContractInstance from "../../services/ContractInstance";
 
 const Hospital = () => {
   const [patientList, setPatientList] = useState([]);
+  ReactSession.setStoreType("sessionStorage");
   const [doctorList, setDoctorList] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [hospitalDetails, setHospitalDetails] = useState({
-    hospitalName: "KIMMS, HUBLI, KA",
-    phoneNo: "213123",
-    HID: "0x123434234234234324234231231231231223424",
+    hospitalName: "",
+    phoneNo: "",
+    HID: "",
   });
+
+  const getDetails = async () => {
+    try {
+      const dhrmsContract = ContractInstance(window);
+      const currentAccount = ReactSession.get("currentAccount");
+      // setLoading(true);
+      const details = await dhrmsContract.getHospitalDetails(currentAccount);
+      // setLoading(false);
+      console.log(details);
+      setHospitalDetails({
+        hospitalName: details[0],
+        phoneNo: details[1],
+        GID: currentAccount,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getDetails();
+  }, []);
 
   const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 1, 1, 1];
   var log = () => {
@@ -20,7 +46,7 @@ const Hospital = () => {
     <div className="hospital">
       <div className="bio-hos">
         <div className="hos-head-font">
-          Office Name: {hospitalDetails.hospitalName}
+          Hospital Name: {hospitalDetails.hospitalName}
         </div>
         <div className="hos-head-font">Phone No: {hospitalDetails.phoneNo}</div>
       </div>

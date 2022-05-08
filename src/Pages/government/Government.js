@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ReactSession } from "react-client-session";
-
 import Btn from "../../components/button/Btn";
-import Login from "../login/Login";
+import ContractInstance from "../../services/ContractInstance";
 import "./government.css";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -10,9 +9,9 @@ const Government = () => {
   let navigate = useNavigate();
 
   const [govDetails, setGovDetails] = useState({
-    officeName: "Dharwad",
-    phoneNo: "213123",
-    GID: "0x123434234234234324234231231231231223424",
+    officeName: "",
+    phoneNo: "",
+    GID: "",
   });
 
   var log = () => {
@@ -23,6 +22,28 @@ const Government = () => {
   // if (ReactSession.get("account") == undefined) {
   //   return <Navigate to="/" replace />;
   // } else {
+  const getDetails = async () => {
+    try {
+      const dhrmsContract = ContractInstance(window);
+      const currentAccount = ReactSession.get("currentAccount");
+      console.log(currentAccount);
+      const details = await dhrmsContract.getGovernmentDetails(
+        currentAccount
+      );
+      console.log(details);
+      setGovDetails({
+        officeName: details[0],
+        phoneNo: details[1],
+        GID: currentAccount,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getDetails();
+  }, []);
+
   return (
     <div className="government">
       <div className="bio-gov">

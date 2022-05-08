@@ -1,5 +1,5 @@
 .doc_reg {
-  height: 90vh;
+  height: 95vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,9 +11,9 @@
   align-items: center;
   justify-content: center;
   width: 70%;
-  height: 100px;
+  height: 90px;
   text-align: center;
-  font-size: 35px;
+  font-size: 30px;
   border-radius: 10px;
 }
 .doc_align_ht {
@@ -37,6 +37,7 @@
   background-color: #ffffff14;
   position: absolute;
 }
+
 .input--file {
   position: relative;
   color: #7f7f7f;
@@ -51,6 +52,7 @@
   opacity: 0;
   padding-top: 70px;
   padding-left: 70px;
+  width: 50px;
 }
 .doc_align_sp {
   margin-right: 52vh;

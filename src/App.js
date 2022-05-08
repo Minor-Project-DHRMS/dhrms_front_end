@@ -26,8 +26,7 @@ import ViewScan from "./Pages/viewScans/ViewScan"
 import ListScan from "./Pages/listScans/ListScan"
 import ViewReport from "./Pages/viewReport/viewReport"
 import ListReport from "./Pages/listReport/ListReport"
-import { QRCodeGen } from "./components/QRPage/QRCodeGen";
-import { QRScanner } from "./components/QRScanner/QRScanner";
+import IPFS from "./Pages/ipfs/Ipfs"
 
 const App = () => {
   return (

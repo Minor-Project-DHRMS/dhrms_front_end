@@ -11,15 +11,16 @@ import ViewScan from "./Pages/viewScans/ViewScan"
 import ListScan from "./Pages/listScans/ListScan"
 import ViewReport from "./Pages/viewReport/viewReport"
 import ListReport from "./Pages/listReport/ListReport"
-
+import IPFS from "./Pages/ipfs/Ipfs"
 
 const App = () => {
   return (
     <Router>
       <div className="container">
         <Routes>
-          <Route path="/" element={<PatientDetails />} />
+          <Route path="/" element={<Government />} />
           <Route path="/gov" element={<Government />} />
+          <Route path="/ipfs" element={<IPFS />} />
           <Route path="/medicalReport" element={<PatientDetails />} />
           <Route path="/viewScan" element={<ViewScan />} />
           <Route path="/viewReport" element={<ViewReport />} />

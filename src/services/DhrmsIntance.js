@@ -1,10 +1,10 @@
-import abi from '../utils/dhrms_backend.json'
+import abi from '../utils/approve.json'
 import { ethers } from "ethers";
 
 const contractAddress = "0x231f7228D5dE0d614757394A907D5b1Ee7471858";
 const contractABI = abi.abi;
 
-const ContractInstance = (window) => {
+const DhrmsIntance = (window) => {
     try {
         const { ethereum } = window;
 
@@ -15,12 +15,12 @@ const ContractInstance = (window) => {
         
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const mainContract = new ethers.Contract(contractAddress, contractABI, signer);
-        return mainContract;
+        const dhrmsContract = new ethers.Contract(contractAddress, contractABI, signer);
+        return dhrmsContract;
 
     } catch (error) {
         console.log(error)
     }
 }
 
-export default ContractInstance;
+export default DhrmsIntance;

@@ -6,7 +6,7 @@ import Government from "./Pages/government/Government";
 import { GovernmentReg } from "./Pages/governmentRegistration/GovernmentReg";
 import Hospital from "./Pages/hospital/Hospital";
 import { HospitalReg } from "./Pages/hospitalRegistration/HospitalReg";
-import { IPFS } from "./Pages/IPFS/IPFS";
+// import { IPFS } from "./Pages/IPFS/IPFS";
 import Login from "./Pages/login/Login";
 import Patient from "./Pages/patient/Patient";
 import PatientReg from "./Pages/PatientRegistration/PatientReg";
@@ -26,7 +26,7 @@ import ViewScan from "./Pages/viewScans/ViewScan"
 import ListScan from "./Pages/listScans/ListScan"
 import ViewReport from "./Pages/viewReport/viewReport"
 import ListReport from "./Pages/listReport/ListReport"
-import IPFS from "./Pages/ipfs/Ipfs"
+// import IPFS from "./Pages/ipfs/Ipfs"
 
 const App = () => {
   return (
@@ -71,9 +71,9 @@ const App = () => {
 
               <Route
                 path="/qr"
-                element={
-                  <QRCodeGen text={"0x71C7656EC7ab88b098defB751B7401B5f6d8976F"} />
-                }
+                // element={
+                //   <QRCodeGen text={"0x71C7656EC7ab88b098defB751B7401B5f6d8976F"} />
+                // }
               />
           </Routes>
       </div>

@@ -60,7 +60,6 @@ const App = () => {
           //login
           <Route exact path="/" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
-          <Route exact path="/ipfs" element={<IPFS />} />
           //Dash Boards
           <Route exact path="/govDash" element={<Government />} />
           <Route exact path="/PatientDash" element={<Patient />} />

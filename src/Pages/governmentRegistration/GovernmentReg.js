@@ -4,7 +4,9 @@ import TxtInput from "../../components/TxtInput/TxtInput";
 import "./governmentReg.css";
 import LoadingInd from "../../components/Loading/LoadingInd";
 import { addGovernmentOffice } from "../../functions/Dhrms";
+import { addGovernmentOfficetoList } from "../../functions/Approve";
 import { useNavigate } from "react-router-dom";
+import { getAccountAddress } from "../../services/AccountDetails";
 
 import {
   isGovernment,
@@ -22,6 +24,7 @@ export const GovernmentReg = () => {
 
   const register = async () => {
     try {
+      console.log(await isGovernment(getAccountAddress()));
       if (
         (await isGovernment(state.walletAddress)) ||
         (await isHospital(state.walletAddress)) ||
@@ -30,11 +33,19 @@ export const GovernmentReg = () => {
       ) {
         console.log("account already exist");
       } else {
-        await addGovernmentOffice(
-          state.officeName,
-          state.phoneNo,
-          state.walletAddress
-        );
+        if (await isGovernment(getAccountAddress())) {
+          await addGovernmentOffice(
+            state.officeName,
+            state.phoneNo,
+            state.walletAddress
+          );
+        } else {
+          await addGovernmentOfficetoList(
+            state.officeName,
+            state.phoneNo,
+            state.walletAddress
+          );
+        }
       }
     } catch (error) {
       console.log(error);

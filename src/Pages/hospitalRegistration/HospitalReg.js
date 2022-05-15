@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Btn from "../../components/button/Btn";
 import TxtInput from "../../components/TxtInput/TxtInput";
-import ContractInstance from "../../services/ContractInstance";
+import { addHospital } from "../../functions/Dhrms";
 import "./hospitalReg.css";
 
 export const HospitalReg = () => {
@@ -11,23 +11,12 @@ export const HospitalReg = () => {
     walletAddress: "",
   });
 
-  const registerHospital= async () => {
+  const registerHospital = async () => {
     try {
-      
-      const dhrmsContract = ContractInstance(window);
-
-      const details = await dhrmsContract.addHospital(
-        state.hospitalName,
-        state.phoneNo,
-        state.walletAddress,
-      );
-      await details.wait();
-      console.log(details);
-    
-  } catch (error) {
-    console.log(error);
-  }
-
+      await addHospital(state.hospitalName, state.phoneNo, state.walletAddress);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleChanges = (e) => {
     const name = e.target.name;

@@ -34,6 +34,8 @@ const pageRedirect = async (address, navigate) => {
     navigate("/HospitalDash");
   } else if (await isDoctor(address)) {
     navigate("/docdash");
+  } else {
+    navigate("/register");
   }
 };
 export { isGovernment, isHospital, isDoctor, isPatient, pageRedirect };

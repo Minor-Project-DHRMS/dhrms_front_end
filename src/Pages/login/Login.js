@@ -99,7 +99,7 @@ const Login = () => {
       ) : (
         <div className="btn-grp">
           <Btn text={"Connect Wallet to login"} func={connectWallet} />
-          <Btn text={"Register"} func={connectWallet} />
+          <Btn text={"Register"} func={() => navigate("/register")} />
         </div>
       )}
     </div>

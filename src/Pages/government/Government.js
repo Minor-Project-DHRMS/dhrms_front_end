@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { ReactSession } from "react-client-session";
+import { getAccountAddress } from "../../services/AccountDetails";
 import Btn from "../../components/button/Btn";
-import ContractInstance from "../../services/ContractInstance";
 import "./government.css";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { getGovernmentDetails } from "../../functions/Dhrms";
 
 const Government = () => {
   let navigate = useNavigate();
@@ -16,7 +16,7 @@ const Government = () => {
 
   var log = () => {
     console.log("hello");
-    console.log(ReactSession.get("account"));
+    console.log(getAccountAddress());
   };
   // , { replace: true }
   // if (ReactSession.get("account") == undefined) {
@@ -24,12 +24,8 @@ const Government = () => {
   // } else {
   const getDetails = async () => {
     try {
-      const dhrmsContract = ContractInstance(window);
-      const currentAccount = ReactSession.get("currentAccount");
-      console.log(currentAccount);
-      const details = await dhrmsContract.getGovernmentDetails(
-        currentAccount
-      );
+      const currentAccount = getAccountAddress();
+      const details = await getGovernmentDetails(currentAccount);
       console.log(details);
       setGovDetails({
         officeName: details[0],

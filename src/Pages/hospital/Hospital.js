@@ -5,8 +5,11 @@ import "./hospital.css";
 import Btn from "../../components/button/Btn";
 import LoadingInd from "../../components/Loading/LoadingInd";
 import ContractInstance from "../../services/ContractInstance";
+import { useNavigate } from "react-router-dom";
 
 const Hospital = () => {
+  let navigate = useNavigate();
+  const [currentAccount,setCurrentAccount] = useState(ReactSession.get("currentAccount"));
   const [patientList, setPatientList] = useState([]);
   ReactSession.setStoreType("sessionStorage");
   const [doctorList, setDoctorList] = useState([]);
@@ -20,10 +23,8 @@ const Hospital = () => {
   const getDetails = async () => {
     try {
       const dhrmsContract = ContractInstance(window);
-      const currentAccount = ReactSession.get("currentAccount");
-      // setLoading(true);
+      
       const details = await dhrmsContract.getHospitalDetails(currentAccount);
-      // setLoading(false);
       console.log(details);
       setHospitalDetails({
         hospitalName: details[0],
@@ -45,10 +46,15 @@ const Hospital = () => {
   return (
     <div className="hospital">
       <div className="bio-hos">
-        <div className="hos-head-font">
-          Hospital Name: {hospitalDetails.hospitalName}
+        <div>
+          <div className="hos-head-font">
+            Hospital Name: {hospitalDetails.hospitalName}
+          </div>
+          <div className="hos-head-font">
+            Phone No: {hospitalDetails.phoneNo}
+          </div>
         </div>
-        <div className="hos-head-font">Phone No: {hospitalDetails.phoneNo}</div>
+        <div className="qr-lbl" onClick={()=>navigate('QRCode',{state:{address:currentAccount}})}>QR Code</div>
       </div>
       <div className="list">
         <div className="bio-hos">

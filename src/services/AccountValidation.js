@@ -1,35 +1,33 @@
 import React from "react";
 // import ContractInstance from "./ContractInstance
-import RbacInstance from "./RbacInstance"
+import RbacInstance from '../instance/DhrmsIntance'
 import LoadingInd from "../components/Loading/LoadingInd";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
 const isGovernment = async (address) => {
-  const rbacContract = RbacInstance(window);
-  return rbacContract.isGovernment(address);
+  const rbacContract = RbacInstance();
+  return await rbacContract.isGovernment(address);
 };
 
 const isHospital = async (address) => {
-  const rbacContract = RbacInstance(window);
-  return rbacContract.isHospital(address);
+  const rbacContract = RbacInstance();
+  return await rbacContract.isHospital(address);
 };
 
 const isDoctor = async (address) => {
-  const rbacContract = RbacInstance(window);
-  return rbacContract.isDoctor(address);
+  const rbacContract = RbacInstance();
+  return await rbacContract.isDoctor(address);
 };
 
 const isPatient = async (address) => {
-  const rbacContract = RbacInstance(window);
-  return rbacContract.isPatient(address);
+  const rbacContract = RbacInstance();
+  return await rbacContract.isPatient(address);
 };
 
 const pageRedirect = async (address, navigate) => {
-  console.log("Hello2");
 
   if (await isGovernment(address)) {
-    console.log("Hello1");
     navigate("/govDash");
   }
   else if (await isPatient(address)) {

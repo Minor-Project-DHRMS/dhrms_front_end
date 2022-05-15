@@ -5,7 +5,7 @@ padding: 15px;
 vertical-align: middle;
 border-radius: 20px;
 width: 1000px;
-height: 430px;
+height: 580px;
 resize: none;
 }
 .pbody2{
@@ -39,13 +39,18 @@ margin-left: 30px;
 border-radius: 12px;
 padding: 20px;
 width: 30%;
+height: 100%;
 resize: none;
-overflow-y: scroll;
+}
+.disall{
+    height: 80%;
+    overflow-y:scroll ;
 }
 .disease{
 display: flex;
 justify-content: center;
 resize: none;
+height: 40%;
 }
 .medhistry{
     background: #FFFFFF14 0% 0% no-repeat padding-box;
@@ -54,7 +59,7 @@ resize: none;
     margin-left: 30px;
     padding: 20px;
     width: 30%;
-    overflow-y: scroll;
+    height: 100%;
     resize: none;
 }
 .habistats{
@@ -64,7 +69,7 @@ resize: none;
     margin-left: 30px;
     padding: 20px;
     width: 30%;
-    overflow-y: scroll;
+    height: 100%;
     resize: none;
 }
 
@@ -172,7 +177,7 @@ tr{
 }
 
 .hosphead{
-    margin-left: 300px;
+    margin-left: 250px;
     background: #FFFFFF0F 0% 0% no-repeat padding-box;
     border-radius: 12px;
     padding: 10px;
@@ -182,27 +187,31 @@ tr{
 opacity: 1;
 border-radius: 12px;
 padding: 20px;
-margin-left: 38%;
+width: fit-content;
+margin-left: 25%;
 overflow-y: scroll;
 }
+
 .hcontacts,.hname,.walletaddr1{
     background: #FFFFFF0F 0% 0% no-repeat padding-box;
-    width: auto;
     border-radius: 12px;
     padding: 18px;
     margin-bottom: 30px;
 }
+
 .details3{ background: #FFFFFF14 0% 0% no-repeat padding-box;
 opacity: 1;
 border-radius: 12px;
 padding: 20px;
-margin-left: 34.5%;
-height: 340px;
+margin-left: 23%;
+height: 400px;
+width: fit-content;
 overflow-y: scroll;}
+
 .hcontacts2,.hname2,.walletaddr2{
     background: #FFFFFF0F 0% 0% no-repeat padding-box;
-    width: 450px;
     border-radius: 12px;
     padding: 15px;
     margin-bottom: 30px;
 }
+

@@ -2,9 +2,12 @@ import React from "react";
 import { QRCodeSVG } from "qrcode.react";
 import "./QRCodeGen.css";
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 export const QRCodeGen = ({ text }) => {
+  const location = useLocation();
   const [src, setSrc] = useState("");
+  console.log(location.state.address);
 
   return (
     <div className="qr_head">
@@ -19,9 +22,9 @@ export const QRCodeGen = ({ text }) => {
             height: "200px",
           }}
         >
-          <QRCodeSVG value={text} style={{ width: "200px", height: "200px" }} />
+          <QRCodeSVG value={location.state.address} style={{ width: "200px", height: "200px" }} />
         </div>
-        <div className="address">{text}</div>
+        <div className="address">{location.state.address}</div>
       </div>
     </div>
   );

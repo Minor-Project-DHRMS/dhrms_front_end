@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import Btn from "../../components/button/Btn";
 import TxtInput from "../../components/TxtInput/TxtInput";
 import "./governmentReg.css";
+import LoadingInd from "../../components/Loading/LoadingInd";
+import ContractInstance from "../../services/ContractInstance";
+import { useNavigate } from "react-router-dom";
+
+import {
+  isGovernment,
+  isHospital,
+  isDoctor,
+  isPatient,
+  pageRedirect,
+} from "../../services/AccountValidation";
+
 export const GovernmentReg = () => {
   const [state, setState] = useState({
     officeName: "",
@@ -9,8 +21,29 @@ export const GovernmentReg = () => {
     walletAddress: "",
   });
 
-  const submit = () => {
-    console.log(state);
+  const register = async () => {
+    try {
+      const dhrmsContract = ContractInstance(window);
+
+      if (
+        (await isGovernment(state.walletAddress)) ||
+        (await isHospital(state.walletAddress)) ||
+        (await isDoctor(state.walletAddress)) ||
+        (await isPatient(state.walletAddress))
+      ) {
+        console.log("account already exist");
+      } else {
+        const details = await dhrmsContract.addGovernmentOffice(
+          state.officeName,
+          state.phoneNo,
+          state.walletAddress
+        );
+        await details.wait();
+        console.log(details);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleChanges = (e) => {
     const name = e.target.name;
@@ -20,6 +53,7 @@ export const GovernmentReg = () => {
       [name]: value,
     });
   };
+
   return (
     <div className="gov_reg">
       <div className="gov_head">Government Registration</div>
@@ -51,7 +85,7 @@ export const GovernmentReg = () => {
         />
       </div>
       <div>
-        <Btn text={"Submit"} onClick={submit} />
+        <Btn text={"Submit"} onClick={register} />
       </div>
     </div>
   );

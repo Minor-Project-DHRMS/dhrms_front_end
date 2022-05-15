@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 const contractAddress = "0x224eDD48B484Ae02e605c7073eCfC92D21A17C5b";
 const contractABI = abi.abi;
 
-const ApproveInstance = (window) => {
+const ApproveInstance = () => {
     try {
         const { ethereum } = window;
 

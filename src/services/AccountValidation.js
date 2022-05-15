@@ -6,22 +6,22 @@ import { Navigate } from "react-router-dom";
 import { useState } from "react";
 
 const isGovernment = async (address) => {
-  const rbacContract = RbacInstance(window);
+  const rbacContract = RbacInstance();
   return rbacContract.isGovernment(address);
 };
 
 const isHospital = async (address) => {
-  const rbacContract = RbacInstance(window);
+  const rbacContract = RbacInstance();
   return rbacContract.isHospital(address);
 };
 
 const isDoctor = async (address) => {
-  const rbacContract = RbacInstance(window);
+  const rbacContract = RbacInstance();
   return rbacContract.isDoctor(address);
 };
 
 const isPatient = async (address) => {
-  const rbacContract = RbacInstance(window);
+  const rbacContract = RbacInstance();
   return rbacContract.isPatient(address);
 };
 

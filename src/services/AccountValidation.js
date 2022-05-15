@@ -1,6 +1,6 @@
 import React from "react";
 // import ContractInstance from "./ContractInstance
-import RbacInstance from "./RbacInstance"
+import RbacInstance from '../instance/DhrmsIntance'
 import LoadingInd from "../components/Loading/LoadingInd";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";

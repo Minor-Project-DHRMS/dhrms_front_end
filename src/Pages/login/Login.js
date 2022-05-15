@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ReactSession } from 'react-client-session';
 import LoadingInd from "../../components/Loading/LoadingInd";
 import './login.css'
-
+import {pageRedirect} from "../../services/AccountValidation"
 
 const Login = () => {
     let navigate = useNavigate();
@@ -53,31 +53,34 @@ const Login = () => {
             console.log("Connected", accounts[0]);
             setCurrentAccount(accounts[0]);
 
-            const mainContract = ContractInstance(window);
-            ReactSession.setStoreType("sessionStorage");
-            ReactSession.set("currentAccount", accounts[0]);
+            pageRedirect(accounts[0], navigate);
 
-            setLoading(true);
-            const gov = await mainContract.isGovernment(accounts[0]);
-            if (gov) {
-                setLoading(false);
-                navigate("/govDash")
-            }
-            const pat = await mainContract.isPatient(accounts[0]);
-            if (pat) {
-                setLoading(false);
-                navigate("/PatientDash")
-            }
-            const hos = await mainContract.isHospital(accounts[0]);
-            if (hos) {
-                setLoading(false);
-                navigate("/HospitalDash")
-            }
-            const doc = await mainContract.isDoctor(accounts[0]);
-            if (doc) {
-                setLoading(false);
-                navigate("/docdash")
-            }
+            // const mainContract = ContractInstance(window);
+            // ReactSession.setStoreType("sessionStorage");
+            // ReactSession.set("currentAccount", accounts[0]);
+
+            // setLoading(true);
+            // const gov = await mainContract.isGovernment(accounts[0]);
+            // if (gov) {
+            //     setLoading(false);
+            //     navigate("/govDash")
+            // }
+            // const pat = await mainContract.isPatient(accounts[0]);
+            // if (pat) {
+            //     setLoading(false);
+            //     navigate("/PatientDash")
+            // }
+            // const hos = await mainContract.isHospital(accounts[0]);
+            // if (hos) {
+            //     setLoading(false);
+            //     navigate("/HospitalDash")
+            // }
+            // const doc = await mainContract.isDoctor(accounts[0]);
+            // if (doc) {
+            //     setLoading(false);
+            //     navigate("/docdash")
+            // }
+
 
 
 

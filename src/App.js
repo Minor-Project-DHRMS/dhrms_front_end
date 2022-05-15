@@ -37,7 +37,7 @@ const App = () => {
             <Route exact path="/approveDoc" element={<Docregs/>} />
             <Route exact path="/approveGov" element={<Govtregdet/>} />
             <Route exact path="/approveHos" element={<Hospreg/>} />
-            <Route exact path="/approvePat" element={<Patientregs/>} />
+            <Route exact path="/ApprovePat" element={<Patientregs/>} />
 
             //Aprroval Lists
             <Route exact path="/hospApprovlist" element={<Hospitalapprov/>}/>

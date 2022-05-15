@@ -2,22 +2,22 @@ import RbacInstance from "../services/RbacInstance"
 
 const isGovernment = async (address) => {
     const rbacContract = RbacInstance(window);
-    return rbacContract.isGovernment(address);
+    return await rbacContract.isGovernment(address);
 };
 
 const isHospital = async (address) => {
     const rbacContract = RbacInstance(window);
-    return rbacContract.isHospital(address);
+    return await rbacContract.isHospital(address);
 };
 
 const isDoctor = async (address) => {
     const rbacContract = RbacInstance(window);
-    return rbacContract.isDoctor(address);
+    return await rbacContract.isDoctor(address);
 };
 
 const isPatient = async (address) => {
     const rbacContract = RbacInstance(window);
-    return rbacContract.isPatient(address);
+    return await rbacContract.isPatient(address);
 };
 
 export { isGovernment, isHospital, isDoctor, isPatient };

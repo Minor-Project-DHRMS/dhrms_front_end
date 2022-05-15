@@ -54,7 +54,7 @@ const Patient = () => {
         <div className="pt_profile">
           <div className="pt_align_vt">
             <img src={mainLogo} alt="Avatar" className="pt_avatar" />
-            <a href="/" className="font_field">
+            <a href="/moreDetails" className="font_field">
               More Details
             </a>
           </div>

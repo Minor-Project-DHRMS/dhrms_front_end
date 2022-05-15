@@ -103,9 +103,8 @@ export const DoctorReg = () => {
     if (test) {
       setLoading(false);
     } else {
-      setLoading(true);
-      await pageRedirect(currentAccount, navigate);
       setLoading(false);
+      await pageRedirect(currentAccount, navigate);
     }
   };
 

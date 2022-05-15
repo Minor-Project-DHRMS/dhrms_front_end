@@ -1,10 +1,10 @@
 import abi from '../utils/approve.json'
 import { ethers } from "ethers";
 
-const contractAddress = "0x231f7228D5dE0d614757394A907D5b1Ee7471858";
+const contractAddress = "0x224eDD48B484Ae02e605c7073eCfC92D21A17C5b";
 const contractABI = abi.abi;
 
-const ContractInstance = (window) => {
+const ApproveInstance = (window) => {
     try {
         const { ethereum } = window;
 
@@ -23,4 +23,4 @@ const ContractInstance = (window) => {
     }
 }
 
-export default ContractInstance;
+export default ApproveInstance;

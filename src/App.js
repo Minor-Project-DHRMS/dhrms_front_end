@@ -6,7 +6,7 @@ import Government from "./Pages/government/Government";
 import { GovernmentReg } from "./Pages/governmentRegistration/GovernmentReg";
 import Hospital from "./Pages/hospital/Hospital";
 import { HospitalReg } from "./Pages/hospitalRegistration/HospitalReg";
-import { IPFS } from "./Pages/IPFS/IPFS";
+// import { IPFS } from "./Pages/IPFS/IPFS";
 import Login from "./Pages/login/Login";
 import Patient from "./Pages/patient/Patient";
 import MoreDetails from "./Pages/patient/MoreDetails";
@@ -80,7 +80,6 @@ const App = () => {
               <QRCodeGen />
             }
           />
-
           //Regsitration Pages
           <Route exact path="/docreg" element={<DoctorReg />} />
           <Route exact path="/hosreg" element={<HospitalReg />} />

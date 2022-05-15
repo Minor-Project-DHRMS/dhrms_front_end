@@ -2,43 +2,51 @@ import React from "react";
 import "./ListReport.css"
 import Btn from "../../components/button/Btn";
 import { findByLabelText } from "@testing-library/react";
+import {useNavigate,} from "react-router-dom"
+import { useLocation } from "react-router-dom";
 
-const obj = {
-    img1:{
-        placeholder: "fksajhfsdgajfhgsjfksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsn \n dgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsj \n hfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgfhfgf"
-    },
-    img2:{
-        placeholder: "csfs fdsafsfsa"
-    },
-    img3:{
-        placeholder: "fksajhfsdgajfhgsjfksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsn \n dgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsj \n hfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgfhfgf"
-    },
-    img4:{
-        placeholder: "fksajhfsdgajfhgsjfksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsn \n dgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsj \n hfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgfhfgf"
-    },
-    img5:{
-        placeholder: "fksajhfsdgajfhgsjfksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsn \n dgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsj \n hfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgfhfgf"
-    },
-    img6:{
-        placeholder: "fksajhfsdgajfhgsjfksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsn \n dgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsj \n hfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgfhfgf"
-    },
-    img7:{
-        placeholder: "fksajhfsdgajfhgsjfksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsn \n dgajfhgsjhfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsj \n hfgffksajhfsdgajfhgsjhfgffksajhfsdgajfhgsjhfgfhfgf"
-    },
-    img8:{
-        placeholder: "csfs fdsafsfsa"
-    },
+// const obj = [
+//     {
+//         placeholder: "Report 1",
+//         cid:"QmaNxbQNrJdLzzd8CKRutBjMZ6GXRjvuPepLuNSsfdeJRJ"
+//     },
+//     {
+//         placeholder: "Report 2",
+//         cid:"QmTn96ALgzSRnVPrf8vHrGBChtRyTjBwsMaZzefZfMtTqw"
+//     },
+//     {
+//         placeholder: "Report 3",
+//         cid:"QmaNxbQNrJdLzzd8CKRutBjMZ6GXRjvuPepLuNSsfdeJRJ"
+//     },
+//     {
+//         placeholder: "Report 4",
+//         cid:"QmTn96ALgzSRnVPrf8vHrGBChtRyTjBwsMaZzefZfMtTqw"
+//     },
+//     {
+//         placeholder: "Report 5",
+//         cid:"QmaNxbQNrJdLzzd8CKRutBjMZ6GXRjvuPepLuNSsfdeJRJ"
+//     },
+//     {
+//         placeholder: "Report 6",
+//         cid:"QmTn96ALgzSRnVPrf8vHrGBChtRyTjBwsMaZzefZfMtTqw"
+//     },
+//     {
+//         placeholder: "Report 7",
+//         cid:"QmaNxbQNrJdLzzd8CKRutBjMZ6GXRjvuPepLuNSsfdeJRJ"
+//     },
     
-}
+// ]
 
 var index=1;
+var obj=[];
 function Data(value){
     return(
-        <Views text={value.placeholder} key={index++}/>
+        <Views text={value.placeholder} key={index++} cid={value.cid}/>
     )
 }
 
-function Views({text, id}) {
+function Views({text, id, cid}) {
+    let navigate = useNavigate();
     return (
         <div className="place c">
             <p className="title">
@@ -55,12 +63,19 @@ function Views({text, id}) {
                             fontSize: "12px",
                             
             }}
+
+            onClick={()=>{
+                navigate("/viewReport",{state : { CID: cid}})
+                // console.log(cid)
+            }}
         />
         </div>
     )
 }
 
 export default function ListReport() {
+    const location = useLocation();
+    obj=location.state.reports;
     return (
         <>
         <div className="heading1">

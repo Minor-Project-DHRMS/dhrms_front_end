@@ -1,10 +1,10 @@
-import abi from '../utils/approve.json'
+import abi from '../utils/rbac.json'
 import { ethers } from "ethers";
 
-const contractAddress = "0x231f7228D5dE0d614757394A907D5b1Ee7471858";
+const contractAddress = "0xBd892507B87dCAF2d8ea780550D3D1b8fa8342FF";
 const contractABI = abi.abi;
 
-const ContractInstance = (window) => {
+const RbacInstance = (window) => {
     try {
         const { ethereum } = window;
 
@@ -15,12 +15,12 @@ const ContractInstance = (window) => {
         
         const provider = new ethers.providers.Web3Provider(ethereum);
         const signer = provider.getSigner();
-        const approveContract = new ethers.Contract(contractAddress, contractABI, signer);
-        return approveContract;
+        const rbacContract = new ethers.Contract(contractAddress, contractABI, signer);
+        return rbacContract;
 
     } catch (error) {
         console.log(error)
     }
 }
 
-export default ContractInstance;
+export default RbacInstance;

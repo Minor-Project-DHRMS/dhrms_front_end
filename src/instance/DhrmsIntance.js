@@ -1,26 +1,29 @@
-import abi from '../utils/approve.json'
+import abi from "../utils/dhrms.json";
 import { ethers } from "ethers";
 
-const contractAddress = "0x0a51A1dAC6a77F03441477457CB5c0f5256B2DDe";
+const contractAddress = "0x96428b6b621D4A3CA50E2Ee6bE9Fc5fE06367B6C";
 const contractABI = abi.abi;
 
 const DhrmsIntance = () => {
-    try {
-        const { ethereum } = window;
+  try {
+    const { ethereum } = window;
 
-            if (!ethereum) {
-                alert("Get MetaMask!");
-                return;
-        }
-        
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const dhrmsContract = new ethers.Contract(contractAddress, contractABI, signer);
-        return dhrmsContract;
-
-    } catch (error) {
-        console.log(error)
+    if (!ethereum) {
+      alert("Get MetaMask!");
+      return;
     }
-}
+
+    const provider = new ethers.providers.Web3Provider(ethereum);
+    const signer = provider.getSigner();
+    const dhrmsContract = new ethers.Contract(
+      contractAddress,
+      contractABI,
+      signer
+    );
+    return dhrmsContract;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 export default DhrmsIntance;

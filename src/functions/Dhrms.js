@@ -2,13 +2,12 @@ import DhrmsIntance from "../instance/DhrmsIntance";
 
 const addGovernmentOffice = async (officeName, phoneNumber, GID) => {
   const dhrmsContract = DhrmsIntance();
-
   await dhrmsContract.addGovernmentOffice(officeName, phoneNumber, GID);
 };
 
 const addHospital = async (hospitalName, phoneNumber, HID) => {
   const dhrmsContract = DhrmsIntance();
-  await dhrmsContract.addHospital(hospitalName, phoneNumber, HID);
+  return await dhrmsContract.addHospital(hospitalName, phoneNumber, HID);
 };
 
 const addDoctor = async (
@@ -131,8 +130,6 @@ const getHospitalPatientList = async (HID) => {
 
 const getGovernmentDetails = async (GID) => {
   const dhrmsContract = DhrmsIntance();
-  console.log(GID);
-  console.log(await dhrmsContract.getGovernmentDetails(GID));
   return await dhrmsContract.getGovernmentDetails(GID);
 };
 

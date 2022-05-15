@@ -1,7 +1,7 @@
 import abi from '../utils/rbac.json'
 import { ethers } from "ethers";
 
-const contractAddress = "0xBd892507B87dCAF2d8ea780550D3D1b8fa8342FF";
+const contractAddress = "0x1089b53481BD2932D7BAf2E9DBb406B8B62150F6";
 const contractABI = abi.abi;
 
 const RbacInstance = () => {

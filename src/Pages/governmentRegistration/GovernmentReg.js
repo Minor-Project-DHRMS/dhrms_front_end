@@ -3,7 +3,7 @@ import Btn from "../../components/button/Btn";
 import TxtInput from "../../components/TxtInput/TxtInput";
 import "./governmentReg.css";
 import LoadingInd from "../../components/Loading/LoadingInd";
-import ContractInstance from "../../services/ContractInstance";
+import { addGovernmentOffice } from "../../functions/Dhrms";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -11,8 +11,7 @@ import {
   isHospital,
   isDoctor,
   isPatient,
-  pageRedirect,
-} from "../../services/AccountValidation";
+} from "../../functions/Rbac";
 
 export const GovernmentReg = () => {
   const [state, setState] = useState({
@@ -23,8 +22,6 @@ export const GovernmentReg = () => {
 
   const register = async () => {
     try {
-      const dhrmsContract = ContractInstance(window);
-
       if (
         (await isGovernment(state.walletAddress)) ||
         (await isHospital(state.walletAddress)) ||
@@ -33,13 +30,11 @@ export const GovernmentReg = () => {
       ) {
         console.log("account already exist");
       } else {
-        const details = await dhrmsContract.addGovernmentOffice(
+        await addGovernmentOffice(
           state.officeName,
           state.phoneNo,
           state.walletAddress
         );
-        await details.wait();
-        console.log(details);
       }
     } catch (error) {
       console.log(error);

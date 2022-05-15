@@ -1,4 +1,4 @@
-import RbacInstance from "../services/RbacInstance"
+import RbacInstance from "../instance/RbacInstance"
 
 const isGovernment = async (address) => {
     const rbacContract = RbacInstance(window);

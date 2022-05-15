@@ -26,7 +26,6 @@ const Government = () => {
     try {
       const currentAccount = getAccountAddress();
       const details = await getGovernmentDetails(currentAccount);
-      console.log(details);
       setGovDetails({
         officeName: details[0],
         phoneNo: details[1],

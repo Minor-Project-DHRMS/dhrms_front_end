@@ -30,6 +30,7 @@ import ListReport from "./Pages/listReport/ListReport";
 import { QRCodeGen } from "./components/QRPage/QRCodeGen";
 import { QRScanner } from "./components/QRScanner/QRScanner";
 import Register from "./Pages/login/Register";
+import Test from "./test/test";
 
 const App = () => {
   return (
@@ -60,6 +61,7 @@ const App = () => {
           //login
           <Route exact path="/" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/test" element={<Test />} />
           //Dash Boards
           <Route exact path="/govDash" element={<Government />} />
           <Route exact path="/PatientDash" element={<Patient />} />

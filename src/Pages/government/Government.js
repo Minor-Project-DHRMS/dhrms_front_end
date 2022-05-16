@@ -50,7 +50,7 @@ const Government = () => {
         <div className="government">
           <Btn
             text={"Register new Patient"}
-            func={log}
+            func={() => navigate("/PatientReg")}
             style={{
               width: "250px",
               marginTop: "20px",
@@ -88,7 +88,7 @@ const Government = () => {
         <div className="government">
           <Btn
             text={"Approve new Patients"}
-            func={log}
+            func={() => navigate("/PatientReg")}
             style={{
               width: "250px",
               marginTop: "20px",

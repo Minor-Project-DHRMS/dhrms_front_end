@@ -1,12 +1,23 @@
-import React, { useState } from 'react'
-import TxtInput from '../../components/TxtInput/TxtInput'
-import MInput from '../../components/mInput/MInput'
-import Btn from '../../components/button/Btn.js'
-import TextArea from '../../components/textArea/TextArea'
-import mainLogo from './mainLogo.png'
-import './PatientReg.css'
+import React, { useState } from "react";
+import TxtInput from "../../components/TxtInput/TxtInput";
+import MInput from "../../components/mInput/MInput";
+import Btn from "../../components/button/Btn.js";
+import TextArea from "../../components/textArea/TextArea";
+import mainLogo from "./mainLogo.png";
+import "./PatientReg.css";
+import client from '../../services/FileUpload'
 
+import { useNavigate } from "react-router-dom";
+import { getAccountAddress } from "../../services/AccountDetails";
+import { addPatient } from "../../functions/Dhrms";
+import { addPatienttoList } from "../../functions/Approve";
 
+import {
+    isGovernment,
+    isHospital,
+    isDoctor,
+    isPatient,
+} from "../../functions/Rbac";
 
 const initialValues = {
     photo: "",
@@ -30,15 +41,17 @@ const initialValues = {
     dietType: [],
     caffeineConsumption: "",
     smokingPerDay: "",
-    walletAddress: ""
-}
+    walletAddress: "",
+};
 
-
-const sug = ['pollen', 'dry', 'wind']
+const sug = ["pollen", "dry", "wind"];
 
 const PatientReg = () => {
-
     const [values, setValues] = useState(initialValues);
+
+    const register = async () => {
+        
+    };
 
     const handleInputChangeM = (e) => {
         e.preventDefault();
@@ -80,30 +93,57 @@ const PatientReg = () => {
 
         let newList = values[naam];
         newList = newList.filter((i) => {
-            return i !== item
-        })
+            return i !== item;
+        });
 
         setValues({
             ...values,
-            [naam]: newList
+            [naam]: newList,
         });
-    }
+    };
 
-    const submit = () => {
-        console.log(values);
-    }
-
-
+    const submit = async () => {
+        const photoid = await client.add(values.photo);
+        setValues({...values, photo:photoid.path})
+        try {
+            if (
+                (await isGovernment(values.walletAddress)) ||
+                (await isHospital(values.walletAddress)) ||
+                (await isDoctor(values.walletAddress)) ||
+                (await isPatient(values.walletAddress))
+            ) {
+                console.log("account already exist");
+            } else {
+                if (await isGovernment(getAccountAddress())) {
+                    await addPatient(
+                        JSON.stringify(values),
+                        values.walletAddress
+                    );
+                } else {
+                    await addPatienttoList(
+                        JSON.stringify(values),
+                        values.walletAddress
+                    );
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     return (
-        <div className='mainCont'>
+        <div className="mainCont">
             <div className="whitebgP">
                 <p>Patient Registration Form</p>
             </div>
             {/* <div className='title'>Patient Registration Form</div> */}
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
                 <div className="upload_img doc_align_ht">
-                    <img src={values.photo? values.photo: mainLogo} alt="Avatar" className="doc_avatar" />
+                    <img
+                        src={values.photo ? values.photo : mainLogo}
+                        alt="Avatar"
+                        className="doc_avatar"
+                    />
                     <div className="input--file">
                         <span>
                             <svg
@@ -118,117 +158,286 @@ const PatientReg = () => {
                                 <path d="M0 0h24v24h-24z" fill="none" />
                             </svg>
                         </span>
-                        <input name="Select File" type="file" onChange={handleInputChangeFile}/>
+                        <input
+                            name="Select File"
+                            type="file"
+                            onChange={handleInputChangeFile}
+                        />
                     </div>
                 </div>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ display: "flex", justifyContent: "center" }}>
                 <table>
                     <tbody>
                         <tr>
                             <td>
-                                <TxtInput Tlabel="Name" placeholder="Enter the name" name="name" onChange={handleInputChange} />
+                                <TxtInput
+                                    Tlabel="Name"
+                                    placeholder="Enter the name"
+                                    name="name"
+                                    onChange={handleInputChange}
+                                />
                             </td>
                             <td rowSpan={4}>
-                                <TextArea Tlabel="Address" placeholder="Enter the Address" name="address" onChange={handleInputChange} style={{ height: "300px" }} />
+                                <TextArea
+                                    Tlabel="Address"
+                                    placeholder="Enter the Address"
+                                    name="address"
+                                    onChange={handleInputChange}
+                                    style={{ height: "300px" }}
+                                />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <TxtInput Tlabel="Date Of Birth"type="date" placeholder="DOB" name="DOB" onChange={handleInputChange} />
+                                <TxtInput
+                                    Tlabel="Date Of Birth"
+                                    type="date"
+                                    placeholder="DOB"
+                                    name="DOB"
+                                    onChange={handleInputChange}
+                                />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div className='radio-group'>
-                                    <div className='radio'>
-                                        <input type="radio" name="gender" id="male" value="Male" onChange={handleInputChange} />
-                                        <label htmlFor="male">Male</label>
+                                <div className="radio-group">
+                                    <div className="radio">
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            id="male"
+                                            value="Male"
+                                            onChange={
+                                                handleInputChange
+                                            }
+                                        />
+                                        <label htmlFor="male">
+                                            Male
+                                        </label>
                                     </div>
-                                    <div className='radio'>
-                                        <input type="radio" name="gender" id="female" value="female" onChange={handleInputChange} />
-                                        <label htmlFor="female">Female</label>
+                                    <div className="radio">
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            id="female"
+                                            value="female"
+                                            onChange={
+                                                handleInputChange
+                                            }
+                                        />
+                                        <label htmlFor="female">
+                                            Female
+                                        </label>
                                     </div>
-                                    <div className='radio'>
-                                        <input type="radio" name="gender" id="others" value="Others" onChange={handleInputChange} />
-                                        <label htmlFor="others">Others</label>
+                                    <div className="radio">
+                                        <input
+                                            type="radio"
+                                            name="gender"
+                                            id="others"
+                                            value="Others"
+                                            onChange={
+                                                handleInputChange
+                                            }
+                                        />
+                                        <label htmlFor="others">
+                                            Others
+                                        </label>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <div className='height-weight-blood'>
-                                    <TxtInput Tlabel="Height" placeholder="Height" name="height" onChange={handleInputChange} divsStyle={{ width: "25%" }} style={{ width: "100%", boxSizing: 'border-box' }} />
-                                    <TxtInput Tlabel="Weight" placeholder="Weight" name="weight" onChange={handleInputChange} divsStyle={{ width: "25%" }} style={{ width: "100%", boxSizing: 'border-box' }} />
-                                    <TxtInput Tlabel="Blood Grp" placeholder="Blood Grp" name="bloodGroup" onChange={handleInputChange} divsStyle={{ width: "25%" }} style={{ width: "100%", boxSizing: 'border-box' }} />
+                                <div className="height-weight-blood">
+                                    <TxtInput
+                                        Tlabel="Height"
+                                        placeholder="Height"
+                                        name="height"
+                                        onChange={handleInputChange}
+                                        divsStyle={{ width: "25%" }}
+                                        style={{
+                                            width: "100%",
+                                            boxSizing: "border-box",
+                                        }}
+                                    />
+                                    <TxtInput
+                                        Tlabel="Weight"
+                                        placeholder="Weight"
+                                        name="weight"
+                                        onChange={handleInputChange}
+                                        divsStyle={{ width: "25%" }}
+                                        style={{
+                                            width: "100%",
+                                            boxSizing: "border-box",
+                                        }}
+                                    />
+                                    <TxtInput
+                                        Tlabel="Blood Grp"
+                                        placeholder="Blood Grp"
+                                        name="bloodGroup"
+                                        onChange={handleInputChange}
+                                        divsStyle={{ width: "25%" }}
+                                        style={{
+                                            width: "100%",
+                                            boxSizing: "border-box",
+                                        }}
+                                    />
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <TxtInput Tlabel="phone Number" placeholder="phone Number" name="phoneNo" onChange={handleInputChange} />
+                                <TxtInput
+                                    Tlabel="phone Number"
+                                    placeholder="phone Number"
+                                    name="phoneNo"
+                                    onChange={handleInputChange}
+                                />
                             </td>
                             <td>
-                                <TxtInput Tlabel="Emergency Person" placeholder="Emergency Person" name="emergencyPerson" onChange={handleInputChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <TxtInput Tlabel="Email" placeholder="email" name="phoneNo" onChange={handleInputChange} />
-                            </td>
-                            <td>
-                                <TxtInput Tlabel="Emergency phone Number" placeholder="Emergency phone Number" name="emergencyPerson" onChange={handleInputChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <MInput name="drugAllergies" func={handleInputChangeM} suggestions={sug} label="Drug Allergies" list={values.drugAllergies} deleteI={deleteI} />
-                            </td>
-                            <td>
-                                <MInput name="unhealthyHabits" func={handleInputChangeM} suggestions={sug} label="Unhealthy Habits" list={values.unhealthyHabits} deleteI={deleteI} />
+                                <TxtInput
+                                    Tlabel="Emergency Person"
+                                    placeholder="Emergency Person"
+                                    name="emergencyPerson"
+                                    onChange={handleInputChange}
+                                />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <MInput name="otherIllness" func={handleInputChangeM} suggestions={sug} label="Other Illness" list={values.otherIllness} deleteI={deleteI} />
+                                <TxtInput
+                                    Tlabel="Email"
+                                    placeholder="email"
+                                    name="phoneNo"
+                                    onChange={handleInputChange}
+                                />
                             </td>
                             <td>
-                                <MInput name="dietType" func={handleInputChangeM} suggestions={sug} label="Diet Type" list={values.dietType} deleteI={deleteI} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <MInput name="operations" func={handleInputChangeM} suggestions={sug} label="Any Operations" list={values.operations} deleteI={deleteI} />
-                            </td>
-                            <td>
-                                <TxtInput Tlabel="Caffeine Consumption" placeholder="Caffeine Consumption" name="caffeineConsumption" onChange={handleInputChange} />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <MInput name="currentMedications" func={handleInputChangeM} suggestions={sug} label="Current Medications" list={values.currentMedications} deleteI={deleteI} />
-                            </td>
-                            <td>
-                                <TxtInput Tlabel="Smoking Per Day" placeholder="Smoking Per Day" name="smokingPerDay" onChange={handleInputChange} />
+                                <TxtInput
+                                    Tlabel="Emergency phone Number"
+                                    placeholder="Emergency phone Number"
+                                    name="emergencyPerson"
+                                    onChange={handleInputChange}
+                                />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <MInput name="otherMedicalIllness" func={handleInputChangeM} suggestions={sug} label="Other MedicalIllness" list={values.otherMedicalIllness} deleteI={deleteI} />
+                                <MInput
+                                    name="drugAllergies"
+                                    func={handleInputChangeM}
+                                    suggestions={sug}
+                                    label="Drug Allergies"
+                                    list={values.drugAllergies}
+                                    deleteI={deleteI}
+                                />
                             </td>
                             <td>
-                                <TxtInput Tlabel="Wallet Address" placeholder="Enter the Wallet Address" name="walletAddress" onChange={handleInputChange} />
+                                <MInput
+                                    name="unhealthyHabits"
+                                    func={handleInputChangeM}
+                                    suggestions={sug}
+                                    label="Unhealthy Habits"
+                                    list={values.unhealthyHabits}
+                                    deleteI={deleteI}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <MInput
+                                    name="otherIllness"
+                                    func={handleInputChangeM}
+                                    suggestions={sug}
+                                    label="Other Illness"
+                                    list={values.otherIllness}
+                                    deleteI={deleteI}
+                                />
+                            </td>
+                            <td>
+                                <MInput
+                                    name="dietType"
+                                    func={handleInputChangeM}
+                                    suggestions={sug}
+                                    label="Diet Type"
+                                    list={values.dietType}
+                                    deleteI={deleteI}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <MInput
+                                    name="operations"
+                                    func={handleInputChangeM}
+                                    suggestions={sug}
+                                    label="Any Operations"
+                                    list={values.operations}
+                                    deleteI={deleteI}
+                                />
+                            </td>
+                            <td>
+                                <TxtInput
+                                    Tlabel="Caffeine Consumption"
+                                    placeholder="Caffeine Consumption"
+                                    name="caffeineConsumption"
+                                    onChange={handleInputChange}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <MInput
+                                    name="currentMedications"
+                                    func={handleInputChangeM}
+                                    suggestions={sug}
+                                    label="Current Medications"
+                                    list={values.currentMedications}
+                                    deleteI={deleteI}
+                                />
+                            </td>
+                            <td>
+                                <TxtInput
+                                    Tlabel="Smoking Per Day"
+                                    placeholder="Smoking Per Day"
+                                    name="smokingPerDay"
+                                    onChange={handleInputChange}
+                                />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <MInput
+                                    name="otherMedicalIllness"
+                                    func={handleInputChangeM}
+                                    suggestions={sug}
+                                    label="Other MedicalIllness"
+                                    list={values.otherMedicalIllness}
+                                    deleteI={deleteI}
+                                />
+                            </td>
+                            <td>
+                                <TxtInput
+                                    Tlabel="Wallet Address"
+                                    placeholder="Enter the Wallet Address"
+                                    name="walletAddress"
+                                    onChange={handleInputChange}
+                                />
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Btn text={"Submit"} func={submit} style={{ margin: "auto" }} />
+            <div style={{ display: "flex", justifyContent: "center" }}>
+                <Btn
+                    text={"Submit"}
+                    func={submit}
+                    style={{ margin: "auto" }}
+                />
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default PatientReg;

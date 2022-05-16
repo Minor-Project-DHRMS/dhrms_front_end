@@ -15,9 +15,35 @@ import {
     getPatientApproveList
 } from '../functions/Approve';
 
+import {
+    addGovernmentOffice,
+    addHospital,
+    addDoctor,
+    addPatient,
+    giveReadAccess,
+    giveWriteAccess,
+    removeReadAccess,
+    removeWriteAccess,
+    sendRecordsForUpload,
+    sendRecordsForUploadH,
+    reportUploaded,
+    getDoctorsList,
+    getHospitalsList,
+    getRecordsHistory,
+    getPatientDetails,
+    getPatientDetailsForGov,
+    getDoctorDetails,
+    getPatientList,
+    getDoctorH,
+    getHospitalDetails,
+    getHospitalDoctorList,
+    getHospitalPatientList,
+    getGovernmentDetails,
+} from '../functions/Dhrms'
+
 export default function Test(prop) {
     window.ethereum.enable();
-  
+
 
     async function changeD(e) {
         // console.log(document.getElementById("aa").value);
@@ -77,18 +103,28 @@ export default function Test(prop) {
                 {/* ---------------------- */}
 
                 <div className='border'>
-                    {/* <input type="text" id="getApproveList"></input> */}
-                    <button className='m' onClick={async()=>{
-                        // console.log(document.getElementById("getApproveList").value);
-                         console.log(await getApproveList());
+                    {/* <input type="text" id="getPatDetails"></input> */}
+                    <button className='m' onClick={async () => {
+                        // console.log(document.getElementById("getPatDetails").value);
+                        console.log(await getApproveList());
                     }}>
                         getApproveList
                     </button>
                 </div>
                 <br></br>
 
-{/* ----------------------------------- */}
-       
+                <div className='border'>
+                    <input type="text" id="getPatDetails"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await getPatientDetails(document.getElementById("getPatDetails").value));
+                    }}>
+                        getPatientDetails
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
 
                 <br></br>
                 <div id="text">

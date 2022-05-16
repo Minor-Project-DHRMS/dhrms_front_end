@@ -85,6 +85,9 @@ const Government = () => {
             }}
           />
         </div>
+
+
+
         <div className="government">
           <Btn
             text={"Approve new Patients"}
@@ -93,6 +96,10 @@ const Government = () => {
               width: "250px",
               marginTop: "20px",
               fontSize: "18px",
+            }}
+
+            onClick={()=>{
+              navigate("/paitentsapprovlist");
             }}
           />
           <Btn
@@ -103,6 +110,10 @@ const Government = () => {
               marginTop: "20px",
               fontSize: "18px",
             }}
+
+            onClick={()=>{
+              navigate("/docapprovlist");
+            }}
           />
           <Btn
             text={"Approve new Hospital"}
@@ -112,6 +123,10 @@ const Government = () => {
               marginTop: "20px",
               fontSize: "18px",
             }}
+
+            onClick={()=>{
+              navigate("/hospApprovlist");
+            }}
           />
           <Btn
             text={"Approve new Government"}
@@ -120,6 +135,10 @@ const Government = () => {
               width: "250px",
               marginTop: "20px",
               fontSize: "18px",
+            }}
+
+            onClick={()=>{
+              navigate("/govapprovlist");
             }}
           />
         </div>

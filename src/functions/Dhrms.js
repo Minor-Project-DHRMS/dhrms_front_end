@@ -75,7 +75,20 @@ const reportUploaded = async (PID, CID) => {
 
 const getDoctorsList = async (PID) => {
   const dhrmsContract = DhrmsIntance();
-  return await dhrmsContract.getDoctorsList(PID);
+  const list = await await dhrmsContract.getDoctorsList(PID);
+  let finalList = [];
+  list.forEach(async address => {
+      const data = await getDoctorDetails(address);
+      finalList.push({
+              doctorName: data[0],
+              phoneNumber: data[1],
+              qualification: data[2],
+              photo: data[3],
+              dob: data[4],
+              department: data[5]
+      })
+  });
+  return finalList;
 };
 
 const getHospitalsList = async (PID) => {

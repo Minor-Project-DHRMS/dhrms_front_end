@@ -4,7 +4,7 @@ import Btn from "../../components/button/Btn";
 import TxtInput from "../../components/TxtInput/TxtInput";
 import mainLogo from "../doctorRegistration/logo192.png";
 import "./doctorReg.css";
-import FileUpload from "../../services/FileUpload";
+import {FileUpload} from "../../services/FileUpload";
 import { ReactSession } from "react-client-session";
 import ContractInstance from "../../services/ContractInstance";
 import LoadingInd from "../../components/Loading/LoadingInd";
@@ -17,8 +17,6 @@ import {
   isPatient,
   pageRedirect,
 } from "../../services/AccountValidation";
-
-import { Navigate } from "react-router-dom";
 
 export const DoctorReg = () => {
   let navigate = useNavigate();
@@ -47,6 +45,7 @@ export const DoctorReg = () => {
   const registerDoctor = async () => {
     try {
       const dhrmsContract = ContractInstance(window);
+      console.log(dhrmsContract);
 
       if (
         (await isGovernment(state.doctorWallet)) ||
@@ -72,11 +71,11 @@ export const DoctorReg = () => {
         console.log(details);
       }
 
-      const getDoctorDetails = await dhrmsContract.getDoctorDetails(
-        "0xC8f6113C63e9837F04e7D32613124de6eeC13b86"
-      );
+      // const getDoctorDetails = await dhrmsContract.getDoctorDetails(
+      //   "0xC8f6113C63e9837F04e7D32613124de6eeC13b86"
+      // );
 
-      console.log(getDoctorDetails);
+      // console.log(getDoctorDetails);
     } catch (error) {
       console.log(error);
     }

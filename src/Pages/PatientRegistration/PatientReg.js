@@ -309,7 +309,7 @@ const PatientReg = () => {
                                 <TxtInput
                                     Tlabel="Email"
                                     placeholder="email"
-                                    name="phoneNo"
+                                    name="email"
                                     onChange={handleInputChange}
                                 />
                             </td>

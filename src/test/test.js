@@ -180,6 +180,31 @@ export default function Test(prop) {
 
                 {/* ----------------------------------- */}
 
+                <div className='border'>
+                    <input type="text" id="giveReadAccess"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await giveReadAccess(document.getElementById("giveReadAccess").value));
+                    }}>
+                        giveReadAccess
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+                <div className='border'>
+                    <input type="text" id="getDoctorsList"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await getDoctorsList(document.getElementById("getDoctorsList").value));
+                    }}>
+                        getDoctorsList
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+
                 <br></br>
                 <div id="text">
 

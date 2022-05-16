@@ -70,6 +70,7 @@ export default function Test(prop) {
     return (
         <>
             <center>
+                <h1>Approve Contract</h1>
                 <div className='border'>
                     {/* <input type="text" id="aa"></input> */}
                     <button id="a" className='m' onClick={changeD}>
@@ -115,6 +116,8 @@ export default function Test(prop) {
                 </div>
                 <br></br>
 
+                <hr />
+                <h1>Rbac Contract</h1>
                 <div className='border'>
                     <input type="text" id="isPatient"></input>
                     <button className='m' onClick={async (e) => {
@@ -161,7 +164,8 @@ export default function Test(prop) {
                     </button>
                 </div>
                 <br></br>
-
+                <hr />
+                <h1>DHRMS Contract</h1>
                 {/* ----------------------------------- */}
                 <div className='border'>
                     <input type="text" id="getPatDetails"></input>

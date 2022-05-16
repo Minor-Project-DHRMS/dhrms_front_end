@@ -4,23 +4,22 @@ import Btn from "../../components/button/Btn";
 import TxtInput from "../../components/TxtInput/TxtInput";
 import mainLogo from "../doctorRegistration/logo192.png";
 import "./doctorReg.css";
-import {FileUpload} from "../../services/FileUpload";
-import { ReactSession } from "react-client-session";
-import ContractInstance from "../../services/ContractInstance";
+import client from "../../services/FileUpload";
 import LoadingInd from "../../components/Loading/LoadingInd";
+import { addDoctor, getDoctorDetails } from "../../functions/Dhrms";
+import { addDoctortoList } from "../../functions/Approve";
 import { useNavigate } from "react-router-dom";
+import { getAccountAddress } from "../../services/AccountDetails";
 
 import {
   isGovernment,
   isHospital,
   isDoctor,
   isPatient,
-  pageRedirect,
-} from "../../services/AccountValidation";
+} from "../../functions/Rbac";
 
 export const DoctorReg = () => {
   let navigate = useNavigate();
-  ReactSession.setStoreType("sessionStorage");
   const [state, setState] = useState({
     doctorName: "",
     doctorWallet: "",
@@ -32,21 +31,10 @@ export const DoctorReg = () => {
     doctorDept: "",
   });
 
-  const [currentAccount, setCurrentAccount] = useState(
-    ReactSession.get("currentAccount")
-  );
-  var validate;
   const [loading, setLoading] = useState(false);
-
-  // //const [doctorPhoto, setDoctorPhoto] = useState(null);
-
-  //
 
   const registerDoctor = async () => {
     try {
-      const dhrmsContract = ContractInstance(window);
-      console.log(dhrmsContract);
-
       if (
         (await isGovernment(state.doctorWallet)) ||
         (await isHospital(state.doctorWallet)) ||
@@ -55,27 +43,31 @@ export const DoctorReg = () => {
       ) {
         console.log("account already exist");
       } else {
-        const docPhoto = await FileUpload(state.doctorPhoto);
-
-        const details = await dhrmsContract.addDoctor(
-          state.doctorName,
-          state.phoneNo,
-          state.qualification,
-          docPhoto,
-          state.doctorDOB,
-          state.doctorWallet,
-          state.hospitalWallet,
-          state.doctorDept
-        );
-        await details.wait();
-        console.log(details);
+        const docPhoto = await client.add(state.doctorPhoto);
+        if (await isGovernment(getAccountAddress())) {
+          await addDoctor(
+            state.doctorName,
+            state.phoneNo,
+            state.qualification,
+            docPhoto.path,
+            state.doctorDOB,
+            state.doctorWallet,
+            state.hospitalWallet,
+            state.doctorDept
+          );
+        } else {
+          await addDoctortoList(
+            state.doctorName,
+            state.phoneNo,
+            state.qualification,
+            docPhoto.path,
+            state.doctorDOB,
+            state.doctorWallet,
+            state.hospitalWallet,
+            state.doctorDept
+          );
+        }
       }
-
-      // const getDoctorDetails = await dhrmsContract.getDoctorDetails(
-      //   "0xC8f6113C63e9837F04e7D32613124de6eeC13b86"
-      // );
-
-      // console.log(getDoctorDetails);
     } catch (error) {
       console.log(error);
     }
@@ -96,20 +88,16 @@ export const DoctorReg = () => {
     }
   };
 
-  const setValidation = async () => {
-    setLoading(true);
-    const test = await isGovernment(currentAccount);
-    if (test) {
-      setLoading(false);
-    } else {
-      setLoading(false);
-      await pageRedirect(currentAccount, navigate);
-    }
-  };
-
-  useEffect(() => {
-    setValidation();
-  }, []);
+  // const setValidation = async () => {
+  //   setLoading(true);
+  //   const test = await isGovernment(currentAccount);
+  //   if (test) {
+  //     setLoading(false);
+  //   } else {
+  //     setLoading(false);
+  //     await pageRedirect(currentAccount, navigate);
+  //   }
+  // };
 
   return (
     <div>

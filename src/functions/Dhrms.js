@@ -77,16 +77,16 @@ const getDoctorsList = async (PID) => {
   const dhrmsContract = DhrmsIntance();
   const list = await dhrmsContract.getDoctorsList(PID);
   let finalList = [];
-  list.forEach(async address => {
-      const data = await getDoctorDetails(address);
-      finalList.push({
-              doctorName: data[0],
-              phoneNumber: data[1],
-              qualification: data[2],
-              photo: data[3],
-              dob: data[4],
-              department: data[5]
-      })
+  list.forEach(async (address) => {
+    const data = await getDoctorDetails(address);
+    finalList.push({
+      doctorName: data[0],
+      phoneNumber: data[1],
+      qualification: data[2],
+      photo: data[3],
+      dob: data[4],
+      department: data[5],
+    });
   });
   return finalList;
 };
@@ -94,15 +94,15 @@ const getDoctorsList = async (PID) => {
 const getHospitalsList = async (PID) => {
   const dhrmsContract = DhrmsIntance();
   const list = await dhrmsContract.getHospitalsList(PID);
-    let finalList = [];
-    list.forEach(async address => {
-        const data = await getHospitalDetails(address);
-        finalList.push({
-                hospitalName: data[0],
-                phoneNumber: data[1]
-        })
+  let finalList = [];
+  list.forEach(async (address) => {
+    const data = await getHospitalDetails(address);
+    finalList.push({
+      hospitalName: data[0],
+      phoneNumber: data[1],
     });
-    return finalList;
+  });
+  return finalList;
 };
 
 const getRecordsHistory = async (PID) => {
@@ -128,14 +128,12 @@ const getDoctorDetails = async (DID) => {
 const getPatientList = async (DID) => {
   const dhrmsContract = DhrmsIntance();
   const list = await dhrmsContract.getPatientList(DID);
-    let finalList = [];
-    list.forEach(async address => {
-        const details = await getPatientDetails(address);
-        finalList.push(
-            JSON.parse(details)
-        )
-    });
-    return finalList;
+  let finalList = [];
+  list.forEach(async (address) => {
+    const details = await getPatientDetails(address);
+    finalList.push(JSON.parse(details));
+  });
+  return finalList;
 };
 
 const getDoctorH = async (DID) => {
@@ -152,32 +150,29 @@ const getHospitalDoctorList = async (HID) => {
   const dhrmsContract = DhrmsIntance();
   const list = await dhrmsContract.getHospitalDoctorList(HID);
   let finalList = [];
-  list.forEach(async address => {
-      const data = await getDoctorDetails(address);
-      finalList.push({
-              doctorName: data[0],
-              phoneNumber: data[1],
-              qualification: data[2],
-              photo: data[3],
-              dob: data[4],
-              department: data[5]
-      })
+  list.forEach(async (address) => {
+    const data = await getDoctorDetails(address);
+    finalList.push({
+      doctorName: data[0],
+      phoneNumber: data[1],
+      qualification: data[2],
+      photo: data[3],
+      dob: data[4],
+      department: data[5],
+    });
   });
   return finalList;
-
 };
 
 const getHospitalPatientList = async (HID) => {
   const dhrmsContract = DhrmsIntance();
   const list = await dhrmsContract.getHospitalPatientList(HID);
-    let finalList = [];
-    list.forEach(async address => {
-        const details = await getPatientDetails(address);
-        finalList.push(
-            JSON.parse(details)
-        )
-    });
-    return finalList;
+  let finalList = [];
+  list.forEach(async (address) => {
+    const details = await getPatientDetails(address);
+    finalList.push(JSON.parse(details));
+  });
+  return finalList;
 };
 
 const getGovernmentDetails = async (GID) => {

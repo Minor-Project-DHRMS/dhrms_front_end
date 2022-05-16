@@ -4,10 +4,7 @@ import TextArea from "../../components/textArea/TextArea";
 import Btn from "../../components/button/Btn";
 // import { useResolvedPath } from "react-router-dom";
 import React, { useState } from "react";
-import { useNavigate,useLocation } from "react-router-dom";
 import client from "../../services/FileUpload";
-import {sendRecordsForUploadH} from "../../functions/Dhrms"
-
 
 // import { create } from "ipfs-http-client";
 
@@ -28,8 +25,6 @@ let initialList = {
 }
 
 export default function Body() {
-  const navigate=useNavigate();
-  const location=useLocation();
   const [values, setValues] = useState(initialValues);
   const [list, setList] = useState(initialList);
 
@@ -66,7 +61,7 @@ export default function Body() {
 
    
 
-      await list.testReports.forEach(async (file) => {
+      list.testReports.forEach(async (file) => {
         const ucid = await client.add(file);
         let temp = {
           name: file.name,
@@ -81,7 +76,7 @@ export default function Body() {
       });
   
   
-      await list.scans.forEach(async (file) => {
+      list.scans.forEach(async (file) => {
         const ucid = await client.add(file);
         let temp = {
           name: file.name,
@@ -100,8 +95,6 @@ export default function Body() {
       values.timeStamp= Math.floor(new Date().getTime() / 1000);
 
       console.log(values);
-      // sendRecordsForUploadH(values,"","")
-      navigate("/docDash")
   };
 
   // const printReport = () => {

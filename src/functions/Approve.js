@@ -121,7 +121,7 @@ const getGovApproveList = async () => {
     const patList = list.filter((item) => item.userType === "GOV");
     let finalList = [];
     patList.forEach(async item => {
-        const data = await getPatientDetails(item.instanceAdd);
+        const data = await getGovernmentDetails(item.instanceAdd);
         finalList.push({
             details: {
                 officeName: data[0],

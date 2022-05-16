@@ -41,6 +41,8 @@ import {
     getGovernmentDetails,
 } from '../functions/Dhrms'
 
+import {isGovernment, isHospital, isDoctor, isPatient } from '../functions/Rbac'
+
 export default function Test(prop) {
     window.ethereum.enable();
 
@@ -113,6 +115,54 @@ export default function Test(prop) {
                 </div>
                 <br></br>
 
+                <div className='border'>
+                    <input type="text" id="isPatient"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await isPatient(document.getElementById("isPatient").value));
+                    }}>
+                        isPatient
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+                <div className='border'>
+                    <input type="text" id="isDoctor"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await isDoctor(document.getElementById("isDoctor").value));
+                    }}>
+                        isDoctor
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+                <div className='border'>
+                    <input type="text" id="isHospital"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await isHospital(document.getElementById("isHospital").value));
+                    }}>
+                        isHospital
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+                <div className='border'>
+                    <input type="text" id="isGovernment"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await isGovernment(document.getElementById("isGovernment").value));
+                    }}>
+                        isGovernment
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
                 <div className='border'>
                     <input type="text" id="getPatDetails"></input>
                     <button className='m' onClick={async (e) => {

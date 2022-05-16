@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Btn from "../../components/button/Btn";
 import Patient from "../patient/Patient.js";
 const nums = [1, 2, 3, 4];
@@ -11,6 +12,9 @@ export default function Paintents() {
       setData(JSON.parse(a));
     })
   })
+
+const Navigate=useNavigate();
+
   return (
     <div className="container1">
       <div className="mainlis">
@@ -26,8 +30,10 @@ export default function Paintents() {
                   </div>
                   <div className="subli4">
                     <Btn
-                      text={"View Report"}
-                      onclick="</Patient>"
+                      text={"View Details"}
+                      onClick={()=>{
+                        Navigate("/PatientDash")
+                      }}
                       style={{
                         height: "1vh",
                         width: "150px",
@@ -47,6 +53,10 @@ export default function Paintents() {
                         marginLeft: "30px",
                         fontSize: "14px",
                         padding: "15px 20px"
+                      }}
+
+                      onClick={()=>{
+                        Navigate("/medicalrepupload")
                       }}
                     />
                   </div>

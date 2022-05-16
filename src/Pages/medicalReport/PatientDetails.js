@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./PatientDetails.css"
 import Btn from "../../components/button/Btn";
 import { findByLabelText } from "@testing-library/react";
-import {useNavigate} from "react-router-dom"
+import {useLocation, useNavigate} from "react-router-dom"
 
-const data={
+const pdata={
     date: "01/01/22",
     DR: "Kiran P V",
     Department: "Cadiology",
@@ -93,6 +93,13 @@ const data={
 
 export default function PatientDetails() {
     let navigate = useNavigate();
+    const[data,setData]=useState(pdata);
+
+    const location=useLocation();
+
+    // useEffect(()=>{
+    //     setData(location.state.data);
+    // },[])
 
     return (
         <>
@@ -153,7 +160,7 @@ export default function PatientDetails() {
                             margin: "20px",
                         }} 
                         onClick={()=>{
-                            navigate("/");
+                            navigate("/PatientDash");
                         }}
                         />
                     </div>

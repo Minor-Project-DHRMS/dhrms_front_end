@@ -54,12 +54,11 @@ body {
 .topbar1 {
     height: 30%;
     width: 60%;
-    margin-top: 40px;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     vertical-align: middle;
     margin-bottom: 30px;
-    margin-left: 70px;
 }
 
 .Obj {

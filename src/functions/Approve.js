@@ -116,11 +116,12 @@ const getHospitalApproveList = async () => {
     return finalList;
 };
 
-const getGovApproveList = async () => {
+const getGovApproveList =  async () => {
     const list = await getApproveList();
     const patList = list.filter((item) => item.userType === "GOV");
     let finalList = [];
-    patList.forEach(async item => {
+
+    for(const item of patList){
         const data = await getGovernmentDetails(item.instanceAdd);
         finalList.push({
             details: {
@@ -130,7 +131,8 @@ const getGovApproveList = async () => {
             address: item.userAdd,
             timestamp: new Date(item.timestamp * 1000),
         })
-    });
+    }
+
     return finalList;
 };
 

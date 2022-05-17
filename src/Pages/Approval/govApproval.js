@@ -11,59 +11,61 @@ import { getGovApproveList } from "../../functions/Approve"
 
 export default function Govapprov() {
   let navigate = useNavigate();
-  const [govdata, setData] = useState("");
+  const [govdata, setData] = useState([]);
 
-  function getData() {
+function getData() {
 
     getGovApproveList().then((r) => {
-      setData(r)
-      console.log([].concat(r))
-
+      setData(r);
+      console.log(r);
     })
+
     // setData( );
   }
 
-  useEffect(() => {
-    getData()
-  }, []);
+  useEffect( () => {
+      getData();
 
-  // console.log(govdata[0])
+  },[]);
 
   return (
     <div className="total">
 
-        <div className="head1">
-          Government Approval
-        </div>
+      <div className="head1">
+        Government Approval
+      </div>
 
       <div className="body102">
         {Object.values(govdata).map((r, index) => {
           return (
 
-              <div className="lis11" key={index}>
-                <p className="obj1"></p>
-                <div className="subli11">
-                  <div className="nmage">
-                    <p className="nm">Office Name : {r.details.officeName}</p>
-                    <p className="age">GovID : &nbsp;{r.address}</p>
-                  </div>
-
-                  <Btn text={"View"}
-                    onClick={() => {
-                      navigate("/approveGov", { state: { gdata: r } })
-                    }}
-                    style={{
-                      // height: "1vh",
-                      height: "10px",
-                      width: "10px",
-                      fontSize: "12px",
-                      alignContent: "center",
-                      // padding: "10px 20px"
-                    }}
-                  />
-
+            <div className="lis11" key={index}>
+              <p className="obj1"></p>
+              <div className="subli11">
+                <div className="nmage">
+                  <p className="nm">Office Name : {r.details.officeName}</p>
+                  <p className="age">GovID : &nbsp;{r.address}</p>
                 </div>
+
+                <Btn text={"View"}
+                  onClick={() => {
+                    console.log("provided");
+                    console.log(r);
+                    navigate("/approveGov", { state: { data: r } })
+                  }}
+                  
+                  style={{
+                    // height: "1vh",
+                    height: "10px",
+                    width: "10px",
+                    fontSize: "12px",
+                    alignContent: "center",
+                    // padding: "10px 20px"
+                  }}
+                />
+
               </div>
+            </div>
           );
         })}
 

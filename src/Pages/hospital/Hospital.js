@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import mainLogo from "../hospital/logo192.png";
-import { ReactSession } from "react-client-session";
 import "./hospital.css";
 import Btn from "../../components/button/Btn";
 import LoadingInd from "../../components/Loading/LoadingInd";
 import ContractInstance from "../../services/ContractInstance";
 import { useNavigate } from "react-router-dom";
+import { getAccountAddress } from "../../services/AccountDetails";
+import { getHospitalDetails } from "../../functions/Dhrms";
+
 
 const Hospital = () => {
   let navigate = useNavigate();
-  const [currentAccount,setCurrentAccount] = useState(ReactSession.get("currentAccount"));
   const [patientList, setPatientList] = useState([]);
-  ReactSession.setStoreType("sessionStorage");
+  const [currentAccount, setCurrentAccount] = useState(getAccountAddress());
   const [doctorList, setDoctorList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hospitalDetails, setHospitalDetails] = useState({
@@ -22,14 +23,12 @@ const Hospital = () => {
 
   const getDetails = async () => {
     try {
-      const dhrmsContract = ContractInstance(window);
-      
-      const details = await dhrmsContract.getHospitalDetails(currentAccount);
-      console.log(details);
+      const currentAccount = getAccountAddress();
+      const details = await getHospitalDetails(currentAccount);
       setHospitalDetails({
         hospitalName: details[0],
         phoneNo: details[1],
-        GID: currentAccount,
+        HID: currentAccount,
       });
     } catch (error) {
       console.log(error);
@@ -54,7 +53,14 @@ const Hospital = () => {
             Phone No: {hospitalDetails.phoneNo}
           </div>
         </div>
-        <div className="qr-lbl" onClick={()=>navigate('QRCode',{state:{address:currentAccount}})}>QR Code</div>
+        <div
+          className="qr-lbl"
+          onClick={() =>
+            navigate("QRCode", { state: { address: currentAccount } })
+          }
+        >
+          QR Code
+        </div>
       </div>
       <div className="list">
         <div className="bio-hos">
@@ -102,6 +108,34 @@ const Hospital = () => {
               );
             })}
           </div>
+        </div>
+      </div>
+      <div className="bio-hos">
+        <div className="hos-head-font">Patients</div>
+        <div className="list-items">
+          {nums.map((patient, index) => {
+            return (
+              <div key={index} className="item">
+                <img src={mainLogo} alt="Avatar" className="avatar" />
+                <div className="item_details">
+                  <div>Sahil Ljhjhjhjhj Naikwadi</div>
+                  <div className="div-align">
+                    <div className="font-field">Male</div>
+                    <div className="font-field">Age : 20</div>
+                  </div>
+                </div>
+                <Btn
+                  text={"View Report"}
+                  func={log}
+                  style={{
+                    padding: "10px 15px",
+                    width: "100px",
+                    fontSize: "12px",
+                  }}
+                />
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

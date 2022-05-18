@@ -24,7 +24,6 @@ export const GovernmentReg = () => {
 
   const register = async () => {
     try {
-      console.log(await isGovernment(getAccountAddress()));
       if (
         (await isGovernment(state.walletAddress)) ||
         (await isHospital(state.walletAddress)) ||

@@ -101,6 +101,12 @@ a.font_field {
 .pt_item > div {
   margin: 10px;
 }
+.hos_write_access {
+  display: flex;
+  margin: 0px 2px;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .ptd_name {
   font-size: 9px;
   padding-top: 2px;

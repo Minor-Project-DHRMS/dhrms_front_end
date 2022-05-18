@@ -3,6 +3,16 @@ import Btn from "../../components/button/Btn";
 import TxtInput from "../../components/TxtInput/TxtInput";
 import { addHospital } from "../../functions/Dhrms";
 import "./hospitalReg.css";
+import { addHospitaltoList } from "../../functions/Approve";
+import { useNavigate } from "react-router-dom";
+import { getAccountAddress } from "../../services/AccountDetails";
+
+import {
+  isGovernment,
+  isHospital,
+  isDoctor,
+  isPatient,
+} from "../../functions/Rbac";
 
 export const HospitalReg = () => {
   const [state, setState] = useState({
@@ -13,7 +23,28 @@ export const HospitalReg = () => {
 
   const registerHospital = async () => {
     try {
-      await addHospital(state.hospitalName, state.phoneNo, state.walletAddress);
+      if (
+        (await isGovernment(state.walletAddress)) ||
+        (await isHospital(state.walletAddress)) ||
+        (await isDoctor(state.walletAddress)) ||
+        (await isPatient(state.walletAddress))
+      ) {
+        console.log("account already exist");
+      } else {
+        if (await isGovernment(getAccountAddress())) {
+          await addHospital(
+            state.hospitalName,
+            state.phoneNo,
+            state.walletAddress
+          );
+        } else {
+          await addHospitaltoList(
+            state.hospitalName,
+            state.phoneNo,
+            state.walletAddress
+          );
+        }
+      }
     } catch (error) {
       console.log(error);
     }

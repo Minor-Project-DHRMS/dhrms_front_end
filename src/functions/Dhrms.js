@@ -1,4 +1,5 @@
 import DhrmsIntance from "../instance/DhrmsIntance";
+import client from "../services/FileUpload";
 
 const addGovernmentOffice = async (officeName, phoneNumber, GID) => {
   const dhrmsContract = DhrmsIntance();
@@ -58,47 +59,68 @@ const removeWriteAccess = async (HID) => {
   await dhrmsContract.removeWriteAccess(HID);
 };
 
-const sendRecordsForUpload = async (file, PID) => {
+const sendRecordsForUpload = async (record) => {
   const dhrmsContract = DhrmsIntance();
-  await dhrmsContract.sendRecordsForUpload(file, PID);
+  await dhrmsContract.sendRecordsForUpload(record);
 };
 
-const sendRecordsForUploadH = async (file, PID, HID) => {
+const sendRecordsForUploadH = async (record) => {
   const dhrmsContract = DhrmsIntance();
-  await dhrmsContract.sendRecordsForUploadH(file, PID, HID);
+  await dhrmsContract.sendRecordsForUploadH(record);
 };
 
-const reportUploaded = async (PID, CID) => {
+const reportUploaded = async (PID, record, CID) => {
   const dhrmsContract = DhrmsIntance();
-  await dhrmsContract.reportUploaded(PID, CID);
+  await dhrmsContract.reportUploaded(PID, record, CID);
 };
 
 const getDoctorsList = async (PID) => {
   const dhrmsContract = DhrmsIntance();
   const list = await await dhrmsContract.getDoctorsList(PID);
   let finalList = [];
-  list.forEach(async address => {
-      const data = await getDoctorDetails(address);
-      finalList.push({
-              doctorName: data[0],
-              phoneNumber: data[1],
-              qualification: data[2],
-              photo: data[3],
-              dob: data[4],
-              department: data[5]
-      })
+  list.forEach(async (address) => {
+    const data = await getDoctorDetails(address);
+    finalList.push({
+      doctorName: data[0],
+      phoneNumber: data[1],
+      qualification: data[2],
+      photo: data[3],
+      dob: data[4],
+      department: data[5],
+    });
   });
   return finalList;
 };
 
 const getHospitalsList = async (PID) => {
   const dhrmsContract = DhrmsIntance();
-  return await dhrmsContract.getHospitalsList(PID);
+  const list = await dhrmsContract.getHospitalsList(PID);
+  let hospitalList = [];
+  list.forEach(async (address) => {
+    const data = await getHospitalDetails(address);
+    hospitalList.push({
+      hospitalName: data[0],
+      phoneNumber: data[1],
+    });
+  });
+  return hospitalList;
 };
 
 const getRecordsHistory = async (PID) => {
   const dhrmsContract = DhrmsIntance();
-  return await dhrmsContract.getRecordsHistory(PID);
+  const list = await dhrmsContract.getRecordsHistory(PID);
+  let recordList = [];
+  list.forEach(async (cid) => {
+    fetch(`https://ipfs.infura.io/ipfs/${cid}`)
+      .then((res) => res.json())
+      .then((json) => {
+        recordList.push({
+          json
+        });
+      });
+    
+  });
+  return recordList;
 };
 
 const getPatientDetails = async (PID) => {

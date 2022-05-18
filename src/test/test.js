@@ -273,6 +273,20 @@ export default function Test(prop) {
 
                 {/* ----------------------------------- */}
 
+
+                <div className='border'>
+                    <input type="text" id="giveWriteAccess"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await reportUploaded(document.getElementById("giveWriteAccess").value));
+                    }}>
+                        giveWriteAccess
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+
                 <br></br>
                 <div id="text">
 

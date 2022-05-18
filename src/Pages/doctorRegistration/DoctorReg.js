@@ -51,8 +51,8 @@ export const DoctorReg = () => {
             state.qualification,
             docPhoto.path,
             state.doctorDOB,
-            state.doctorWallet,
             state.hospitalWallet,
+            state.doctorWallet,
             state.doctorDept
           );
         } else {
@@ -62,8 +62,8 @@ export const DoctorReg = () => {
             state.qualification,
             docPhoto.path,
             state.doctorDOB,
-            state.doctorWallet,
             state.hospitalWallet,
+            state.doctorWallet,
             state.doctorDept
           );
         }
@@ -197,6 +197,7 @@ export const DoctorReg = () => {
               <label className="lbl_hos">DOB :</label>
               <TxtInput
                 name={"doctorDOB"}
+                type={"date"}
                 value={state.doctorDOB}
                 onChange={handleChanges}
                 style={{

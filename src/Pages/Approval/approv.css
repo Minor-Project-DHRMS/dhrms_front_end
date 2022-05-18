@@ -44,7 +44,7 @@
     padding-top: 45px;
 }
 
-.MainHead1 {
+/* .MainHead1 {
     vertical-align: middle;
     align-items: center;
     width: auto;
@@ -53,7 +53,7 @@
     display: flex;
     height: fit-content;
     margin-bottom: 20px;
-}
+} */
 
 .Alltxt {
     margin-left: 80px;
@@ -93,14 +93,30 @@
 .lis11 {
 
     background: #FFFFFF0F 0% 0% no-repeat padding-box;
-    margin: 10px;
-    padding: 10px;
+    /* margin: 10px; */
+    margin-bottom: 10px;
+    padding: 5px;
     opacity: 60%;
     display: flex;
     align-items: center;
     border-radius: 10px;
-    width: 880px;
+    width: 98%;
 }
+
+.listing-approve {
+
+    background: #FFFFFF0F 0% 0% no-repeat padding-box;
+    /* margin: 10px; */
+    margin-bottom: 10px;
+    padding: 5px;
+    opacity: 60%;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    width: 98%;
+}
+
+
 
 
 .btncont {
@@ -115,8 +131,17 @@
     align-content: center;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    padding: 20px 30px;
+    width: 95%;
+    padding: 10px;
+}
+
+.sublist {
+    display: inline-flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 95%;
+    padding: 10px;
 }
 
 /* .paintent-records{
@@ -129,7 +154,7 @@
 }
 
 .head1 {
-    font-size: 40px;
+    font-size: 30px;
     height: auto;
     margin: auto;
     text-align: center;
@@ -174,18 +199,34 @@
 }
 
 .body102 {
-    width: 80%;
+    padding: 20px;
+    width: 90%;
     height: 98%;
     background: #ffffff14 0% 0% no-repeat padding-box;
     border-radius: 13px;
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     margin: 20px;
     overflow-y: scroll;
-    overflow-x: hidden;
 }
+
+.bodyList {
+    padding: 20px;
+    width: 90%;
+    height: 98%;
+    background: #ffffff14 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    overflow-y: scroll;
+}
+
+
+
 .body103{
     width: 70%;
     height: 98%;
@@ -201,6 +242,7 @@
 }
 
 .nmage {
+    width: 80%;
     margin-bottom: 10px;
-    margin-right: 300px;
+    margin-right: 30px;
 }

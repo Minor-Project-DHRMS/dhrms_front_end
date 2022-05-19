@@ -4,16 +4,25 @@ import "../../Pages/Approval/approv.css";
 import Txt from "../../components/TxtInput/TxtInput"
 import "../../Pages/DoctorDash/DocDash.css";
 import { useNavigate } from "react-router-dom";
+import {getHospitalApproveList} from "../../functions/Approve"
 
 export default function Hospitalapprov() {
   let navigate = useNavigate();
   let [hospdata, setData] = useState("");
 
-  useEffect(() => {
-    fetch(`https://ipfs.infura.io/ipfs/QmbsBgfwYyyGeFUwdPFTEewTYDF2KoaKDyfbyxq9e84pwU`).
-      then(r => r.text()).then((d) => {
-        setData(JSON.parse(d));
-      })
+  async function getData(){
+    getHospitalApproveList().then((x)=>{
+      setData(x);
+      console.log(x);
+    });
+  }
+
+  useEffect( async () => {
+    // fetch(`https://ipfs.infura.io/ipfs/QmbsBgfwYyyGeFUwdPFTEewTYDF2KoaKDyfbyxq9e84pwU`).
+    //   then(r => r.text()).then((d) => {
+    //     setData(JSON.parse(d));
+    //   })
+      getData();
   }, [])
 
   return (

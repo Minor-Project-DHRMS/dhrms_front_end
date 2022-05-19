@@ -4,7 +4,7 @@ import "../../Pages/Approval/approv.css";
 import Txt from "../../components/TxtInput/TxtInput";
 import "../../Pages/DoctorDash/DocDash.css";
 import { useNavigate } from "react-router-dom";
-import {getDoctorApproveList} from "../../functions/Approve";
+import { getDoctorApproveList } from "../../functions/Approve";
 
 
 
@@ -13,14 +13,17 @@ export default function Docapprov() {
   let navigate = useNavigate();
   let [docdata, setData] = useState("");
 
+
+
   useEffect(async () => {
     // fetch(`https://ipfs.infura.io/ipfs/QmbsBgfwYyyGeFUwdPFTEewTYDF2KoaKDyfbyxq9e84pwU`).then(r => r.text()).then((a) => {
     //   setData(JSON.parse(a));
     // });
 
-    await getDoctorApproveList().then(x=>{
+    await getDoctorApproveList().then(x => {
       setData(x);
       console.log(x);
+
     });
 
 
@@ -38,7 +41,10 @@ export default function Docapprov() {
             <div key={index}>
               <div className="listing-approve {
 ">
-                <p className="obj1"></p>
+                <img className="obj1" src={new URL(`https://ipfs.infura.io/ipfs/${s.details.photo}`)}>
+                  {/* <img src={new URL(`https://ipfs.infura.io/ipfs/${s.details.photo}`)}>
+                  </img> */}
+                </img>
                 <div className="sublist">
                   <h3 className="nmage">
                     <p className="nm">Doctor Name: {s.details.doctorName}</p>

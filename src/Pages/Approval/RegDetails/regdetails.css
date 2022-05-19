@@ -118,7 +118,7 @@
     width: 150px;
     text-align: center;
 
-    content: url("../../../../public/logo192.png");
+    /* content: url("../../../../public/logo192.png"); */
 }
 
 .dimg1 {
@@ -127,7 +127,7 @@
     border-radius: 50%;
     height: 130px;
     width: 130px;
-    content: url("../../../../public/logo192.png");
+    /* content: url("../../../../public/logo192.png"); */
     margin-right: 20px;
 }
 

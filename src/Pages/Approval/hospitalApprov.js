@@ -34,7 +34,9 @@ export default function Hospitalapprov() {
             <div key={index}>
               <div className="hosp-list">
 
-                <p className="obj1"></p>
+                <img className="obj1" src={new URL(`https://ipfs.infura.io/ipfs/${r.details.photo}`)}>
+                  {/* <img src={}></img> */}
+                </img>
                 <div className="subli11">
                   <h3 className="nmage"><p className="nm">Hospital Name: {r.details.hospitalName}</p>
                     <p className="age">Phone: {r.details.phoneNumber}</p>

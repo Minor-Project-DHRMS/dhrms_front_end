@@ -103,6 +103,19 @@
     width: 98%;
 }
 
+.hosp-list{
+
+    background: #FFFFFF0F 0% 0% no-repeat padding-box;
+    /* margin: 10px; */
+    margin-bottom: 10px;
+    padding: 5px;
+    opacity: 60%;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    width: 98%;
+}
+
 .listing-approve {
 
     background: #FFFFFF0F 0% 0% no-repeat padding-box;
@@ -212,6 +225,21 @@
     overflow-y: scroll;
 }
 
+.hospital-body {
+    padding: 20px;
+    width: 90%;
+    height: 98%;
+    background: #ffffff14 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color: white;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px;
+    overflow-y: scroll;
+}
+
+
 .bodyList {
     padding: 20px;
     width: 90%;
@@ -240,6 +268,22 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+.body-patient{
+    width: 70%;
+    height: 98%;
+    background: #ffffff14 0% 0% no-repeat padding-box;
+    border-radius: 13px;
+    color: white;
+    /* display: flex; */
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
 
 .nmage {
     width: 80%;

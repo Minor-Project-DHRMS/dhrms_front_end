@@ -1,4 +1,5 @@
 import ApproveInstance from "../instance/ApproveInstance";
+import {getDoctorH} from "./Dhrms";
 
 const addGovernmentOfficetoList = async (_officeName, _phoneNumber, _GID) => {
     const approveContract = ApproveInstance();
@@ -57,7 +58,6 @@ const getGovernmentDetails = async (_instanceAddress) => {
 };
 
 
-
 const getApproveList = async () => {
     const approveContract = ApproveInstance();
     const list = await approveContract.getApproveList();
@@ -81,8 +81,14 @@ const getDoctorApproveList = async () => {
     const list = await getApproveList();
     const patList = list.filter((item) => item.userType === "DOC");
     let finalList = [];
-    patList.forEach(async item => {
+ 
+    for(const item of patList){
         const data = await getDoctorDetails(item.instanceAdd);
+        // console.log(data);
+
+        // const ids = await getDoctorH(item.userAdd);
+        // console.log(ids);
+
         finalList.push({
             details: {
                 doctorName: data[0],
@@ -90,12 +96,15 @@ const getDoctorApproveList = async () => {
                 qualification: data[2],
                 photo: data[3],
                 dob: data[4],
-                department: data[5]
+                department: data[5],
+                // hid: ids[0],
+                // did: ids[1],
             },
             address: item.userAdd,
             timestamp: new Date(item.timestamp * 1000),
         })
-    });
+    }
+   
     return finalList;
 };
 const getHospitalApproveList = async () => {
@@ -140,14 +149,18 @@ const getPatientApproveList = async () => {
     const list = await getApproveList();
     const patList = list.filter((item) => item.userType === "PAT");
     let finalList = [];
-    patList.forEach(async item => {
-        const details = await getPatientDetails(item.instanceAdd);
+
+    console.log(patList);
+    
+    for(const item of patList){
+    const details = await getPatientDetails(item.instanceAdd);
+    console.log(details);
         finalList.push({
             details: JSON.parse(details),
             address: item.userAdd,
             timestamp: new Date(item.timestamp * 1000),
         })
-    });
+    }
     return finalList;
 };
 

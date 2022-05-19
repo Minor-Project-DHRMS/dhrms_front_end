@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import Btn from "../../../components/button/Btn";
 import "../../Approval/RegDetails/regdetails.css";
 import { useLocation } from "react-router-dom";
+import {approve,disApprove} from "../../../functions/Approve"
+import { useNavigate } from "react-router-dom";
 
 export default function Docregs() {
   let location = useLocation();
   let [ddata, setData] = useState(location.state.ddata);
+  const navigate=useNavigate();
 
   console.log(ddata);
 
@@ -49,7 +52,11 @@ export default function Docregs() {
 
         <td className="bts-m">
           <Btn text={"Approve"}
-            // onclick=""
+            onClick={async ()=>{
+              approve(ddata.address).then(()=>{
+                navigate("/docapprovlist")
+              })
+            }}
             style={{
 
               width: "150px",
@@ -61,7 +68,11 @@ export default function Docregs() {
           />
 
           <Btn text={"Reject"}
-            onclick=""
+            onClick={async ()=>{
+              disApprove(ddata.address).then(()=>{
+                navigate("/docapprovlist")
+              })
+            }}
             style={{
 
               width: "150px",

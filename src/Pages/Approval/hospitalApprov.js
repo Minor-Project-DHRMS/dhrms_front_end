@@ -22,7 +22,7 @@ export default function Hospitalapprov() {
     //   then(r => r.text()).then((d) => {
     //     setData(JSON.parse(d));
     //   })
-      getData();
+      getData(hospdata);
   }, [])
 
   return (
@@ -40,11 +40,14 @@ export default function Hospitalapprov() {
 
                 <p className="obj1"></p>
                 <div className="subli11">
-                  <h3 className="nmage"><p className="nm">{r.name}</p>
-                    <p className="age">{r.phone}</p>
+                  <h3 className="nmage"><p className="nm">Hospital Name: {r.details.hospitalName}</p>
+                    <p className="age">Phone: {r.details.phoneNumber}</p>
+                    <p className="age">HID: {r.address}</p>
                   </h3>
                   <Btn text={"View"}
-                    onClick={() => { navigate("/approveHos", { state: { hdata: r } }) }}
+                    onClick={() => { 
+                      
+                      navigate("/approveHos", { state: { hdata: r } }) }}
                     style={{
                       width: "150px",
                       marginRight: "90px",

@@ -18,10 +18,6 @@ export default function Hospitalapprov() {
   }
 
   useEffect( async () => {
-    // fetch(`https://ipfs.infura.io/ipfs/QmbsBgfwYyyGeFUwdPFTEewTYDF2KoaKDyfbyxq9e84pwU`).
-    //   then(r => r.text()).then((d) => {
-    //     setData(JSON.parse(d));
-    //   })
       getData(hospdata);
   }, [])
 

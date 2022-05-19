@@ -72,6 +72,7 @@ export const DoctorReg = () => {
       console.log(error);
     }
   };
+  
   const handleChanges = (e) => {
     if (e.target.type !== "file") {
       const name = e.target.name;

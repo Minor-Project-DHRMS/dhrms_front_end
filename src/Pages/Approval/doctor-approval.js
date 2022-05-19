@@ -14,14 +14,14 @@ export default function Docapprov() {
   let [docdata, setData] = useState("");
 
   useEffect(async () => {
-    fetch(`https://ipfs.infura.io/ipfs/QmbsBgfwYyyGeFUwdPFTEewTYDF2KoaKDyfbyxq9e84pwU`).then(r => r.text()).then((a) => {
-      setData(JSON.parse(a));
-    });
+    // fetch(`https://ipfs.infura.io/ipfs/QmbsBgfwYyyGeFUwdPFTEewTYDF2KoaKDyfbyxq9e84pwU`).then(r => r.text()).then((a) => {
+    //   setData(JSON.parse(a));
+    // });
 
     await getDoctorApproveList().then(x=>{
       setData(x);
       console.log(x);
-    })
+    });
 
 
   }, []);
@@ -41,8 +41,8 @@ export default function Docapprov() {
                 <p className="obj1"></p>
                 <div className="sublist">
                   <h3 className="nmage">
-                    <p className="nm">{s.name}</p>
-                    <p className="age">{s.gender} &nbsp;Age:&nbsp;{s.dob}</p>
+                    <p className="nm">Doctor Name: {s.details.doctorName}</p>
+                    <p className="age">Doctor ID: {s.address}</p>
                   </h3>
                   <Btn
                     text={"View"}

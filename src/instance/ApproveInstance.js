@@ -14,9 +14,9 @@ const ApproveInstance = () => {
       return;
     }
 
-    const provider = new ethers.providers.Web3Provider(ethereum);
-    const signer = provider.getSigner();
-    const approveContract = new ethers.Contract(
+      const provider = new ethers.providers.Web3Provider(ethereum);
+      const signer = provider.getSigner();
+      const approveContract = new ethers.Contract(
       contractAddress,
       contractABI,
       signer

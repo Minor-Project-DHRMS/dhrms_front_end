@@ -1,5 +1,5 @@
 import ApproveInstance from "../instance/ApproveInstance";
-import {getDoctorH} from "./Dhrms";
+import { getDoctorH } from "./Dhrms";
 
 const addGovernmentOfficetoList = async (_officeName, _phoneNumber, _GID) => {
     const approveContract = ApproveInstance();
@@ -23,16 +23,15 @@ const addPatienttoList = async (_details, _PID) => {
 
 const approve = async (_userAdd) => {
     const approveContract = ApproveInstance();
-    await approveContract.approve(_userAdd);
+    const r=await approveContract.approve(_userAdd);
+    return r;
 };
-
-
-
 
 
 const disApprove = async (_userAdd) => {
     const approveContract = ApproveInstance();
-    await approveContract.disApprove(_userAdd);
+    const r=await approveContract.disApprove(_userAdd);
+    return r;
 };
 
 const getPatientDetails = async (_instanceAddress) => {
@@ -81,8 +80,8 @@ const getDoctorApproveList = async () => {
     const list = await getApproveList();
     const patList = list.filter((item) => item.userType === "DOC");
     let finalList = [];
- 
-    for(const item of patList){
+
+    for (const item of patList) {
         const data = await getDoctorDetails(item.instanceAdd);
         // console.log(data);
 
@@ -104,33 +103,37 @@ const getDoctorApproveList = async () => {
             timestamp: new Date(item.timestamp * 1000),
         })
     }
-   
+
     return finalList;
 };
 const getHospitalApproveList = async () => {
     const list = await getApproveList();
     const patList = list.filter((item) => item.userType === "HOS");
     let finalList = [];
-    patList.forEach(async item => {
-        const data = await getHospitalDetails(item.instanceAdd);
-        finalList.push({
-            details: {
-                hospitalName: data[0],
-                phoneNumber: data[1]
-            },
-            address: item.userAdd,
-            timestamp: new Date(item.timestamp * 1000),
-        })
-    });
+
+    for (const item of patList) {
+        {
+            const data = await getHospitalDetails(item.instanceAdd);
+            finalList.push({
+                details: {
+                    hospitalName: data[0],
+                    phoneNumber: data[1]
+                },
+                address: item.userAdd,
+                timestamp: new Date(item.timestamp * 1000),
+            })
+        };
+    }
+
     return finalList;
 };
 
-const getGovApproveList =  async () => {
+const getGovApproveList = async () => {
     const list = await getApproveList();
     const patList = list.filter((item) => item.userType === "GOV");
     let finalList = [];
 
-    for(const item of patList){
+    for (const item of patList) {
         const data = await getGovernmentDetails(item.instanceAdd);
         finalList.push({
             details: {
@@ -150,16 +153,19 @@ const getPatientApproveList = async () => {
     const patList = list.filter((item) => item.userType === "PAT");
     let finalList = [];
 
-    console.log(patList);
-    
-    for(const item of patList){
-    const details = await getPatientDetails(item.instanceAdd);
-    console.log(details);
+    // console.log(patList);
+
+    for (const item of patList) {
+        const details = await getPatientDetails(item.instanceAdd);
+
+        console.log(details);
+
+        console.log(details);
         finalList.push({
             details: JSON.parse(details),
             address: item.userAdd,
             timestamp: new Date(item.timestamp * 1000),
-        })
+        });
     }
     return finalList;
 };

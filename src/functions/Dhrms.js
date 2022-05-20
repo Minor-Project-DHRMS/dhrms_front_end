@@ -1,21 +1,22 @@
 import DhrmsIntance from "../instance/StorageInstance";
 import client from "../services/FileUpload";
 
-import  {
+import {
   sendRecordsForUpload,
   getDoctorDetails,
   getPatientList,
   getDoctorH,
-  addDoctor
-} from "../functions/dhrmsFuncs/dhrms_doc"
+  addDoctor,
+} from "../functions/dhrmsFuncs/dhrms_doc";
 import {
   addHospital,
   sendRecordsForUploadH,
+  getUploadQueue,
   reportUploaded,
   getHospitalDetails,
   getHospitalDoctorList,
   getHospitalPatientList,
-} from "../functions/dhrmsFuncs/dhrms_hos"
+} from "../functions/dhrmsFuncs/dhrms_hos";
 import {
   getPatientDetailsForGov,
   getPatientDetails,
@@ -27,12 +28,11 @@ import {
   giveWriteAccess,
   giveReadAccess,
   addPatient,
-} from "../functions/dhrmsFuncs/dhrms_pat"
+} from "../functions/dhrmsFuncs/dhrms_pat";
 import {
   getGovernmentDetails,
-  addGovernmentOffice
-} from "../functions/dhrmsFuncs/dhrms_gov"
-
+  addGovernmentOffice,
+} from "../functions/dhrmsFuncs/dhrms_gov";
 
 export {
   addGovernmentOffice,
@@ -45,6 +45,7 @@ export {
   removeWriteAccess,
   sendRecordsForUpload,
   sendRecordsForUploadH,
+  getUploadQueue,
   reportUploaded,
   getDoctorsList,
   getHospitalsList,

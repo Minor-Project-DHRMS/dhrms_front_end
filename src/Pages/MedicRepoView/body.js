@@ -5,13 +5,16 @@ import Btn from "../../components/button/Btn";
 // import { useResolvedPath } from "react-router-dom";
 import React, { useState } from "react";
 import client from "../../services/FileUpload";
+import { sendRecordsForUpload } from "../../functions/Dhrms";
 
 // import { create } from "ipfs-http-client";
 
 // const client = create("https://ipfs.infura.io:5001/api/v0");
 
 let initialValues = {
-  timeStamp:"",
+  PID: "0xB67A1a2Ffae004f9fF0B2Dd630DF061971e30866",
+  HID: "0xfBDff2539Fb4AC71cd6061CcB5c7d717b356C186",
+  timeStamp: "",
   purposeVisit: "",
   prescription: "",
   description: "",
@@ -22,7 +25,7 @@ let initialValues = {
 let initialList = {
   scans: [],
   testReports: [],
-}
+};
 
 export default function Body() {
   const [values, setValues] = useState(initialValues);
@@ -36,13 +39,12 @@ export default function Body() {
 
     const { name, files } = e.target;
 
-    let tempList= list;
+    let tempList = list;
 
     setList({
       ...list,
       [name]: [...list[name], ...files],
     });
-
   };
 
   const handleInputChange = (e) => {
@@ -58,42 +60,39 @@ export default function Body() {
 
   const sendUpload = async (e) => {
     e.preventDefault();
-      list.testReports.forEach(async (file) => {
-        const ucid = await client.add(file);
-        let temp = {
-          name: file.name,
-          cid: ucid.path,
-        };
 
-        let templist = values.testReports;
-        setValues({
-          ...values,
-          testReports: templist.push(temp),
-        });
+    for (const file of list.testReports) {
+      const ucid = await client.add(file);
+      let temp = {
+        name: file.name,
+        cid: ucid.path,
+      };
+
+      let templist = values.testReports;
+      setValues({
+        ...values,
+        testReports: templist.push(temp),
       });
-  
-  
-      list.scans.forEach(async (file) => {
-        const ucid = await client.add(file);
-        let temp = {
-          name: file.name,
-          cid: ucid.path,
-        };
+    }
 
-        let scan = values.scans;
+    for (const scan of list.scans) {
+      const ucid = await client.add(scan);
+      let temp = {
+        name: scan.name,
+        cid: ucid.path,
+      };
 
-        setValues({
-          ...values,
-          scans: scan.push(temp),
-        });
-        
+      let oldscans = values.scans;
+
+      setValues({
+        ...values,
+        scans: oldscans.push(temp),
       });
+    }
+    values.timeStamp = Math.floor(new Date().getTime() / 1000);
 
-      values.timeStamp= Math.floor(new Date().getTime() / 1000);
-
-      
-
-      console.log(values);
+    await sendRecordsForUpload(JSON.stringify(values));
+    console.log(values);
   };
 
   // const printReport = () => {
@@ -121,7 +120,7 @@ export default function Body() {
               />
               <div className="Prescription">
                 <TextArea
-                name="prescription"
+                  name="prescription"
                   placeholder="Prescription"
                   style={{
                     marginTop: "10px",

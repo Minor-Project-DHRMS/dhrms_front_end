@@ -14,6 +14,7 @@ import {
   isPatient,
   pageRedirect,
 } from "../../services/AccountValidation";
+import { giveReadAccess, giveWriteAccess } from "../../functions/Dhrms";
 
 export const QRScanner = () => {
   let navigate = useNavigate();
@@ -73,10 +74,10 @@ export const QRScanner = () => {
                     const dhrmsContract = ContractInstance(window);
               
                     if (await isDoctor(address)) {
-                      const details = await dhrmsContract.giveReadAccess(address);
+                      const details = await giveReadAccess(address);
                       console.log(details)
                     } else if (await isHospital(address)) {
-                      const details = await dhrmsContract.giveWriteAccess(address);
+                      const details = await giveWriteAccess(address);
                       console.log(details)
                     }
 

@@ -6,7 +6,7 @@ import LoadingInd from "../../components/Loading/LoadingInd";
 import ContractInstance from "../../services/ContractInstance";
 import { useNavigate } from "react-router-dom";
 import { getAccountAddress } from "../../services/AccountDetails";
-import { getHospitalDetails } from "../../functions/Dhrms";
+import { getHospitalDetails, getUploadQueue } from "../../functions/Dhrms";
 
 
 const Hospital = () => {
@@ -30,6 +30,8 @@ const Hospital = () => {
         phoneNo: details[1],
         HID: currentAccount,
       });
+      const uploadList = await getUploadQueue()
+      
     } catch (error) {
       console.log(error);
     }

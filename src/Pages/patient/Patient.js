@@ -63,10 +63,11 @@ const Patient = () => {
       const details = await getPatientDetails(currentAccount);
       setState(JSON.parse(details));
       // setDoctorList(await getDoctorsList("0x2C4fF877B1ff2727D892F8B5F3DabEf79F14F14C"));
-      setHospitalList(await getHospitalsList(currentAccount));
-      console.log(await getHospitalsList(currentAccount));
       setDoctorList(await getDoctorsList(currentAccount));
       console.log(await getDoctorsList(currentAccount));
+      setHospitalList(await getHospitalsList(currentAccount));
+      console.log(await getHospitalsList(currentAccount));
+      
       // setHospitalList(await getHospitalsList("0x2C4fF877B1ff2727D892F8B5F3DabEf79F14F14C"));
       
 

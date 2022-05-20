@@ -26,6 +26,7 @@ import {
     removeWriteAccess,
     sendRecordsForUpload,
     sendRecordsForUploadH,
+    getUploadQueue,
     reportUploaded,
     getDoctorsList,
     getHospitalsList,
@@ -249,6 +250,32 @@ export default function Test(prop) {
                 {/* ----------------------------------- */}
 
                 <div className='border'>
+                    <input type="text" id="removeReadAccess"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await removeReadAccess(document.getElementById("giveWriteAccess").value));
+                    }}>
+                        removeReadAccess
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+
+                <div className='border'>
+                    <input type="text" id="removeReadAccess"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await removeReadAccess(document.getElementById("giveWriteAccess").value));
+                    }}>
+                        removeReadAccess
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+
+                <div className='border'>
                     <input type="text" id="getDoctorsList"></input>
                     <button className='m' onClick={async (e) => {
                         // console.log(document.getElementById("getApproveList").value);
@@ -275,12 +302,24 @@ export default function Test(prop) {
 
 
                 <div className='border'>
-                    <input type="text" id="giveWriteAccess"></input>
+                    <input type="text" id="reportUploaded"></input>
                     <button className='m' onClick={async (e) => {
                         // console.log(document.getElementById("getApproveList").value);
                         console.log(await reportUploaded(document.getElementById("giveWriteAccess").value));
                     }}>
-                        giveWriteAccess
+                        reportUploaded
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+
+                <div className='border'>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await getUploadQueue());
+                    }}>
+                        getUploadQueue
                     </button>
                 </div>
                 <br></br>

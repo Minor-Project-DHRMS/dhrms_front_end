@@ -13,6 +13,11 @@ const sendRecordsForUploadH = async (record) => {
   await contract.sendRecordsForUploadH(record);
 };
 
+const getUploadQueue = async () => {
+  const contract = Dhrms_Hos_Instance();
+  await contract.getUploadQueue();
+};
+
 const reportUploaded = async (PID, record, CID) => {
   const contract = Dhrms_Hos_Instance();
   await contract.reportUploaded(PID, record, CID);
@@ -55,6 +60,7 @@ const getHospitalPatientList = async (HID) => {
 export {
   addHospital,
   sendRecordsForUploadH,
+  getUploadQueue,
   reportUploaded,
   getHospitalDetails,
   getHospitalDoctorList,

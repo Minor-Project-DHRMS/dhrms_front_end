@@ -21,6 +21,8 @@ export default function Hospitalapprov() {
       getData(hospdata);
   }, [])
 
+
+  
   return (
     <div className="total">
       <div className="MainHead1">

@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import Btn from "../../../components/button/Btn";
 import "../../Approval/RegDetails/regdetails.css";
 import { useLocation } from "react-router-dom";
+import {approve,disApprove} from "../../../functions/Approve"
+import { useNavigate } from "react-router-dom";
 
 export default function Govtregdet() {
   let location = useLocation();
   let [gdata, setData] = useState(location.state.data);
 
+  const navigate=useNavigate();
   // useEffect(async () => {
   //  await setData(location.state.data);
   //   console.log(gdata);
@@ -34,7 +37,13 @@ export default function Govtregdet() {
             Wallet address : {gdata.address}
           </p>
         </div><td><Btn text={"Approve"}
-          // onclick=""
+          
+          onClick={async ()=>{
+            await approve(gdata.address).then(()=>{
+              navigate("/govapprovlist")
+            });
+          }}
+
           style={{
             width: "150px",
             marginLeft: "0px",
@@ -46,7 +55,12 @@ export default function Govtregdet() {
         </td>
         <td>
           <Btn text={"Reject"}
-            // onclick=""
+            onClick={async ()=>{
+              await disApprove(gdata.address).then(()=>{
+                navigate("/govapprovlist")
+              });
+            }}
+
             style={{
               width: "150px",
               marginLeft: "0px",

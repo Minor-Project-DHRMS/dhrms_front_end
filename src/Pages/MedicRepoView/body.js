@@ -58,9 +58,6 @@ export default function Body() {
 
   const sendUpload = async (e) => {
     e.preventDefault();
-
-   
-
       list.testReports.forEach(async (file) => {
         const ucid = await client.add(file);
         let temp = {
@@ -93,6 +90,8 @@ export default function Body() {
       });
 
       values.timeStamp= Math.floor(new Date().getTime() / 1000);
+
+      
 
       console.log(values);
   };

@@ -5,7 +5,7 @@ import Btn from "../../components/button/Btn.js";
 import TextArea from "../../components/textArea/TextArea";
 import mainLogo from "./mainLogo.png";
 import "./PatientReg.css";
-import client from '../../services/FileUpload'
+import client from "../../services/FileUpload";
 
 import { useNavigate } from "react-router-dom";
 import { getAccountAddress } from "../../services/AccountDetails";
@@ -49,9 +49,9 @@ const sug = ["pollen", "dry", "wind"];
 const PatientReg = () => {
     const [values, setValues] = useState(initialValues);
 
-    const register = async () => {
-        
-    };
+    const [photo, setPhoto] = useState();
+
+    const register = async () => { };
 
     const handleInputChangeM = (e) => {
         e.preventDefault();
@@ -81,10 +81,12 @@ const PatientReg = () => {
     const handleInputChangeFile = (e) => {
         e.preventDefault();
 
-        setValues({
-            ...values,
-            photo: URL.createObjectURL(e.target.files[0]),
-        });
+        // setValues({
+        //     ...values,
+        //     photo: e.target.files[0],
+        // });
+        setPhoto(e.target.files[0]);
+        console.log(photo);
     };
 
     const deleteI = (e) => {
@@ -102,33 +104,40 @@ const PatientReg = () => {
         });
     };
 
+    const uploadPhoto = async (photo) => {
+        await client.add(photo).then((photoid) => {
+            const path = photoid.path;
+            setValues({ ...values, photo: path });
+        });
+    }
+
     const submit = async () => {
-        const photoid = await client.add(values.photo);
-        setValues({...values, photo:photoid.path})
-        try {
-            if (
-                (await isGovernment(values.walletAddress)) ||
-                (await isHospital(values.walletAddress)) ||
-                (await isDoctor(values.walletAddress)) ||
-                (await isPatient(values.walletAddress))
-            ) {
-                console.log("account already exist");
-            } else {
-                if (await isGovernment(getAccountAddress())) {
-                    await addPatient(
-                        JSON.stringify(values),
-                        values.walletAddress
-                    );
-                } else {
-                    await addPatienttoList(
-                        JSON.stringify(values),
-                        values.walletAddress
-                    );
-                }
-            }
-        } catch (error) {
-            console.log(error);
-        }
+        await uploadPhoto(photo);
+        // try {
+        //     if (
+        //         (await isGovernment(values.walletAddress)) ||
+        //         (await isHospital(values.walletAddress)) ||
+        //         (await isDoctor(values.walletAddress)) ||
+        //         (await isPatient(values.walletAddress))
+        //     ) {
+        //         console.log("account already exist");
+        //     } else {
+        //         if (await isGovernment(getAccountAddress())) {
+        //             await addPatient(
+        //                 JSON.stringify(values),
+        //                 values.walletAddress
+        //             );
+        //         } else {
+        //             await addPatienttoList(
+        //                 JSON.stringify(values),
+        //                 values.walletAddress
+        //             );
+        //         }
+        //     }
+        // } catch (error) {
+        //     console.log(error);
+        // }
+        console.log(values);
     };
 
     return (
@@ -140,7 +149,9 @@ const PatientReg = () => {
             <div style={{ display: "flex", justifyContent: "center" }}>
                 <div className="upload_img doc_align_ht">
                     <img
-                        src={values.photo ? values.photo : mainLogo}
+                        src={
+                            photo ? URL.createObjectURL(photo) : mainLogo
+                        }
                         alt="Avatar"
                         className="doc_avatar"
                     />

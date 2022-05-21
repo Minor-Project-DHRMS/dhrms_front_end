@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Btn from "../../../components/button/Btn";
 import "../../Approval/RegDetails/regdetails.css";
 import { useLocation } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import {approve,disApprove} from "../../../functions/Approve"
 
 export default function Patientregs() {
     const location = useLocation();
+    const navigate = useNavigate();
     const [data, setData] = useState(location.state.data);
     // const [data, setData] = useState("");
 
@@ -16,20 +18,49 @@ export default function Patientregs() {
             <tr><h1 className="hdr11">Patient Registration Details</h1></tr>
             <div className="pbody11">
                 <tr className="imgcontact">
-                    <td className="pimg1">
-                    </td>
+       
+                    <img className="pimg1" src={new URL(`https://ipfs.infura.io/ipfs/${data.details.photo}`)}>
+                    </img>
+
+
                     <td className="genrl1">
-                        <p>Name:-{data.details.name}</p>
-                        <p>DOB:-{data.details.DOB}</p>
-                        <p>Gender:-{data.details.gender}</p>
-                        <p>address:-{data.details.address}</p>
-                        <p>blood:-{data.details.bloodGroup}</p>
-                        <p>height:-{data.details.height}</p>
-                        <p>weight:-{data.details.weight}</p>
-                    </td>
-                    <td className="contacts">
-                        <p>phone:-{data.details.phoneNo}</p>
-                        <p>emergency:-{data.details.emergencyPhoneNo}</p>
+                        <p>Name: {data.details.name}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>DOB: {data.details.DOB}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>Gender: {data.details.gender}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>address: {data.details.address}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>Email: {data.details.email}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>blood: {data.details.bloodGroup}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>height: {data.details.height}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>weight: {data.details.weight}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>PID: {data.details.walletAddress}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>phone: {data.details.phoneNo}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>Emergency Person: {data.details.emergencyPerson}</p>
+                        <hr className="mb-5"></hr>
+
+                        <p>Emergency Contact: {data.details.emergencyPhoneNo}</p>
+
+
+
                     </td>
                 </tr>
 
@@ -90,7 +121,7 @@ export default function Patientregs() {
                         <h3>Habits</h3>
                         <br></br>
                         <div className="disall">
-                        <b><u><p>Unhealthy Habits</p></u></b>
+                            <b><u><p>Unhealthy Habits</p></u></b>
                             {Object.values(data.details.unhealthyHabits).map((r) => {
                                 return (<p>{r}</p>);
                             })}
@@ -106,32 +137,46 @@ export default function Patientregs() {
                         </div>
                     </td>
                 </tr>
-                <td>
+
+                <td className="pbtns">
                     <Btn text={"Approve"}
-                        onclick=""
+                        
+                        onClick={async ()=>{
+                            await approve(data.address).then(()=>{
+                              navigate(-1)
+                            });
+                          }}    
+
                         style={{
 
                             width: "150px",
-                            marginRight: "100px",
-                            marginLeft: "42%",
+                            marginRight: "120px",
+                            // marginLeft: "42%",
                             fontSize: "16px",
                             textAlign: "center",
                             padding: "10px 0px"
                         }}
-                    /></td>
-                <td>
+                    />
+    
                     <Btn text={"Reject"}
-                        onclick=""
+                        
+                        onClick={async ()=>{
+                            await disApprove(data.address).then(()=>{
+                              navigate(-1)
+                            });
+                          }}
+
                         style={{
 
                             width: "150px",
-                            marginRight: "100px",
-                            marginLeft: "42%",
+                            marginLeft: "120px",
+                            // marginLeft: "42%",
                             fontSize: "16px",
                             textAlign: "center",
                             padding: "10px 0px"
                         }}
-                    /></td>
+                    />
+                </td>
             </div>
         </table>
     );

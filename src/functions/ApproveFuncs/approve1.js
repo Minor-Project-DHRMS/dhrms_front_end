@@ -102,7 +102,7 @@ const getGovApproveList = async () => {
 
 const getPatientApproveList = async () => {
     const list = await getApproveList();
-    console.log(list);
+    // console.log(list);
     const patList = list.filter((item) => item.userType === "PAT");
     let finalList = [];
 

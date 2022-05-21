@@ -6,6 +6,7 @@ import Btn from "../../components/button/Btn";
 import React, { useState } from "react";
 import client from "../../services/FileUpload";
 import { sendRecordsForUpload } from "../../functions/Dhrms";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // import { create } from "ipfs-http-client";
 
@@ -28,8 +29,14 @@ let initialList = {
 };
 
 export default function Body() {
+  const location=useLocation();
+  const navigate = useNavigate();
+
   const [values, setValues] = useState(initialValues);
   const [list, setList] = useState(initialList);
+  const [data, setData] = useState(location.state.data);
+
+
 
   // const [Report, setReportList] = useState([]);
   // const [Scanlist, setScanList] = useState([]);

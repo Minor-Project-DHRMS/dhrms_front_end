@@ -54,7 +54,9 @@ export const DoctorReg = () => {
             state.hospitalWallet,
             state.doctorWallet,
             state.doctorDept
-          );
+          ).then(()=>{
+            navigate(-1);
+        });
         } else {
           await addDoctortoList(
             state.doctorName,
@@ -65,7 +67,9 @@ export const DoctorReg = () => {
             state.hospitalWallet,
             state.doctorWallet,
             state.doctorDept
-          );
+          ).then(()=>{
+            navigate(-1);
+        });
         }
       }
     } catch (error) {

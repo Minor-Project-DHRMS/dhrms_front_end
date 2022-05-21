@@ -14,7 +14,11 @@ import {
   isPatient,
 } from "../../functions/Rbac";
 
-export const HospitalReg = () => {
+ export const HospitalReg = () => {
+  
+  const navigate = useNavigate();
+
+
   const [state, setState] = useState({
     hospitalName: "",
     phoneNo: "",
@@ -22,6 +26,8 @@ export const HospitalReg = () => {
   });
 
   const registerHospital = async () => {
+   
+
     try {
       if (
         (await isGovernment(state.walletAddress)) ||
@@ -36,19 +42,25 @@ export const HospitalReg = () => {
             state.hospitalName,
             state.phoneNo,
             state.walletAddress
-          );
+          ).then(()=>{
+            navigate(-1);
+        });
         } else {
           await addHospitaltoList(
             state.hospitalName,
             state.phoneNo,
             state.walletAddress
-          );
+          ).then(()=>{
+              navigate(-1);
+          });
         }
       }
     } catch (error) {
       console.log(error);
     }
   };
+
+
   const handleChanges = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -69,6 +81,7 @@ export const HospitalReg = () => {
           placeholder="Enter the Hospital name"
         />
       </div>
+
       <div className="hos_align_vt">
         <label className="lbl_hos">Phone No. : </label>
         <TxtInput
@@ -78,6 +91,7 @@ export const HospitalReg = () => {
           placeholder="Enter the phone no"
         />
       </div>
+
       <div className="hos_align_vt">
         <label className="lbl_hos">Wallet Address : </label>
         <TxtInput
@@ -93,3 +107,4 @@ export const HospitalReg = () => {
     </div>
   );
 };
+

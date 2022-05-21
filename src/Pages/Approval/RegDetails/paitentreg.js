@@ -2,9 +2,12 @@ import React, { useState } from "react";
 import Btn from "../../../components/button/Btn";
 import "../../Approval/RegDetails/regdetails.css";
 import { useLocation } from "react-router-dom";
+import {approve,disApprove} from "../../../functions/Approve"
+import { useNavigate } from "react-router-dom";
 
 
 export default function Patientregs() {
+    const navigate=useNavigate();
     const location = useLocation();
     const [data, setData] = useState(location.state.data);
 
@@ -44,7 +47,6 @@ export default function Patientregs() {
                         <h3>MedicHistory</h3>
                         <br></br>
                         <div className="disall">
-
                             {Object.values(data.history).map((r) => {
                                 return (<p>{r}</p>);
                             })}
@@ -62,7 +64,12 @@ export default function Patientregs() {
                 </tr>
                 <td>
                     <Btn text={"Approve"}
-                        onclick=""
+                        onClick={async ()=>{
+                            await approve(data.address).then(async ()=>{
+                              navigate("/paitentsapprovlist")
+                            });
+                        }}
+
                         style={{
 
                             width: "150px",
@@ -75,7 +82,12 @@ export default function Patientregs() {
                     /></td>
                 <td>
                     <Btn text={"Reject"}
-                        onclick=""
+                        onClick={async ()=>{
+                            await disApprove(data.address).then(async ()=>{
+                              navigate("/paitentsapprovlist")
+                            });
+                        }}
+
                         style={{
 
                             width: "150px",

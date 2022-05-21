@@ -2,7 +2,7 @@ import abi from "../utils/approve2.json";
 import { ethers } from "ethers";
 
 // const contractAddress = "0xB411641A967366282C6F47ae86604F5E7aBB9C97";
-const contractAddress = "0x51db36BE132cA2a81f948F41AD5B7788e8002AAd";
+const contractAddress = "0xDc0924F76074eF3e0BA7b856BFf55AcaE69b341C";
 const contractABI = abi.abi;
 
 const ApproveInstance2 = () => {

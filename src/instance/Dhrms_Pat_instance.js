@@ -2,7 +2,7 @@ import abi from "../utils/dhrms_pat.json";
 import { ethers } from "ethers";
 
 // const contractAddress = "0x96428b6b621D4A3CA50E2Ee6bE9Fc5fE06367B6C";
-const contractAddress = "0x6952c9ac7C11fE3CDE6126bdb95cc662F39f3d06";
+const contractAddress = "0xbBA6e467C08412E26F2438dD07Ece2CEFdaB669B";
 const contractABI = abi.abi;
 
 const Dhrms_Pat_Instance = () => {

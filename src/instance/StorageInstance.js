@@ -10,7 +10,7 @@ import { ethers } from "ethers";
 // approveContract1 add: 0xFdA1f0DC447c099d94E98D9fAf9afED13616fDda
 // approveContract2 add: 0xDc0924F76074eF3e0BA7b856BFf55AcaE69b341C
 
-const contractAddress = "0x2baF1A4753BDa7d5209A4b17d7fB70122FA8e720";
+const contractAddress = "0x490bb844C4e4C337638508a68881b02886b299db";
 const contractABI = abi.abi;
 
 const StorageInstance = () => {

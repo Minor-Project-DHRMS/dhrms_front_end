@@ -109,10 +109,6 @@ const getPatientApproveList = async () => {
 
     for (const item of patList) {
         const details = await getPatientDetails(item.instanceAdd);
-
-        console.log(details);
-
-        console.log(details);
         finalList.push({
             details: JSON.parse(details),
             address: item.userAdd,

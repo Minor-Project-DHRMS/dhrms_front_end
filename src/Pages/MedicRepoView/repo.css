@@ -1,16 +1,16 @@
-.head2{
+.head2 {
     border-radius: 10px;
     height: 9vh;
     width: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
-     font-size: 26px;
+    font-size: 26px;
 
     background: #FFFFFF14 0% 0% no-repeat padding-box;
 }
 
-.bb1{
+.bb1 {
     width: auto;
     height: auto;
     display: flex;
@@ -20,14 +20,14 @@
 
 }
 
-.cont1{
+.cont1 {
     margin-left: 280px;
     padding: 0px;
     height: auto;
-   
+
 }
 
-.bb2{
+.bb2 {
     background: #ffffff14 0% 0% no-repeat padding-box;
     border-radius: 13px;
     color: white;
@@ -36,10 +36,11 @@
     vertical-align: middle;
     width: auto;
     height: auto;
-    
+
 }
 
-.body1{ box-sizing: border-box;
+.body1 {
+    box-sizing: border-box;
     background: #ffffff14 0% 0% no-repeat padding-box;
     border-radius: 13px;
     color: white;
@@ -47,22 +48,33 @@
     width: 900px;
     align-items: center;
     vertical-align: middle;
-    
-}
-.date,.Dep{
-    margin-left: 80px;
-    font: normal normal normal 23px/28px Montserrat;
-letter-spacing: 0px;
-color: #FFFFFF;
+
 }
 
-.Dep{
+.date1,
+.Dep1 {
+    margin-left: 80px;
+    font: normal normal normal 23px/28px Montserrat;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+}
+
+.h {
+    margin-left: 80px;
+    font: normal normal normal 23px/28px Montserrat;
+    letter-spacing: 0px;
+    color: #FFFFFF;
+    margin-bottom: 30px;
+}
+
+/* .Dep{
     margin-bottom: 30px;
 }
 .date{ margin-bottom: 20px;
-   padding-top: 45px;}
+   padding-top: 45px;
+} */
 
-.MainHead2{
+.MainHead2 {
     vertical-align: middle;
     align-items: center;
     width: 70%;
@@ -70,16 +82,16 @@ color: #FFFFFF;
     justify-items: center;
     display: flex;
     height: fit-content;
-   
+
 }
 
-.Alltxt{
+.Alltxt {
     margin-left: 80px;
     max-height: min-content;
     display: inline-flex;
 }
 
-.cont1{
+.cont1 {
     width: 100%;
     height: 100%;
     display: flex;
@@ -90,18 +102,18 @@ color: #FFFFFF;
     align-items: center;
 }
 
-.container2{
+.container2 {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
 }
 
-.col2{
+.col2 {
     margin-left: 70px;
     margin-right: 60px;
 }
 
-.Upload{
+.Upload {
     margin-top: 30px;
     display: flex;
     justify-content: center;
@@ -115,9 +127,9 @@ color: #FFFFFF;
     color: #7f7f7f;
     padding-top: 0px;
     width: 0%;
-  }
-  
-  .input--mfile input[type="file"] {
+}
+
+.input--mfile input[type="file"] {
     position: absolute;
     top: 0;
     left: 0;
@@ -125,20 +137,23 @@ color: #FFFFFF;
     opacity: 0;
     padding-top: 0px;
     padding-left: 0px;
-  }
-.testrep1{
+}
+
+.testrep1 {
     margin-top: 20px;
     padding: 10px;
     background-color: #FFFFFF14;
     border-radius: 5px 5px 0px 0px;
 }
-.Scanrep1{
+
+.Scanrep1 {
     margin-top: 20px;
     padding: 10px;
     background-color: #FFFFFF14;
     border-radius: 5px 5px 0px 0px;
 }
-  .Testrepofile{
+
+.Testrepofile {
     display: flex;
     align-items: baseline;
     background-color: #FFFFFF14;
@@ -148,8 +163,9 @@ color: #FFFFFF;
     padding-left: 20px;
     color: #CAD5E2;
     caret-color: #CAD5E2;
-  }
-.Scanrepofile{
+}
+
+.Scanrepofile {
     display: flex;
     align-items: baseline;
     background-color: #FFFFFF14;

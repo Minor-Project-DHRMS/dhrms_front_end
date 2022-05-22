@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { ReactSession } from "react-client-session";
 import { getAccountAddress } from "../../services/AccountDetails";
-import Btn from "../../components/button/Btn";
-import "./patient.css";
-import mainLogo from "../patient/logo192.png";
+import Btn from "../button/Btn";
+// import "./patient.css";
+import mainLogo from "../ViewPatientDetails/logo192.png";
 import { useNavigate } from "react-router-dom";
-import LoadingInd from "../../components/Loading/LoadingInd";
+import LoadingInd from "../Loading/LoadingInd";
 import { Navigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 import {
   getDoctorsList,
   getHospitalsList,
   getPatientDetails,
   getRecordsHistory,
   removeReadAccess,
-  removeWriteAccess,
 } from "../../functions/Dhrms";
 
-const Patient = () => {
-  let navigate = useNavigate();
-
+const ViewPatientDetails = () => {
+  const location = useLocation();
   const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 1, 1, 1];
   // const [state, setState] = useState({
   //   name: "Nandeesh B K",
@@ -62,7 +62,7 @@ const Patient = () => {
   const getDetails = async () => {
     try {
       setLoading(true);
-      const currentAccount = getAccountAddress();
+      const currentAccount = location.state.address;
       const details = await getPatientDetails(currentAccount);
       setState(JSON.parse(details));
       setJournalList(await getRecordsHistory(currentAccount));
@@ -79,30 +79,24 @@ const Patient = () => {
     }
   };
 
-  const removeReadAccessD = async (index) => {
-    setLoading(true);
-    await removeReadAccess(doctorList[index].DID);
-    setDoctorList((doctorList) => doctorList.filter((_, i) => i !== index));
-    console.log(doctorList);
-    setLoading(false);
+  // useEffect(async () => {
+  //   setLoading(true);
+  //   await getDetails();
+  //   setLoading(false);
+  // }, [location.state.address]);
+  const useBeforeRender = (callback, deps) => {
+    const [isRun, setIsRun] = useState(false);
 
+    if (!isRun) {
+      callback();
+      setIsRun(true);
+    }
+
+    useEffect(() => () => setIsRun(false), deps);
   };
 
-  const removeWirteAccessH = async (index) => {
-    setLoading(true);
-    await removeWriteAccess(hospitalList[index].HID);
-    setHospitalList((hospitalList) =>
-      hospitalList.filter((_, i) => i !== index)
-    );
-    console.log(hospitalList);
-    setLoading(false);
-  };
-
-  useEffect(async () => {
-    setLoading(true);
-    await getDetails();
-    setLoading(false);
-  }, []);
+  // yourComponent.js
+  useBeforeRender(async () => await getDetails(), [location.state.address]);
 
   return (
     <>
@@ -114,9 +108,6 @@ const Patient = () => {
             <div className="pt_profile">
               <div className="pt_align_vt">
                 <img src={mainLogo} alt="Avatar" className="pt_avatar" />
-                <a href="/moreDetails" className="font_field">
-                  More Details
-                </a>
               </div>
               <div className="pt_details">
                 <div className="pt_name">
@@ -152,14 +143,6 @@ const Patient = () => {
                           {doctor.qualification}
                         </div>
                       </div>
-                      <span
-                        className="cross-cancel"
-                        onClick={() => {
-                          removeReadAccessD(index);
-                        }}
-                      >
-                        &#10005;
-                      </span>
                     </div>
                   );
                 })}
@@ -171,7 +154,6 @@ const Patient = () => {
                 {hospitalList?.map((hospital, index) => {
                   return (
                     // <div key={index} className="pth_details">
-
                     //   <div className="hos_write_access">
                     //     <div>
                     //       <div className="pth_name">
@@ -181,14 +163,6 @@ const Patient = () => {
                     //         Phone Number : {hospital.phoneNumber}
                     //       </div>
                     //     </div>
-
-                    //     <span
-                    //       onClick={() => {
-                    //         removeWirteAccessH(index);
-                    //       }}
-                    //     >
-                    //       &#10005;
-                    //     </span>
                     //   </div>
                     // </div>
                     <div key={index} className="pt_item">
@@ -201,14 +175,6 @@ const Patient = () => {
                           Phone Number : {hospital.phoneNumber}
                         </div>
                       </div>
-                      <span
-                        className="cross-cancel"
-                        onClick={() => {
-                          removeWirteAccessH(index);
-                        }}
-                      >
-                        &#10005;
-                      </span>
                     </div>
                   );
                 })}
@@ -244,11 +210,8 @@ const Patient = () => {
                 </div>
               </div>
               <Btn
-                text={"My Prescriptions"}
-                func={()=>navigate("/prescription", {
-                  state: { desc: journalList[journalList.length-1] },
-                })}
-                
+                text={"Prescriptions"}
+                func={log}
                 style={{
                   padding: "10px 20px",
                   width: "74%",
@@ -336,9 +299,9 @@ const PatientD = ({ recordIndex, journalDetails }) => {
       </div>
       <Btn
         text={"View"}
-        func={()=>navigate("/medicalReport", {
-          state: { record:  journalDetails},
-        })}
+        func={() => {
+          viewReport(recordIndex);
+        }}
         style={{
           padding: "10px 20px",
           width: "70px",
@@ -351,4 +314,4 @@ const PatientD = ({ recordIndex, journalDetails }) => {
   );
 };
 
-export default Patient;
+export default ViewPatientDetails;

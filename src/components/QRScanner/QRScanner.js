@@ -69,26 +69,24 @@ export const QRScanner = () => {
               <button
                 className="btn_scan btn_access"
                 onClick={async () => {
-
                   try {
                     const dhrmsContract = ContractInstance(window);
-              
+
                     if (await isDoctor(address)) {
                       const details = await giveReadAccess(address);
-                      console.log(details)
+                      console.log(details);
                     } else if (await isHospital(address)) {
                       const details = await giveWriteAccess(address);
-                      console.log(details)
+                      console.log(details);
                     }
-
-                    navigate('/PatientDash')
-
                   } catch (error) {
                     console.log(error);
                   }
-                  
+
                   setOpen(false);
+
                   close();
+                  navigate("/PatientDash");
                 }}
               >
                 Access

@@ -15,12 +15,22 @@ const sendRecordsForUploadH = async (record) => {
 
 const getUploadQueue = async () => {
   const contract = Dhrms_Hos_Instance();
-  await contract.getUploadQueue();
+  const records = await contract.getUploadQueue();
+  let recordList = [];
+  for (const record of records) {
+    const recordDetails = JSON.parse(record);
+    const patientDetails = JSON.parse(await getPatientDetails(recordDetails.PID));
+    recordList.push({
+        patientDetails: patientDetails,
+        recordDetails : recordDetails
+    });
+  }
+  return recordList;
 };
 
-const reportUploaded = async (PID, record, CID) => {
+const reportUploaded = async (PID, CID, record) => {
   const contract = Dhrms_Hos_Instance();
-  await contract.reportUploaded(PID, record, CID);
+  await contract.reportUploaded(PID, CID, JSON.stringify(record));
 };
 
 const getHospitalDetails = async (HID) => {
@@ -34,14 +44,7 @@ const getHospitalDoctorList = async (HID) => {
   let finalList = [];
   for (const address of list) {
     const data = await getDoctorDetails(address);
-    finalList.push({
-      doctorName: data[0],
-      phoneNumber: data[1],
-      qualification: data[2],
-      photo: data[3],
-      dob: data[4],
-      department: data[5],
-    });
+    finalList.push(data);
   }
   return finalList;
 };

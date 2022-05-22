@@ -30,13 +30,19 @@ import ListReport from "./Pages/listReport/ListReport";
 import { QRCodeGen } from "./components/QRPage/QRCodeGen";
 import { QRScanner } from "./components/QRScanner/QRScanner";
 import Register from "./Pages/login/Register";
+import PatientDetailsView from "./Pages/GovMedicalRepoView/PatientDetailsView"
 import Test from "./test/test";
+import ViewPatientDetails from "./components/ViewPatientDetails/ViewPatientDetails";
+import Prescriptions from "./Pages/patient/Prescriptions";
 
 const App = () => {
   return (
     <Router>
       <div className="container">
         <Routes>
+          //General pages
+          <Route exact path="/viewPatDetails" element={<ViewPatientDetails />} />
+
           //approval pages
           <Route exact path="/approveDoc" element={<Docregs />} />
           <Route exact path="/approveGov" element={<Govtregdet />} />
@@ -54,6 +60,7 @@ const App = () => {
           //Medical Report pages
           <Route exact path="/medicalrepupload" element={<Body />} />
           <Route exact path="/medicalReport" element={<PatientDetails />} />
+          <Route exact path="/medicalReportview" element={<PatientDetailsView />} />
           <Route exact path="/viewScan" element={<ViewScan />} />
           <Route exact path="/viewReport" element={<ViewReport />} />
           <Route exact path="/listScan" element={<ListScan />} />
@@ -66,17 +73,12 @@ const App = () => {
           <Route exact path="/govDash" element={<Government />} />
           <Route exact path="/PatientDash" element={<Patient />} />
           <Route exact path="/moreDetails" element={<MoreDetails />} />
-          <Route path="moreDetails/qrscan" element={<QRScanner />} />
+          <Route path="/qrscan" element={<QRScanner />} />
+          <Route path="/prescription" element={<Prescriptions />} />
           <Route path="/docdash" element={<DocDash />} />
-          <Route
-            path="/PatientDash/moredetails"
-            element={
-              <QRCodeGen />
-            }
-          />
           <Route exact path="/HospitalDash" element={<Hospital />} />
           <Route
-            path="/HospitalDash/QRCode"
+            path="/QRCode"
             element={
               <QRCodeGen />
             }

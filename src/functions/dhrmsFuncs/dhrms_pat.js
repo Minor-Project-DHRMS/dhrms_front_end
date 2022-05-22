@@ -37,14 +37,7 @@ const getDoctorsList = async (PID) => {
     let finalList = [];
     for (const address of list) {
         const data = await getDoctorDetails(address);
-        finalList.push({
-            doctorName: data[0],
-            phoneNumber: data[1],
-            qualification: data[2],
-            photo: data[3],
-            dob: data[4],
-            department: data[5],
-        });
+        finalList.push(data);
     }
     return finalList;
 };
@@ -57,6 +50,7 @@ const getHospitalsList = async (PID) => {
     for (const address of list) {
         const data = await getHospitalDetails(address);
         hospitalList.push({
+            HID : address,
             hospitalName: data[0],
             phoneNumber: data[1],
         });
@@ -71,9 +65,11 @@ const getRecordsHistory = async (PID) => {
     for (const cid of list) {
         fetch(`https://ipfs.infura.io/ipfs/${cid}`)
             .then((res) => res.json())
-            .then((json) => {
+            .then( async (record) => {
+                const doctorDetails = await getDoctorDetails(record.DID);
                 recordList.push({
-                    json
+                    doctorDetails: doctorDetails,
+                    recordDetails : record
                 });
             });
     }

@@ -6,20 +6,41 @@ import LoadingInd from "../../components/Loading/LoadingInd";
 import ContractInstance from "../../services/ContractInstance";
 import { useNavigate } from "react-router-dom";
 import { getAccountAddress } from "../../services/AccountDetails";
-import { getHospitalDetails, getUploadQueue } from "../../functions/Dhrms";
+import client from "../../services/FileUpload";
 
+import {
+  getHospitalDetails,
+  getHospitalDoctorList,
+  getHospitalPatientList,
+  getUploadQueue,
+  reportUploaded,
+} from "../../functions/Dhrms";
+import { calculateAge } from "../../services/CalculateAge";
+import ViewReport from "../viewReport/viewReport";
 
 const Hospital = () => {
   let navigate = useNavigate();
   const [patientList, setPatientList] = useState([]);
   const [currentAccount, setCurrentAccount] = useState(getAccountAddress());
   const [doctorList, setDoctorList] = useState([]);
+  const [recordList, setRecordList] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hospitalDetails, setHospitalDetails] = useState({
     hospitalName: "",
     phoneNo: "",
     HID: "",
   });
+
+  const viewReport = async (index) => {
+    console.log(index);
+    // const cid = await client.add(JSON.stringify(recordList[0].recordDetails));
+    // console.log(cid);
+    // const upload = await reportUploaded(
+    //   recordList[0].recordDetails.PID,
+    //   cid.path,
+    //   recordList[0].recordDetails
+    // );
+  };
 
   const getDetails = async () => {
     try {
@@ -30,8 +51,15 @@ const Hospital = () => {
         phoneNo: details[1],
         HID: currentAccount,
       });
-      const uploadList = await getUploadQueue()
-      
+      const docList = await getHospitalDoctorList(currentAccount);
+      console.log(docList);
+      setDoctorList(docList);
+      const patList = await getHospitalPatientList(currentAccount);
+      setPatientList(patList);
+      console.log(patList);
+      const uploadList = await getUploadQueue();
+      console.log(uploadList);
+      setRecordList(uploadList);
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +68,6 @@ const Hospital = () => {
     getDetails();
   }, []);
 
-  const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 1, 1, 1];
   var log = () => {
     console.log("hello");
   };
@@ -58,30 +85,87 @@ const Hospital = () => {
         <div
           className="qr-lbl"
           onClick={() =>
-            navigate("QRCode", { state: { address: currentAccount } })
+            navigate("/QRCode", { state: { address: currentAccount } })
           }
         >
           QR Code
         </div>
       </div>
       <div className="list">
-        <div className="bio-hos">
-          <div className="hos-head-font">Patients</div>
+        <div className="align-vh">
+          <div className="bio-hos bio-user bio-pat">
+            <div className="hos-head-font">Patients</div>
+            <div className="list-items">
+              {patientList.map((patient, index) => {
+                return (
+                  <div key={index} className="item">
+                    <img src={mainLogo} alt="Avatar" className="avatar" />
+                    <div className="item_details">
+                      <div>{patient.name}</div>
+                      <div className="div-align">
+                        <div className="font-field">{patient.gender}</div>
+                        <div className="font-field">
+                          Age : {calculateAge(patient.DOB)}
+                        </div>
+                      </div>
+                    </div>
+                    <Btn
+                      text={"View Details"}
+                      func={() =>
+                        navigate("/viewPatDetails", {
+                          state: { address: patient.walletAddress },
+                        })
+                      }
+                      style={{
+                        padding: "10px 15px",
+                        width: "100px",
+                        fontSize: "12px",
+                      }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="bio-hos bio-user">
+            <div className="hos-head-font">Doctors</div>
+            <div className="list-items">
+              {doctorList.map((doctor, index) => {
+                return (
+                  <div key={index} className="item">
+                    <img src={mainLogo} alt="Avatar" className="avatar" />
+                    <div className="item_details">
+                      <div>{doctor.doctorName} </div>
+                      <div className="div-align">
+                        <div className="font-field">
+                          {doctor.department}, {doctor.qualification}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <div className="bio-hos bio-report">
+          <div className="hos-head-font">Patient Reports</div>
           <div className="list-items">
-            {nums.map((patient, index) => {
+            {recordList.map((record, index) => {
               return (
                 <div key={index} className="item">
-                  <img src={mainLogo} alt="Avatar" className="avatar" />
                   <div className="item_details">
-                    <div>Sahil Ljhjhjhjhj Naikwadi</div>
+                    <div>Name : {record.patientDetails.name}</div>
                     <div className="div-align">
-                      <div className="font-field">Male</div>
-                      <div className="font-field">Age : 20</div>
+                      <div className="font-field">
+                        PurposeVisit : {record.recordDetails.purposeVisit}
+                      </div>
                     </div>
                   </div>
                   <Btn
                     text={"View Report"}
-                    func={log}
+                    func={() => viewReport(index)}
                     style={{
                       padding: "10px 15px",
                       width: "100px",
@@ -92,52 +176,6 @@ const Hospital = () => {
               );
             })}
           </div>
-        </div>
-        <div className="bio-hos">
-          <div className="hos-head-font">Doctors</div>
-          <div className="list-items">
-            {nums.map((patient, index) => {
-              return (
-                <div key={index} className="item">
-                  <img src={mainLogo} alt="Avatar" className="avatar" />
-                  <div className="item_details">
-                    <div>Dr. Sahil Ljhjhjhjhj Naikwadi</div>
-                    <div className="div-align">
-                      <div className="font-field">Cardiologist, MBBS, MD</div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-      <div className="bio-hos">
-        <div className="hos-head-font">Patients</div>
-        <div className="list-items">
-          {nums.map((patient, index) => {
-            return (
-              <div key={index} className="item">
-                <img src={mainLogo} alt="Avatar" className="avatar" />
-                <div className="item_details">
-                  <div>Sahil Ljhjhjhjhj Naikwadi</div>
-                  <div className="div-align">
-                    <div className="font-field">Male</div>
-                    <div className="font-field">Age : 20</div>
-                  </div>
-                </div>
-                <Btn
-                  text={"View Report"}
-                  func={log}
-                  style={{
-                    padding: "10px 15px",
-                    width: "100px",
-                    fontSize: "12px",
-                  }}
-                />
-              </div>
-            );
-          })}
         </div>
       </div>
     </div>

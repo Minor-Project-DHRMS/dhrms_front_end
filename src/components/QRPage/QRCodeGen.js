@@ -4,7 +4,7 @@ import "./QRCodeGen.css";
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export const QRCodeGen = ({ text }) => {
+export const QRCodeGen = () => {
   const location = useLocation();
   const [src, setSrc] = useState("");
   console.log(location.state.address);

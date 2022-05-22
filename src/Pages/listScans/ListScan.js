@@ -35,7 +35,7 @@ var key=0;
 
 function Data(value){
     return(
-        <Views key={key++} text={value.placeholder} cid={value.cid} />
+        <Views key={key++} text={value.name} cid={value.cid} />
     )
 }
 

@@ -24,6 +24,7 @@ const addPatienttoList = async (_details, _PID) => {
 
 const getPatientDetails = async (_instanceAddress) => {
     const approveContract = ApproveInstance2();
+    // console.log(approveContract)
     const details = await approveContract.getPatientDetails(_instanceAddress);
     return details;
 };

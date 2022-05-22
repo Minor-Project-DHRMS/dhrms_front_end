@@ -41,7 +41,7 @@ var index=1;
 var obj=[];
 function Data(value){
     return(
-        <Views text={value.placeholder} key={index++} cid={value.cid}/>
+        <Views text={value.name} key={index++} cid={value.cid}/>
     )
 }
 

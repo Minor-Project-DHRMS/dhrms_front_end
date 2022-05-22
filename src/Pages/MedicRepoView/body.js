@@ -6,14 +6,16 @@ import Btn from "../../components/button/Btn";
 import React, { useState } from "react";
 import client from "../../services/FileUpload";
 import { sendRecordsForUpload } from "../../functions/Dhrms";
+import { useLocation, useNavigate } from "react-router-dom";
 
 // import { create } from "ipfs-http-client";
 
 // const client = create("https://ipfs.infura.io:5001/api/v0");
 
 let initialValues = {
-  PID: "0xB67A1a2Ffae004f9fF0B2Dd630DF061971e30866",
-  HID: "0xfBDff2539Fb4AC71cd6061CcB5c7d717b356C186",
+  PID: "",
+  HID: "",
+  DID: "",
   timeStamp: "",
   purposeVisit: "",
   prescription: "",
@@ -28,11 +30,27 @@ let initialList = {
 };
 
 export default function Body() {
+  const location=useLocation();
+  const navigate = useNavigate();
+
   const [values, setValues] = useState(initialValues);
   const [list, setList] = useState(initialList);
+  const data={
+    name:"sahil kdsja dfkjasdl",
+    pid: "0x32jk4jkh23jk4h2345hbb23k5h"
+  }
+  // const [data, setData] = useState(location.state.data);
 
-  // const [Report, setReportList] = useState([]);
-  // const [Scanlist, setScanList] = useState([]);
+
+  const date=new Date();
+  const sdate=""+date.getDate()+
+  "/"+(date.getMonth()+1)+
+  "/"+date.getFullYear();
+
+  console.log(sdate);
+
+  const [Report, setReportList] = useState([]);
+  const [Scanlist, setScanList] = useState([]);
 
   const handleInputChangeM = (e) => {
     e.preventDefault();
@@ -89,9 +107,9 @@ export default function Body() {
         scans: oldscans.push(temp),
       });
     }
-    values.timeStamp = Math.floor(new Date().getTime() / 1000);
+    values.timeStamp = Math.floor(new Date().getTime());
 
-    await sendRecordsForUpload(JSON.stringify(values));
+    // await sendRecordsForUpload(JSON.stringify(values));
     console.log(values);
   };
 
@@ -105,8 +123,9 @@ export default function Body() {
       <div className="bb1">
         <Header />
         <div className="bb2">
-          <div className="date">Date:</div>
-          <div className="Dep">Department: Cardiology , orthology</div>
+          <div className="date">Name : {data.name}</div>
+          <div className="Dep">PID : {data.pid}</div>
+          <h2 className="h">Date : {sdate}</h2>
           <div className="Alltxt">
             <div className="col1">
               <TextArea

@@ -25,16 +25,8 @@ export default function Paitentsapprov() {
   }
 
   useEffect(async () => {
-    // fetch(`https://ipfs.infura.io/ipfs/QmbsBgfwYyyGeFUwdPFTEewTYDF2KoaKDyfbyxq9e84pwU`).
-    //   then(r => r.text()).
-    //   then((d) => {
-    //     setData(JSON.parse(d));
-    //   })
 
     await getData();
-
-
-
   }, [])
 
   return (
@@ -48,20 +40,21 @@ export default function Paitentsapprov() {
         {Object.values(patdata).map((s, index) => {
           return (
             <div key={index}>
-              <div className="lis11">
+              <div className="plist">
 
                 <p className="obj1"></p>
 
-                <h3 className="nmage"><p className="nm">&nbsp;{s.name} </p>
-                  <p className="age">{s.gender} &nbsp;&nbsp;Age:&nbsp;&nbsp;{s.dob}</p>
+                <h3 className="nmage">
+                  <p className="fsize">Name: &nbsp;{s.details.name} </p>
+                  <p className="fsize">PID:&nbsp;{s.address}</p>
                 </h3>
                 <Btn text={"View"}
                   onClick={() => {
-                    navigate("/ApprovePat", { state: { data: s } })
+                    navigate("/approvePat", { state: { data: s } })
                   }}
                   style={{
-                    width: "100px",
-                    marginRight: "90px",
+                    // width: "100px",
+                    // marginRight: "90px",
                     fontSize: "14px",
                     padding: "10px 20px"
                   }}

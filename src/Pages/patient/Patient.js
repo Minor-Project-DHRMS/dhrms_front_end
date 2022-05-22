@@ -247,7 +247,7 @@ const Patient = () => {
                 text={"My Prescriptions"}
                 func={() =>
                   navigate("/prescription", {
-                    state: { desc: journalList[journalList.length - 1] },
+                    state: { record: journalList },
                   })
                 }
                 style={{
@@ -329,7 +329,7 @@ const PatientD = ({ recordIndex, journalDetails }) => {
           {journalDetails.doctorDetails.doctorName}
         </div>
         <div className="pt_journal_font">
-        {journalDetails.recordDetails.timeStamp}
+        {dateFormate(journalDetails.recordDetails.timeStamp)}
         </div>
       </div>
       <Btn

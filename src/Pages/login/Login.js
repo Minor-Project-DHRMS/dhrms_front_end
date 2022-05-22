@@ -98,8 +98,7 @@ const Login = () => {
         <LoadingInd loading={loading} />
       ) : (
         <div className="btn-grp">
-          <Btn text={"Connect Wallet to login"} func={connectWallet} />
-          <Btn text={"Register"} func={() => navigate("/register")} />
+          <Btn text={"Connect Wallet"} func={connectWallet} />
         </div>
       )}
     </div>

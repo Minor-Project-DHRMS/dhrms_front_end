@@ -253,7 +253,7 @@ export default function Test(prop) {
                     <input type="text" id="removeReadAccess"></input>
                     <button className='m' onClick={async (e) => {
                         // console.log(document.getElementById("getApproveList").value);
-                        console.log(await removeReadAccess(document.getElementById("giveWriteAccess").value));
+                        console.log(await removeReadAccess(document.getElementById("removeReadAccess").value));
                     }}>
                         removeReadAccess
                     </button>
@@ -263,12 +263,12 @@ export default function Test(prop) {
                 {/* ----------------------------------- */}
 
                 <div className='border'>
-                    <input type="text" id="removeReadAccess"></input>
+                    <input type="text" id="removeWriteAccess"></input>
                     <button className='m' onClick={async (e) => {
                         // console.log(document.getElementById("getApproveList").value);
-                        console.log(await removeReadAccess(document.getElementById("giveWriteAccess").value));
+                        console.log(await removeWriteAccess(document.getElementById("removeWriteAccess").value));
                     }}>
-                        removeReadAccess
+                        removeWriteAccess
                     </button>
                 </div>
                 <br></br>

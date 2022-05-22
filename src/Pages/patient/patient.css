@@ -234,6 +234,17 @@ a.font_field {
 .cross-cancel:hover{
   cursor: pointer;
 }
+.bio-pres{
+  width: 40%;
+}
+.item-size{
+  height: 20vh;
+  text-align: left;
+  overflow-y: scroll;
+}
+.pres_font{
+  margin-top: 5px;
+}
 @media only screen and (max-width: 900px) {
   .patient {
     width: 100%;

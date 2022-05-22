@@ -165,7 +165,11 @@ const Hospital = () => {
                   </div>
                   <Btn
                     text={"View Report"}
-                    func={() => viewReport(index)}
+                    func={() =>
+                      navigate("/medicalReportview", {
+                        state: { record: record },
+                      })
+                    }
                     style={{
                       padding: "10px 15px",
                       width: "100px",

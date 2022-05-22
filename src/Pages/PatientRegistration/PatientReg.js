@@ -113,30 +113,30 @@ const PatientReg = () => {
 
     const submit = async () => {
         await uploadPhoto(photo);
-        // try {
-        //     if (
-        //         (await isGovernment(values.walletAddress)) ||
-        //         (await isHospital(values.walletAddress)) ||
-        //         (await isDoctor(values.walletAddress)) ||
-        //         (await isPatient(values.walletAddress))
-        //     ) {
-        //         console.log("account already exist");
-        //     } else {
-        //         if (await isGovernment(getAccountAddress())) {
-        //             await addPatient(
-        //                 JSON.stringify(values),
-        //                 values.walletAddress
-        //             );
-        //         } else {
-        //             await addPatienttoList(
-        //                 JSON.stringify(values),
-        //                 values.walletAddress
-        //             );
-        //         }
-        //     }
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        try {
+            if (
+                (await isGovernment(values.walletAddress)) ||
+                (await isHospital(values.walletAddress)) ||
+                (await isDoctor(values.walletAddress)) ||
+                (await isPatient(values.walletAddress))
+            ) {
+                console.log("account already exist");
+            } else {
+                if (await isGovernment(getAccountAddress())) {
+                    await addPatient(
+                        JSON.stringify(values),
+                        values.walletAddress
+                    );
+                } else {
+                    await addPatienttoList(
+                        JSON.stringify(values),
+                        values.walletAddress
+                    );
+                }
+            }
+        } catch (error) {
+            console.log(error);
+        }
         console.log(values);
     };
 

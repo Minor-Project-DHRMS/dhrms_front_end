@@ -24,8 +24,8 @@ export default function Docregs() {
         </tr> */}
 
         <tr className="docdetails">
-          <td className="dimg1">
-          </td>
+          <img className="dimg1" src={new URL(`https://ipfs.infura.io/ipfs/${ddata.details.photo}`)}>
+          </img>
 
           <tr className="genrl2">
             <p className="m-b">DR.name: {ddata.details.doctorName}</p>

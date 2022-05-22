@@ -102,6 +102,7 @@ const getGovApproveList = async () => {
 
 const getPatientApproveList = async () => {
     const list = await getApproveList();
+    // console.log(list);
     const patList = list.filter((item) => item.userType === "PAT");
     let finalList = [];
 
@@ -109,10 +110,6 @@ const getPatientApproveList = async () => {
 
     for (const item of patList) {
         const details = await getPatientDetails(item.instanceAdd);
-
-        console.log(details);
-
-        console.log(details);
         finalList.push({
             details: JSON.parse(details),
             address: item.userAdd,

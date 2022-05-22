@@ -126,7 +126,6 @@ export default function Body() {
           <div className="date">Name : {data.name}</div>
           <div className="Dep">PID : {data.pid}</div>
           <h2 className="h">Date : {sdate}</h2>
-          
           <div className="Alltxt">
             <div className="col1">
               <TextArea

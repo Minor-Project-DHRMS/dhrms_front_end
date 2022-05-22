@@ -30,6 +30,7 @@ import ListReport from "./Pages/listReport/ListReport";
 import { QRCodeGen } from "./components/QRPage/QRCodeGen";
 import { QRScanner } from "./components/QRScanner/QRScanner";
 import Register from "./Pages/login/Register";
+import PatientDetailsView from "./Pages/GovMedicalRepoView/PatientDetailsView"
 import Test from "./test/test";
 
 const App = () => {
@@ -54,6 +55,7 @@ const App = () => {
           //Medical Report pages
           <Route exact path="/medicalrepupload" element={<Body />} />
           <Route exact path="/medicalReport" element={<PatientDetails />} />
+          <Route exact path="/medicalReportview" element={<PatientDetailsView />} />
           <Route exact path="/viewScan" element={<ViewScan />} />
           <Route exact path="/viewReport" element={<ViewReport />} />
           <Route exact path="/listScan" element={<ListScan />} />

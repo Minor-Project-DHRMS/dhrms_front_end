@@ -35,11 +35,12 @@ export default function Body() {
 
   const [values, setValues] = useState(initialValues);
   const [list, setList] = useState(initialList);
-  const data={
-    name:"sahil kdsja dfkjasdl",
-    pid: "0x32jk4jkh23jk4h2345hbb23k5h"
-  }
-  // const [data, setData] = useState(location.state.data);
+  // const data={
+  //   name:"sahil kdsja dfkjasdl",
+  //   pid: "0x32jk4jkh23jk4h2345hbb23k5h"
+  // }
+  const [data, setData] = useState(location.state.obj);
+  console.log(data);
 
 
   const date=new Date();
@@ -108,9 +109,16 @@ export default function Body() {
       });
     }
     values.timeStamp = Math.floor(new Date().getTime());
+    values.PID=data.patientDetails.walletAddress;
+    values.DID=data.did;
+    values.HID=data.hid;
 
-    // await sendRecordsForUpload(JSON.stringify(values));
     console.log(values);
+
+    await sendRecordsForUpload(JSON.stringify(values)).then(()=>{
+      navigate(-1);
+    });
+    
   };
 
   // const printReport = () => {
@@ -123,8 +131,8 @@ export default function Body() {
       <div className="bb1">
         <Header />
         <div className="bb2">
-          <div className="date1">Name : {data.name}</div>
-          <div className="Dep1">PID : {data.pid}</div>
+          <div className="date1">Name : {data.patientDetails.name}</div>
+          <div className="Dep1">PID : {data.patientDetails.walletAddress}</div>
           <h2 className="h">Date : {sdate}</h2>
           <div className="Alltxt">
             <div className="col1">

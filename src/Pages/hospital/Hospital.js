@@ -31,17 +31,6 @@ const Hospital = () => {
     HID: "",
   });
 
-  const viewReport = async (index) => {
-    console.log(index);
-    // const cid = await client.add(JSON.stringify(recordList[0].recordDetails));
-    // console.log(cid);
-    // const upload = await reportUploaded(
-    //   recordList[0].recordDetails.PID,
-    //   cid.path,
-    //   recordList[0].recordDetails
-    // );
-  };
-
   const getDetails = async () => {
     try {
       const currentAccount = getAccountAddress();
@@ -99,7 +88,7 @@ const Hospital = () => {
               {patientList.map((patient, index) => {
                 return (
                   <div key={index} className="item">
-                    <img src={mainLogo} alt="Avatar" className="avatar" />
+                    <img src={new URL(new URL(`https://ipfs.infura.io/ipfs/${patient.photo}`))} alt="Avatar" className="avatar" />
                     <div className="item_details">
                       <div>{patient.name}</div>
                       <div className="div-align">
@@ -133,7 +122,7 @@ const Hospital = () => {
               {doctorList.map((doctor, index) => {
                 return (
                   <div key={index} className="item">
-                    <img src={mainLogo} alt="Avatar" className="avatar" />
+                    <img src={new URL(doctor.photo)} alt="Avatar" className="avatar" />
                     <div className="item_details">
                       <div>{doctor.doctorName} </div>
                       <div className="div-align">

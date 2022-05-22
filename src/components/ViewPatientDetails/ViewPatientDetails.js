@@ -19,6 +19,7 @@ import {
 
 const ViewPatientDetails = () => {
   const location = useLocation();
+  let navigate = useNavigate();
   const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 1, 1, 1, 1];
   // const [state, setState] = useState({
   //   name: "Nandeesh B K",
@@ -86,6 +87,7 @@ const ViewPatientDetails = () => {
   // }, [location.state.address]);
   const useBeforeRender = (callback, deps) => {
     const [isRun, setIsRun] = useState(false);
+    
 
     if (!isRun) {
       callback();
@@ -107,7 +109,7 @@ const ViewPatientDetails = () => {
           <div className="pt_align_ht pt_vt_media">
             <div className="pt_profile">
               <div className="pt_align_vt">
-                <img src={mainLogo} alt="Avatar" className="pt_avatar" />
+                <img src={new URL(`https://ipfs.infura.io/ipfs/${state.photo}`)} alt="Avatar" className="pt_avatar" />
               </div>
               <div className="pt_details">
                 <div className="pt_name">
@@ -136,7 +138,7 @@ const ViewPatientDetails = () => {
                 {doctorList?.map((doctor, index) => {
                   return (
                     <div key={index} className="pt_item">
-                      <img src={mainLogo} alt="Avatar" className="ptd_avatar" />
+                      <img src={new URL(`${doctor.photo}`)} alt="Avatar" className="ptd_avatar" />
                       <div className="ptd_details">
                         <div className="ptd_name">{doctor.doctorName}</div>
                         <div className="ptd_font_field">
@@ -211,7 +213,11 @@ const ViewPatientDetails = () => {
               </div>
               <Btn
                 text={"Prescriptions"}
-                func={log}
+                func={() =>
+                  navigate("/prescription", {
+                    state: { record: journalList },
+                  })
+                }
                 style={{
                   padding: "10px 20px",
                   width: "74%",
@@ -280,10 +286,7 @@ const LineBar = ({ index, listLength }) => {
 
 const PatientD = ({ recordIndex, journalDetails }) => {
   let navigate = useNavigate();
-  var viewReport = (index) => {
-    console.log(index);
-    navigate("/register");
-  };
+  
   return (
     <div className="pt_journal_item pt_align_ht">
       <div className="journal_details pt_align_vt">
@@ -299,9 +302,11 @@ const PatientD = ({ recordIndex, journalDetails }) => {
       </div>
       <Btn
         text={"View"}
-        func={() => {
-          viewReport(recordIndex);
-        }}
+        func={() =>
+          navigate("/medicalReport", {
+            state: { record: journalDetails },
+          })
+        }
         style={{
           padding: "10px 20px",
           width: "70px",

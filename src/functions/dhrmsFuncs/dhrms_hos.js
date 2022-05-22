@@ -20,7 +20,9 @@ const getUploadQueue = async () => {
   for (const record of records) {
     const recordDetails = JSON.parse(record);
     const patientDetails = JSON.parse(await getPatientDetails(recordDetails.PID));
+    const docDetails = await getDoctorDetails(recordDetails.DID);
     recordList.push({
+        doctorDetails: docDetails,
         patientDetails: patientDetails,
         recordDetails : recordDetails
     });

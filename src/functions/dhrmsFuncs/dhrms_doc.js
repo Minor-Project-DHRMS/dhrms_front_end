@@ -33,7 +33,7 @@ const getDoctorDetails = async (DID) => {
   const contract = Dhrms_Doc_Instance();
   const data = await contract.getDoctorDetails(DID);
   const hosAdd = await contract.getDoctorH(DID);
-  const hosDetails = await getHospitalDetails(hosAdd);
+  const hos = await getHospitalDetails(hosAdd);
   const url = `https://ipfs.infura.io/ipfs/${data[3]}`;
   let details = {
     doctorName: data[0],
@@ -44,9 +44,9 @@ const getDoctorDetails = async (DID) => {
     department: data[5],
     DID: DID,
     hosDetails: {
-        hospitalName: hosDetails[0],
-        phoneNumber: hosDetails[1],
-        HID: hosAdd
+      hospitalName: hos[0],
+      phoneNumber: hos[1],
+      HID: hosAdd,
     },
   };
 

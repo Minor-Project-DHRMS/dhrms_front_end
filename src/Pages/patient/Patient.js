@@ -15,6 +15,7 @@ import {
   removeReadAccess,
   removeWriteAccess,
 } from "../../functions/Dhrms";
+import { dateFormate } from "../../services/DateFormate";
 
 const Patient = () => {
   let navigate = useNavigate();
@@ -85,7 +86,6 @@ const Patient = () => {
     setDoctorList((doctorList) => doctorList.filter((_, i) => i !== index));
     console.log(doctorList);
     setLoading(false);
-
   };
 
   const removeWirteAccessH = async (index) => {
@@ -245,10 +245,11 @@ const Patient = () => {
               </div>
               <Btn
                 text={"My Prescriptions"}
-                func={()=>navigate("/prescription", {
-                  state: { desc: journalList[journalList.length-1] },
-                })}
-                
+                func={() =>
+                  navigate("/prescription", {
+                    state: { desc: journalList[journalList.length - 1] },
+                  })
+                }
                 style={{
                   padding: "10px 20px",
                   width: "74%",
@@ -316,11 +317,8 @@ const LineBar = ({ index, listLength }) => {
 };
 
 const PatientD = ({ recordIndex, journalDetails }) => {
+
   let navigate = useNavigate();
-  var viewReport = (index) => {
-    console.log(index);
-    navigate("/register");
-  };
   return (
     <div className="pt_journal_item pt_align_ht">
       <div className="journal_details pt_align_vt">
@@ -331,14 +329,16 @@ const PatientD = ({ recordIndex, journalDetails }) => {
           {journalDetails.doctorDetails.doctorName}
         </div>
         <div className="pt_journal_font">
-          {journalDetails.recordDetails.timeStamp}
+        {journalDetails.recordDetails.timeStamp}
         </div>
       </div>
       <Btn
         text={"View"}
-        func={()=>navigate("/medicalReport", {
-          state: { record:  journalDetails},
-        })}
+        func={() =>
+          navigate("/medicalReport", {
+            state: { record: journalDetails },
+          })
+        }
         style={{
           padding: "10px 20px",
           width: "70px",

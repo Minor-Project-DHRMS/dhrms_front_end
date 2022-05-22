@@ -15,7 +15,7 @@ import {
   removeReadAccess,
   removeWriteAccess,
 } from "../../functions/Dhrms";
-// import { dateFormate } from "../../services/DateFormate";
+import { dateFormate } from "../../services/DateFormate";
 
 const Patient = () => {
   let navigate = useNavigate();

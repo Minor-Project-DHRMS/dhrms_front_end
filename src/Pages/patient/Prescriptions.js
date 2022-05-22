@@ -16,7 +16,6 @@ const Prescriptions = () => {
   console.log(location.state.record);
 
   const [data, setData] = useState(location.state.record);
-  const nums = [1, 2, 3, 3, 4];
   return (
     <div className="patient">
       <div className="bio_pat">

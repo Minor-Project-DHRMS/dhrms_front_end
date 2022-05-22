@@ -113,7 +113,7 @@ const Patient = () => {
           <div className="pt_align_ht pt_vt_media">
             <div className="pt_profile">
               <div className="pt_align_vt">
-                <img src={mainLogo} alt="Avatar" className="pt_avatar" />
+                <img src={`https://ipfs.infura.io/ipfs/${state.photo}`} alt="Avatar" className="pt_avatar" />
                 <a href="/moreDetails" className="font_field">
                   More Details
                 </a>
@@ -145,7 +145,7 @@ const Patient = () => {
                 {doctorList?.map((doctor, index) => {
                   return (
                     <div key={index} className="pt_item">
-                      <img src={mainLogo} alt="Avatar" className="ptd_avatar" />
+                      <img src={doctor.photo} alt="Avatar" className="ptd_avatar" />
                       <div className="ptd_details">
                         <div className="ptd_name">{doctor.doctorName}</div>
                         <div className="ptd_font_field">

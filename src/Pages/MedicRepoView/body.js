@@ -123,8 +123,8 @@ export default function Body() {
       <div className="bb1">
         <Header />
         <div className="bb2">
-          <div className="date">Name : {data.name}</div>
-          <div className="Dep">PID : {data.pid}</div>
+          <div className="date1">Name : {data.name}</div>
+          <div className="Dep1">PID : {data.pid}</div>
           <h2 className="h">Date : {sdate}</h2>
           <div className="Alltxt">
             <div className="col1">

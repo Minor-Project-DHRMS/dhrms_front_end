@@ -125,7 +125,6 @@ body {
     color: white;
     margin: 0px;
     align-items: center;
-    width: 900px;
     overflow-y: scroll;
 }
 
@@ -189,4 +188,8 @@ body {
     margin-bottom: 0px;
     vertical-align: middle;
 
+}
+
+.list-items1{
+    height: 350px;
 }

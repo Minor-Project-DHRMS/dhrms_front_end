@@ -105,7 +105,7 @@ export default function Body() {
       <div className="bb1">
         <Header />
         <div className="bb2">
-          <div className="date">Date:25/03/2022</div>
+          <div className="date">Date:</div>
           <div className="Dep">Department: Cardiology , orthology</div>
           <div className="Alltxt">
             <div className="col1">

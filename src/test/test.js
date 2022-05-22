@@ -326,6 +326,35 @@ export default function Test(prop) {
 
                 {/* ----------------------------------- */}
 
+                <div className='border'>
+                    //0xB67A1a2Ffae004f9fF0B2Dd630DF061971e30866
+                    <input type="text" id="getRecordsHistory"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await getRecordsHistory(document.getElementById("getRecordsHistory").value));
+                    }}>
+                        getRecordsHistory
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+
+                    
+                <div className='border'>
+                    <input type="text" id="getPatientList"></input>
+                    <button className='m' onClick={async (e) => {
+                        // console.log(document.getElementById("getApproveList").value);
+                        console.log(await getPatientList(document.getElementById("getPatientList").value));
+                    }}>
+                        getPatientList
+                    </button>
+                </div>
+                <br></br>
+
+                {/* ----------------------------------- */}
+
+
                 <br></br>
                 <div id="text">
 

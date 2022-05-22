@@ -66,7 +66,7 @@ const MoreDetails = () => {
       </div>
       <Btn
         text={"Scan QR Code"}
-        func={()=>navigate("qrscan")}
+        func={()=>navigate("/qrscan")}
         style={{
           padding: "10px 20px",
           width: "10%",

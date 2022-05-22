@@ -7,6 +7,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .bio-hos {
   padding: 15px 50px;
   width: 50%;
@@ -18,15 +19,29 @@
   margin-top: 50px;
   margin-bottom: 50px;
 }
+.bio-user {
+  width: 85%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.bio-pat {
+  margin-bottom: 20px;
+}
+.bio-report{
+  width: 90%;
+}
+.align-vh{
+  display: flex;
+  flex-direction: column;
+   width: 100%;
+}
 .list {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
   width: 100%;
 }
 .list > div {
   margin: 20px;
-  height: 400px;
 }
 .list-items {
   height: 350px;
@@ -65,6 +80,7 @@
   flex-direction: row;
   justify-content: flex-start;
 }
+
 .font-field {
   margin-right: 15px;
   margin-top: 10px;

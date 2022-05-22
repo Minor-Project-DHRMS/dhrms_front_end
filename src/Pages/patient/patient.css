@@ -231,6 +231,9 @@ a.font_field {
 .pth_journal_font {
   font-size: 16px;
 }
+.cross-cancel:hover{
+  cursor: pointer;
+}
 @media only screen and (max-width: 900px) {
   .patient {
     width: 100%;

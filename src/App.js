@@ -31,12 +31,17 @@ import { QRCodeGen } from "./components/QRPage/QRCodeGen";
 import { QRScanner } from "./components/QRScanner/QRScanner";
 import Register from "./Pages/login/Register";
 import Test from "./test/test";
+import ViewPatientDetails from "./components/ViewPatientDetails/ViewPatientDetails";
+import Prescriptions from "./Pages/patient/Prescriptions";
 
 const App = () => {
   return (
     <Router>
       <div className="container">
         <Routes>
+          //General pages
+          <Route exact path="/viewPatDetails" element={<ViewPatientDetails />} />
+
           //approval pages
           <Route exact path="/approveDoc" element={<Docregs />} />
           <Route exact path="/approveGov" element={<Govtregdet />} />
@@ -66,17 +71,12 @@ const App = () => {
           <Route exact path="/govDash" element={<Government />} />
           <Route exact path="/PatientDash" element={<Patient />} />
           <Route exact path="/moreDetails" element={<MoreDetails />} />
-          <Route path="moreDetails/qrscan" element={<QRScanner />} />
+          <Route path="/qrscan" element={<QRScanner />} />
+          <Route path="/prescription" element={<Prescriptions />} />
           <Route path="/docdash" element={<DocDash />} />
-          <Route
-            path="/PatientDash/moredetails"
-            element={
-              <QRCodeGen />
-            }
-          />
           <Route exact path="/HospitalDash" element={<Hospital />} />
           <Route
-            path="/HospitalDash/QRCode"
+            path="/QRCode"
             element={
               <QRCodeGen />
             }

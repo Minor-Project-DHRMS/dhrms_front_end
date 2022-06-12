@@ -80,6 +80,7 @@ export default function Body() {
   const sendUpload = async (e) => {
     e.preventDefault();
 
+    console.log("Uploading..");
     for (const file of list.testReports) {
       const ucid = await client.add(file);
       let temp = {
@@ -113,7 +114,9 @@ export default function Body() {
     values.DID=data.did;
     values.HID=data.hid;
 
+    console.log("Uploading done");
     console.log(values);
+    
 
     await sendRecordsForUpload(JSON.stringify(values)).then(()=>{
       navigate(-1);

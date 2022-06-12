@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ReactSession } from "react-client-session";
 import { getAccountAddress } from "../../services/AccountDetails";
 import Btn from "../../components/button/Btn";
+import { calculateAge } from "../../services/CalculateAge";
 import "./patient.css";
 import mainLogo from "../patient/logo192.png";
 import { useNavigate } from "react-router-dom";
@@ -66,6 +67,8 @@ const Patient = () => {
       const currentAccount = getAccountAddress();
       const details = await getPatientDetails(currentAccount);
       setState(JSON.parse(details));
+
+      // state.name = "Nandeesh B K";
       setJournalList(await getRecordsHistory(currentAccount));
       console.log(await getRecordsHistory(currentAccount));
       setDoctorList(await getDoctorsList(currentAccount));
@@ -113,10 +116,20 @@ const Patient = () => {
           <div className="pt_align_ht pt_vt_media">
             <div className="pt_profile">
               <div className="pt_align_vt">
-                <img src={`https://ipfs.infura.io/ipfs/${state.photo}`} alt="Avatar" className="pt_avatar" />
-                <a href="/moreDetails" className="font_field">
+                <img
+                  src={`https://ipfs.infura.io/ipfs/${state.photo}`}
+                  alt="Avatar"
+                  className="pt_avatar"
+                />
+                {/* <a href="/moreDetails" className="font_field"></a> */}
+                <div
+                  className="hyper"
+                  onClick={() => {
+                    navigate("/moreDetails");
+                  }}
+                >
                   More Details
-                </a>
+                </div>
               </div>
               <div className="pt_details">
                 <div className="pt_name">
@@ -124,7 +137,9 @@ const Patient = () => {
                 </div>
                 <div className="pt_align_ht">
                   <div className="font_field">{state.gender}</div>
-                  <div className="font_field">Age : 20</div>
+                  <div className="font_field">
+                    Age : {calculateAge(state.DOB)}
+                  </div>
                   <div className="font_field">Height : {state.height}</div>
                 </div>
                 <div className="pt_align_ht">
@@ -145,7 +160,11 @@ const Patient = () => {
                 {doctorList?.map((doctor, index) => {
                   return (
                     <div key={index} className="pt_item">
-                      <img src={doctor.photo} alt="Avatar" className="ptd_avatar" />
+                      <img
+                        src={doctor.photo}
+                        alt="Avatar"
+                        className="ptd_avatar"
+                      />
                       <div className="ptd_details">
                         <div className="ptd_name">{doctor.doctorName}</div>
                         <div className="ptd_font_field">
@@ -317,7 +336,6 @@ const LineBar = ({ index, listLength }) => {
 };
 
 const PatientD = ({ recordIndex, journalDetails }) => {
-
   let navigate = useNavigate();
   return (
     <div className="pt_journal_item pt_align_ht">
@@ -329,7 +347,7 @@ const PatientD = ({ recordIndex, journalDetails }) => {
           {journalDetails.doctorDetails.doctorName}
         </div>
         <div className="pt_journal_font">
-        {dateFormate(journalDetails.recordDetails.timeStamp)}
+          {dateFormate(journalDetails.recordDetails.timeStamp)}
         </div>
       </div>
       <Btn

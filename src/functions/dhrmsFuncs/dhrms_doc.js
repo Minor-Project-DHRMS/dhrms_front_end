@@ -58,13 +58,9 @@ const getPatientList = async (DID) => {
   console.log(contract);
   const list = await contract.getPatientListOfDoc(DID);
   let finalList = [];
-  let count = 0;
   for (const address of list) {
-    if (count == 1) {
-      const details = await getPatientDetails(address);
-      finalList.push(JSON.parse(details));
-    }
-    count++;
+    const details = await getPatientDetails(address);
+    finalList.push(JSON.parse(details));
   }
   return finalList;
 };

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {Routes, Route, Link } from "react-router-dom";
 
 import "./App.css";
 import { DoctorReg } from "./Pages/doctorRegistration/DoctorReg";
@@ -37,46 +37,46 @@ import Prescriptions from "./Pages/patient/Prescriptions";
 
 const App = () => {
   return (
-    <Router>
       <div className="container">
         <Routes>
           //General pages
-          <Route exact path="/viewPatDetails" element={<ViewPatientDetails />} />
+          <Route  exact path="/"  element={<Login />} />
+
+          <Route  path="/viewPatDetails" element={<ViewPatientDetails />} />
 
           //approval pages
-          <Route exact path="/approveDoc" element={<Docregs />} />
-          <Route exact path="/approveGov" element={<Govtregdet />} />
-          <Route exact path="/approveHos" element={<Hospreg />} />
-          <Route exact path="/approvePat" element={<Patientregs />} />
+          <Route  path="/approveDoc" element={<Docregs />} />
+          <Route  path="/approveGov" element={<Govtregdet />} />
+          <Route  path="/approveHos" element={<Hospreg />} />
+          <Route  path="/approvePat" element={<Patientregs />} />
           //Aprroval Lists
-          <Route exact path="/hospApprovlist" element={<Hospitalapprov />} />
-          <Route exact path="/govapprovlist" element={<Govapprov />} />
-          <Route exact path="/docapprovlist" element={<Docapprov />} />
+          <Route  path="/hospApprovlist" element={<Hospitalapprov />} />
+          <Route  path="/govapprovlist" element={<Govapprov />} />
+          <Route  path="/docapprovlist" element={<Docapprov />} />
           <Route
-            exact
+            
             path="/paitentsapprovlist"
             element={<Paitentsapprov />}
           />
           //Medical Report pages
-          <Route exact path="/medicalrepupload" element={<Body />} />
-          <Route exact path="/medicalReport" element={<PatientDetails />} />
-          <Route exact path="/medicalReportview" element={<PatientDetailsView />} />
-          <Route exact path="/viewScan" element={<ViewScan />} />
-          <Route exact path="/viewReport" element={<ViewReport />} />
-          <Route exact path="/listScan" element={<ListScan />} />
-          <Route exact path="/listReport" element={<ListReport />} />
+          <Route  path="/medicalrepupload" element={<Body />} />
+          <Route  path="/medicalReport" element={<PatientDetails />} />
+          <Route  path="/medicalReportview" element={<PatientDetailsView />} />
+          <Route  path="/viewScan" element={<ViewScan />} />
+          <Route  path="/viewReport" element={<ViewReport />} />
+          <Route  path="/listScan" element={<ListScan />} />
+          <Route  path="/listReport" element={<ListReport />} />
           //login
-          <Route exact path="/" element={<Login />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/test" element={<Test />} />
+          <Route  path="/register" element={<Register />} />
+          <Route  path="/test" element={<Test />} />
           //Dash Boards
-          <Route exact path="/govDash" element={<Government />} />
-          <Route exact path="/PatientDash" element={<Patient />} />
-          <Route exact path="/moreDetails" element={<MoreDetails />} />
+          <Route  path="/govDash" element={<Government />} />
+          <Route  path="/PatientDash" element={<Patient />} />
+          <Route  path="/moreDetails" element={<MoreDetails />} />
           <Route path="/qrscan" element={<QRScanner />} />
           <Route path="/prescription" element={<Prescriptions />} />
           <Route path="/docdash" element={<DocDash />} />
-          <Route exact path="/HospitalDash" element={<Hospital />} />
+          <Route  path="/HospitalDash" element={<Hospital />} />
           <Route
             path="/QRCode"
             element={
@@ -84,15 +84,14 @@ const App = () => {
             }
           />
           //Regsitration Pages
-          <Route exact path="/docreg" element={<DoctorReg />} />
-          <Route exact path="/hosreg" element={<HospitalReg />} />
-          <Route exact path="/govReg" element={<GovernmentReg />} />
-          <Route exact path="/PatientReg" element={<PatientReg />} />
+          <Route  path="/docreg" element={<DoctorReg />} />
+          <Route  path="/hosreg" element={<HospitalReg />} />
+          <Route  path="/govReg" element={<GovernmentReg />} />
+          <Route  path="/PatientReg" element={<PatientReg />} />
           
           
         </Routes>
       </div>
-    </Router>
   );
 };
 

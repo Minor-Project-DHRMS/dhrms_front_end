@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Btn from "../../components/button/Btn";
 import { getDoctorDetails, getPatientList } from "../../functions/Dhrms";
 import { getAccountAddress } from "../../services/AccountDetails";
+import { calculateAge } from "../../services/CalculateAge";
+import mainlogo from "../hospital/pat1.png";
 // import Patient from "../patient/Patient.js";
 
 const Paintents = () => {
@@ -59,13 +61,14 @@ const Paintents = () => {
         return (
           <div key={index}>
             <div className="lis1" id="docdashOut">
-              <img className="obj1" src={new URL(`https://ipfs.infura.io/ipfs/${r.photo}`)}></img>
+              {/* <img className="obj1" src={new URL(`https://ipfs.infura.io/ipfs/${r.photo}`)}></img> */}
+              <img className="obj1" src={mainlogo}></img>
               <div className="subli1">
                 <p>{r.name}</p>
                 <br></br>
                 <br></br>
                 <p>
-                  {r.gender} &nbsp;&nbsp;Age:&nbsp;{r.DOB}
+                  {r.gender} &nbsp;&nbsp;Age:&nbsp;{calculateAge(r.DOB)}
                 </p>
               </div>
               <div className="subli4">

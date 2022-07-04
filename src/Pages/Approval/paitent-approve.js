@@ -33,7 +33,7 @@ export default function Paitentsapprov() {
     <div className="total">
       <div className="MainHead1">
         <div className="head1">
-          Paitent Approval
+            Patient Approval
         </div>
       </div>
       <div className="body-patient">

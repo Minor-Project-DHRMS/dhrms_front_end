@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import mainLogo from "../hospital/logo192.png";
+import mainLogo from "../hospital/pat1.png";
 import "./hospital.css";
 import Btn from "../../components/button/Btn";
 import LoadingInd from "../../components/Loading/LoadingInd";
@@ -88,7 +88,8 @@ const Hospital = () => {
               {patientList.map((patient, index) => {
                 return (
                   <div key={index} className="item">
-                    <img src={new URL(new URL(`https://ipfs.infura.io/ipfs/${patient.photo}`))} alt="Avatar" className="avatar" />
+                    {/* <img src={new URL(new URL(`https://ipfs.infura.io/ipfs/${patient.photo}`))} alt="Avatar" className="avatar" /> */}
+                    <img src={mainLogo} alt="Avatar" className="avatar" />
                     <div className="item_details">
                       <div>{patient.name}</div>
                       <div className="div-align">

@@ -4,7 +4,7 @@ import { getAccountAddress } from "../../services/AccountDetails";
 import Btn from "../../components/button/Btn";
 import { calculateAge } from "../../services/CalculateAge";
 import "./patient.css";
-import mainLogo from "../patient/logo192.png";
+import mainLogo from "../patient/pat1.png";
 import { useNavigate } from "react-router-dom";
 import LoadingInd from "../../components/Loading/LoadingInd";
 import { Navigate } from "react-router-dom";
@@ -117,7 +117,8 @@ const Patient = () => {
             <div className="pt_profile">
               <div className="pt_align_vt">
                 <img
-                  src={`https://ipfs.infura.io/ipfs/${state.photo}`}
+                  // src={`https://ipfs.infura.io/ipfs/${state.photo}`}
+                  src={mainLogo}
                   alt="Avatar"
                   className="pt_avatar"
                 />

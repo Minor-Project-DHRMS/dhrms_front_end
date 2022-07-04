@@ -2,7 +2,7 @@ import abi from "../utils/dhrms_gov.json";
 import { ethers } from "ethers";
 
 // const contractAddress = "0x96428b6b621D4A3CA50E2Ee6bE9Fc5fE06367B6C";
-const contractAddress = "0x2a2fc643d1AC25FbdD96207aFc4AcF3EfBEbD499";
+const contractAddress = "0x0233D05979A53CA602f6dB1CD8Ce4D01b7CF5660";
 const contractABI = abi.abi;
 
 const Dhrms_Gov_Instance = () => {
